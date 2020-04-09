@@ -1,0 +1,48 @@
+name: Update AWS CloudFormation Resource Specification
+
+on: [push]
+
+jobs:
+    main:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with: { ref: master }
+            - uses: actions/setup-python@v1
+              with: { python-version: "3.8" }
+            - uses: actions/setup-node@v1
+              with: { node-version: "13.x" }
+            - name: Setup
+              run: |
+                  python3 -m pip install --upgrade pip setuptools wheel
+                  git config --local user.email "26167234+croakbot@users.noreply.github.com"
+                  git config --local user.name "croakbot"
+            - name: Update
+              run: make
+            - name: Configure
+              id: config
+              run: |
+                  URL="https://${{github.actor}}:${{github.token}}@github.com/${{github.repository}}.git"
+                  STATUS=$(git status -s)
+                  SPEC=$(cat spec/VERSION)
+                  # ----------------------------------------------------
+                  echo "::set-output name=url::$URL"
+                  echo "::set-output name=status::$STATUS"
+                  echo "::set-output name=spec::$SPEC"
+            - name: Commit
+              if: steps.config.outputs.status
+              run: |
+                  TAG=v$(python version.py patch)
+                  make format
+                  make dist
+                  git add .
+                  git commit -m "update cfn spec to v${{steps.config.outputs.spec}}"
+                  git tag $TAG
+                  git push --tags ${{steps.config.outputs.url}}
+                  git push ${{steps.config.outputs.url}}
+            - name: Publish
+              if: steps.config.outputs.status
+              uses: pypa/gh-action-pypi-publish@master
+              with:
+                  user: __token__
+                  password: ${{ secrets.pypi_password }}

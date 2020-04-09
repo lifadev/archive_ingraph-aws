@@ -1,0 +1,2 @@
+recursive-include src *.pyi py.typed
+include requirements.txt

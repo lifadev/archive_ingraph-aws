@@ -1,0 +1,11 @@
+{
+    "dockerFile": "Dockerfile",
+    "extensions": [
+        "bungcip.better-toml",
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ryanluker.vscode-coverage-gutters"
+    ],
+    "postCreateCommand": "make install"
+}

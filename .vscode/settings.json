@@ -1,0 +1,40 @@
+{
+    //
+    // Editor
+    //
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/__pycache__": true,
+        "**/*.egg-info": true,
+        ".coverage": true,
+        ".coverage.*": true,
+        ".devcontainer": true,
+        ".editorconfig": true,
+        ".gitattributes": true,
+        ".github": true,
+        ".gitignore": true,
+        ".mypy_cache": true,
+        ".prettierignore": true,
+        ".pytest_cache": true,
+        ".vscode": true,
+        "coverage.xml": true,
+        "build": true,
+        "dist": true,
+        "Makefile": true,
+        "MANIFEST.in": true,
+        "pyproject.toml": true,
+        "requirements.txt": true,
+        "setup.*": true,
+        "version.py": true
+    },
+
+    //
+    // Extensions
+    //
+
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": false
+}
