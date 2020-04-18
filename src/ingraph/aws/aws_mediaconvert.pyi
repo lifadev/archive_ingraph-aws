@@ -35,6 +35,7 @@ class JobTemplate:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        HopDestinations: List["JobTemplate.HopDestination"] = ...,
         Name: str = ...,
         Priority: int = ...,
         Queue: str = ...,
@@ -44,6 +45,10 @@ class JobTemplate:
     ): ...
     class AccelerationSettings:
         def __init__(self, *, Mode: str): ...
+    class HopDestination:
+        def __init__(
+            self, *, Priority: int = ..., Queue: str = ..., WaitMinutes: int = ...
+        ): ...
 
 class Preset:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconvert-preset.html"""

@@ -109,6 +109,12 @@ class Link:
 class LinkAssociation:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkmanager-linkassociation.html"""
 
+    GlobalNetworkId: Final[str]
+
+    DeviceId: Final[str]
+
+    LinkId: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
