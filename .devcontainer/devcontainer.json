@@ -1,4 +1,5 @@
 {
+    "appPort": [3884],
     "dockerFile": "Dockerfile",
     "extensions": [
         "bungcip.better-toml",
