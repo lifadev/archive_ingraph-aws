@@ -7,6 +7,12 @@ install:
 	pip install -r requirements.txt
 	pip install -e .
 
+update:
+	pip list --outdated --format=freeze | \
+		grep -v '^\-e' | cut -d = -f 1  | \
+		xargs -n1 pip install --upgrade
+	pip freeze --exclude-editable > requirements.txt
+
 spec:
 	python -m spec
 
