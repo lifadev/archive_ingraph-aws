@@ -29,6 +29,8 @@ ENDPOINT = (
     "/latest/gzip/CloudFormationResourceSpecification.json"
 )
 REGIONS = {
+    # Africa
+    "af-south-1": "Africa (Cape Town)",
     # Asia Pacific
     "ap-east-1": "Asia Pacific (Hong Kong)",
     "ap-northeast-1": "Asia Pacific (Tokyo)",
