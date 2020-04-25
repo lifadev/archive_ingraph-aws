@@ -29,6 +29,7 @@ class Server:
     def __init__(
         self,
         *,
+        Certificate: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EndpointDetails: "Server.EndpointDetails" = ...,
@@ -36,6 +37,7 @@ class Server:
         IdentityProviderDetails: "Server.IdentityProviderDetails" = ...,
         IdentityProviderType: str = ...,
         LoggingRole: str = ...,
+        Protocols: List["Server.Protocol"] = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
@@ -50,6 +52,8 @@ class Server:
         ): ...
     class IdentityProviderDetails:
         def __init__(self, *, InvocationRole: str, Url: str): ...
+    class Protocol:
+        def __init__(self) -> None: ...
 
 class User:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-transfer-user.html"""

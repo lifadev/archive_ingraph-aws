@@ -21,6 +21,8 @@ _NAMESPACE = "AWS::FSx"
 class FileSystem:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html"""
 
+    LustreMountName: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
