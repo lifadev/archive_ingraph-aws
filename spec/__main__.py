@@ -47,6 +47,7 @@ REGIONS = {
     # Europe
     "eu-central-1": "EU (Frankfurt)",
     "eu-north-1": "EU (Stockholm)",
+    "eu-south-1": "EU (Milan)",
     "eu-west-1": "EU (Ireland)",
     "eu-west-2": "EU (London)",
     "eu-west-3": "EU (Paris)",
