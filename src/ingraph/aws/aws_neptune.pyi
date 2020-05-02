@@ -48,10 +48,14 @@ class DBCluster:
         Port: int = ...,
         PreferredBackupWindow: str = ...,
         PreferredMaintenanceWindow: str = ...,
+        RestoreToTime: str = ...,
+        RestoreType: str = ...,
         SnapshotIdentifier: str = ...,
+        SourceDBClusterIdentifier: str = ...,
         StorageEncrypted: bool = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
+        UseLatestRestorableTime: bool = ...,
         VpcSecurityGroupIds: List[str] = ...
     ): ...
 

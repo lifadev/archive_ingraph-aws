@@ -32,7 +32,7 @@ class Group:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         ResourceQuery: "Group.ResourceQuery" = ...,
-        Tags: List[Any] = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class Query:

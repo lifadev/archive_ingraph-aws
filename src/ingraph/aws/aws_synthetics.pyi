@@ -21,8 +21,6 @@ _NAMESPACE = "AWS::Synthetics"
 class Canary:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-synthetics-canary.html"""
 
-    Name: Final[str]
-
     Id: Final[str]
 
     State: Final[str]
@@ -34,6 +32,7 @@ class Canary:
         ArtifactS3Location: str,
         Code: "Canary.Code",
         ExecutionRoleArn: str,
+        Name: str,
         RuntimeVersion: str,
         Schedule: "Canary.Schedule",
         StartCanaryAfterCreation: bool,

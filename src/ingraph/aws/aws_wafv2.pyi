@@ -93,8 +93,8 @@ class RuleGroup:
             *,
             FieldToMatch: "RuleGroup.FieldToMatch",
             PositionalConstraint: str,
-            SearchString: str,
             TextTransformations: List["RuleGroup.TextTransformation"],
+            SearchString: str = ...,
             SearchStringBase64: str = ...
         ): ...
     class FieldToMatch:
@@ -269,8 +269,8 @@ class WebACL:
             *,
             FieldToMatch: "WebACL.FieldToMatch",
             PositionalConstraint: str,
-            SearchString: str,
             TextTransformations: List["WebACL.TextTransformation"],
+            SearchString: str = ...,
             SearchStringBase64: str = ...
         ): ...
     class DefaultAction:

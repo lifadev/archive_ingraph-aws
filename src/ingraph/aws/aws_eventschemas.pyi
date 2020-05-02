@@ -60,6 +60,23 @@ class Registry:
     class TagsEntry:
         def __init__(self, *, Key: str, Value: str): ...
 
+class RegistryPolicy:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eventschemas-registrypolicy.html"""
+
+    Id: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Policy: Any,
+        RegistryName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        RevisionId: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class Schema:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eventschemas-schema.html"""
 
