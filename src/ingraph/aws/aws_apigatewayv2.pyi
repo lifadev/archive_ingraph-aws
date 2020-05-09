@@ -34,6 +34,7 @@ class Api:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        DisableExecuteApiEndpoint: bool = ...,
         DisableSchemaValidation: bool = ...,
         FailOnWarnings: bool = ...,
         Name: str = ...,

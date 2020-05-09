@@ -22,20 +22,28 @@ class Association:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html"""
 
     Ref: Final[str]
+
+    AssociationId: Final[str]
     def __init__(
         self,
         *,
         Name: str,
         AssociationName: str = ...,
+        AutomationTargetParameterName: str = ...,
+        ComplianceSeverity: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DocumentVersion: str = ...,
         InstanceId: str = ...,
+        MaxConcurrency: str = ...,
+        MaxErrors: str = ...,
         OutputLocation: "Association.InstanceAssociationOutputLocation" = ...,
         Parameters: Dict[str, "Association.ParameterValues"] = ...,
         ScheduleExpression: str = ...,
+        SyncCompliance: str = ...,
         Targets: List["Association.Target"] = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        WaitForSuccessTimeoutSeconds: int = ...
     ): ...
     class InstanceAssociationOutputLocation:
         def __init__(self, *, S3Location: "Association.S3OutputLocation" = ...): ...
@@ -43,7 +51,11 @@ class Association:
         def __init__(self, *, ParameterValues: List[str]): ...
     class S3OutputLocation:
         def __init__(
-            self, *, OutputS3BucketName: str = ..., OutputS3KeyPrefix: str = ...
+            self,
+            *,
+            OutputS3BucketName: str = ...,
+            OutputS3KeyPrefix: str = ...,
+            OutputS3Region: str = ...
         ): ...
     class Target:
         def __init__(self, *, Key: str, Values: List[str]): ...
@@ -188,6 +200,7 @@ class Parameter:
         Type: str,
         Value: str,
         AllowedPattern: str = ...,
+        DataType: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,

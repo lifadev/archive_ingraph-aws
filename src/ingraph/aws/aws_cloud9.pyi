@@ -31,6 +31,7 @@ class EnvironmentEC2:
         *,
         InstanceType: str,
         AutomaticStopTimeMinutes: int = ...,
+        ConnectionType: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,

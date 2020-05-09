@@ -71,6 +71,31 @@ class DistributionConfiguration:
             Region: str = ...
         ): ...
 
+class Image:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html"""
+
+    Arn: Final[str]
+
+    ImageId: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ImageRecipeArn: str,
+        InfrastructureConfigurationArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        DistributionConfigurationArn: str = ...,
+        ImageTestsConfiguration: "Image.ImageTestsConfiguration" = ...,
+        Tags: Dict[str, str] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ImageTestsConfiguration:
+        def __init__(
+            self, *, ImageTestsEnabled: bool = ..., TimeoutMinutes: int = ...
+        ): ...
+
 class ImagePipeline:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagepipeline.html"""
 
