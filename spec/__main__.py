@@ -171,6 +171,13 @@ def _nomalize_attrs(data: Any) -> None:
             k.replace(".", "_") + ("_" if k in coms else ""): v
             for k, v in value[_ASKEY].items()
         }
+        # patch 14.2.0
+        if name == "AWS::ImageBuilder::Image":
+            bad = value[_ASKEY].get("OutputResources", {})
+            if bad.get("Type") == "OutputResources":
+                del value[_ASKEY]["OutputResources"]
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_props(data: Any) -> None:
@@ -180,6 +187,13 @@ def _normalize_props(data: Any) -> None:
         value[_PSKEY] = {
             k + ("_" if k in coms else ""): v for k, v in value[_PSKEY].items()
         }
+        # patch 12.3.0
+        if name == "AWS::ImageBuilder::InfrastructureConfiguration":
+            bad = value[_PSKEY].get("Logging", {})
+            if bad.get("PrimitiveType") == "Json" and bad.get("Type") == "Logging":
+                del value[_PSKEY]["Logging"]["PrimitiveType"]
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_proptypes(data: Any) -> None:
@@ -258,10 +272,6 @@ _PTYPES = dict(
 
 def _getproptype(data: Any, spec: Any, parent: str) -> str:
     hint = {k for k in spec.keys() if k.endswith("Type") and k != "UpdateType"}
-    if hint == {"PrimitiveType", "Type"}:
-        # patch for AWS::ImageBuilder::InfrastructureConfiguration 12.3.0
-        del spec["PrimitiveType"]
-        hint = {"Type"}
     if "PrimitiveType" in spec:
         if hint != {"PrimitiveType"}:
             raise NotImplementedError(f"unknown hint: {hint}")
