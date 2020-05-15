@@ -56,6 +56,7 @@ class Endpoint:
         KinesisSettings: "Endpoint.KinesisSettings" = ...,
         KmsKeyId: str = ...,
         MongoDbSettings: "Endpoint.MongoDbSettings" = ...,
+        NeptuneSettings: "Endpoint.NeptuneSettings" = ...,
         Password: str = ...,
         Port: int = ...,
         S3Settings: "Endpoint.S3Settings" = ...,
@@ -101,6 +102,18 @@ class Endpoint:
             Port: int = ...,
             ServerName: str = ...,
             Username: str = ...
+        ): ...
+    class NeptuneSettings:
+        def __init__(
+            self,
+            *,
+            ErrorRetryDuration: int = ...,
+            IamAuthEnabled: bool = ...,
+            MaxFileSize: int = ...,
+            MaxRetryCount: int = ...,
+            S3BucketFolder: str = ...,
+            S3BucketName: str = ...,
+            ServiceAccessRoleArn: str = ...
         ): ...
     class S3Settings:
         def __init__(
@@ -200,5 +213,6 @@ class ReplicationTask:
         ReplicationTaskIdentifier: str = ...,
         ReplicationTaskSettings: str = ...,
         Tags: List["Tag"] = ...,
+        TaskData: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...

@@ -21,9 +21,9 @@ _NAMESPACE = "AWS::Athena"
 class NamedQuery:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html"""
 
-    Ref: Final[str]
-
     NamedQueryId: Final[str]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,

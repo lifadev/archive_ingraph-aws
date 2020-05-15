@@ -55,6 +55,7 @@ class CloudFormationProduct:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         Distributor: str = ...,
+        ReplaceProvisioningArtifacts: bool = ...,
         SupportDescription: str = ...,
         SupportEmail: str = ...,
         SupportUrl: str = ...,
