@@ -101,6 +101,7 @@ class ClientVpnEndpoint:
             *,
             Type: str,
             ActiveDirectory: "ClientVpnEndpoint.DirectoryServiceAuthenticationRequest" = ...,
+            FederatedAuthentication: "ClientVpnEndpoint.FederatedAuthenticationRequest" = ...,
             MutualAuthentication: "ClientVpnEndpoint.CertificateAuthenticationRequest" = ...
         ): ...
     class ConnectionLogOptions:
@@ -113,6 +114,8 @@ class ClientVpnEndpoint:
         ): ...
     class DirectoryServiceAuthenticationRequest:
         def __init__(self, *, DirectoryId: str): ...
+    class FederatedAuthenticationRequest:
+        def __init__(self, *, SAMLProviderArn: str): ...
     class TagSpecification:
         def __init__(self, *, ResourceType: str, Tags: List["Tag"]): ...
 
@@ -331,6 +334,8 @@ class FlowLog:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html"""
 
     Ref: Final[str]
+
+    Id: Final[str]
     def __init__(
         self,
         *,

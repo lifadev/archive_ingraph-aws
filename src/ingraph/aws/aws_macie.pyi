@@ -57,12 +57,12 @@ class FindingsFilter:
     def __init__(
         self,
         *,
+        FindingCriteria: "FindingsFilter.FindingCriteria",
+        Name: str,
         Action: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
-        FindingCriteria: "FindingsFilter.FindingCriteria" = ...,
-        Name: str = ...,
         Position: int = ...,
         UpdateReplacePolicy: str = ...
     ): ...

@@ -28,7 +28,7 @@ class Cluster:
         self,
         *,
         ClusterName: str = ...,
-        ClusterSettings: List["Cluster.ClusterSetting"] = ...,
+        ClusterSettings: List["Cluster.ClusterSettings"] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Tags: List["Tag"] = ...,

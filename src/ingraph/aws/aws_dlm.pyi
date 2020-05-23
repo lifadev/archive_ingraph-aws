@@ -37,19 +37,24 @@ class LifecyclePolicy:
     ): ...
     class CreateRule:
         def __init__(
-            self, *, Interval: int, IntervalUnit: str, Times: List[str] = ...
+            self,
+            *,
+            CronExpression: str = ...,
+            Interval: int = ...,
+            IntervalUnit: str = ...,
+            Times: List[str] = ...
         ): ...
     class CrossRegionCopyRetainRule:
-        def __init__(self, *, Interval: int = ..., IntervalUnit: str = ...): ...
+        def __init__(self, *, Interval: int, IntervalUnit: str): ...
     class CrossRegionCopyRule:
         def __init__(
             self,
             *,
+            Encrypted: bool,
+            TargetRegion: str,
             CmkArn: str = ...,
             CopyTags: bool = ...,
-            Encrypted: bool = ...,
-            RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...,
-            TargetRegion: str = ...
+            RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...
         ): ...
     class FastRestoreRule:
         def __init__(
