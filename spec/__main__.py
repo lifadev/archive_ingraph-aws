@@ -171,13 +171,6 @@ def _nomalize_attrs(data: Any) -> None:
             k.replace(".", "_") + ("_" if k in coms else ""): v
             for k, v in value[_ASKEY].items()
         }
-        # patch 14.2.0
-        if name == "AWS::ImageBuilder::Image":
-            bad = value[_ASKEY].get("OutputResources", {})
-            if bad.get("Type") == "OutputResources":
-                del value[_ASKEY]["OutputResources"]
-            else:
-                raise NotImplementedError("patch outdated")
 
 
 def _normalize_props(data: Any) -> None:
