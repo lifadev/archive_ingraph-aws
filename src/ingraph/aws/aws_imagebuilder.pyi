@@ -88,13 +88,28 @@ class Image:
         DependsOn: List[Any] = ...,
         DistributionConfigurationArn: str = ...,
         ImageTestsConfiguration: "Image.ImageTestsConfiguration" = ...,
+        OutputResources: "Image.OutputResources" = ...,
         Tags: Dict[str, str] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class Ami:
+        def __init__(
+            self,
+            *,
+            Description: str = ...,
+            Image: str = ...,
+            Name: str = ...,
+            Region: str = ...,
+            State: "Image.ImageState" = ...
+        ): ...
+    class ImageState:
+        def __init__(self, *, Reason: str = ..., Status: str = ...): ...
     class ImageTestsConfiguration:
         def __init__(
             self, *, ImageTestsEnabled: bool = ..., TimeoutMinutes: int = ...
         ): ...
+    class OutputResources:
+        def __init__(self, *, Amis: List["Image.Ami"] = ...): ...
 
 class ImagePipeline:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-imagepipeline.html"""

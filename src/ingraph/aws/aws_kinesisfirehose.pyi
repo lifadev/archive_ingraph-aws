@@ -40,7 +40,7 @@ class DeliveryStream:
         UpdateReplacePolicy: str = ...
     ): ...
     class BufferingHints:
-        def __init__(self, *, IntervalInSeconds: int, SizeInMBs: int): ...
+        def __init__(self, *, IntervalInSeconds: int = ..., SizeInMBs: int = ...): ...
     class CloudWatchLoggingOptions:
         def __init__(
             self,
@@ -61,10 +61,10 @@ class DeliveryStream:
         def __init__(
             self,
             *,
-            Enabled: bool,
-            InputFormatConfiguration: "DeliveryStream.InputFormatConfiguration",
-            OutputFormatConfiguration: "DeliveryStream.OutputFormatConfiguration",
-            SchemaConfiguration: "DeliveryStream.SchemaConfiguration"
+            Enabled: bool = ...,
+            InputFormatConfiguration: "DeliveryStream.InputFormatConfiguration" = ...,
+            OutputFormatConfiguration: "DeliveryStream.OutputFormatConfiguration" = ...,
+            SchemaConfiguration: "DeliveryStream.SchemaConfiguration" = ...
         ): ...
     class Deserializer:
         def __init__(
@@ -74,27 +74,27 @@ class DeliveryStream:
             OpenXJsonSerDe: "DeliveryStream.OpenXJsonSerDe" = ...
         ): ...
     class ElasticsearchBufferingHints:
-        def __init__(self, *, IntervalInSeconds: int, SizeInMBs: int): ...
+        def __init__(self, *, IntervalInSeconds: int = ..., SizeInMBs: int = ...): ...
     class ElasticsearchDestinationConfiguration:
         def __init__(
             self,
             *,
-            BufferingHints: "DeliveryStream.ElasticsearchBufferingHints",
-            DomainARN: str,
             IndexName: str,
-            IndexRotationPeriod: str,
-            RetryOptions: "DeliveryStream.ElasticsearchRetryOptions",
             RoleARN: str,
-            S3BackupMode: str,
             S3Configuration: "DeliveryStream.S3DestinationConfiguration",
-            TypeName: str,
+            BufferingHints: "DeliveryStream.ElasticsearchBufferingHints" = ...,
             CloudWatchLoggingOptions: "DeliveryStream.CloudWatchLoggingOptions" = ...,
             ClusterEndpoint: str = ...,
+            DomainARN: str = ...,
+            IndexRotationPeriod: str = ...,
             ProcessingConfiguration: "DeliveryStream.ProcessingConfiguration" = ...,
+            RetryOptions: "DeliveryStream.ElasticsearchRetryOptions" = ...,
+            S3BackupMode: str = ...,
+            TypeName: str = ...,
             VpcConfiguration: "DeliveryStream.VpcConfiguration" = ...
         ): ...
     class ElasticsearchRetryOptions:
-        def __init__(self, *, DurationInSeconds: int): ...
+        def __init__(self, *, DurationInSeconds: int = ...): ...
     class EncryptionConfiguration:
         def __init__(
             self,
@@ -107,10 +107,10 @@ class DeliveryStream:
             self,
             *,
             BucketARN: str,
-            BufferingHints: "DeliveryStream.BufferingHints",
-            CompressionFormat: str,
             RoleARN: str,
+            BufferingHints: "DeliveryStream.BufferingHints" = ...,
             CloudWatchLoggingOptions: "DeliveryStream.CloudWatchLoggingOptions" = ...,
+            CompressionFormat: str = ...,
             DataFormatConversionConfiguration: "DeliveryStream.DataFormatConversionConfiguration" = ...,
             EncryptionConfiguration: "DeliveryStream.EncryptionConfiguration" = ...,
             ErrorOutputPrefix: str = ...,
@@ -122,7 +122,7 @@ class DeliveryStream:
     class HiveJsonSerDe:
         def __init__(self, *, TimestampFormats: List[str] = ...): ...
     class InputFormatConfiguration:
-        def __init__(self, *, Deserializer: "DeliveryStream.Deserializer"): ...
+        def __init__(self, *, Deserializer: "DeliveryStream.Deserializer" = ...): ...
     class KMSEncryptionConfig:
         def __init__(self, *, AWSKMSKeyARN: str): ...
     class KinesisStreamSourceConfiguration:
@@ -151,7 +151,7 @@ class DeliveryStream:
             StripeSizeBytes: int = ...
         ): ...
     class OutputFormatConfiguration:
-        def __init__(self, *, Serializer: "DeliveryStream.Serializer"): ...
+        def __init__(self, *, Serializer: "DeliveryStream.Serializer" = ...): ...
     class ParquetSerDe:
         def __init__(
             self,
@@ -172,7 +172,10 @@ class DeliveryStream:
         ): ...
     class Processor:
         def __init__(
-            self, *, Parameters: List["DeliveryStream.ProcessorParameter"], Type: str
+            self,
+            *,
+            Type: str,
+            Parameters: List["DeliveryStream.ProcessorParameter"] = ...
         ): ...
     class ProcessorParameter:
         def __init__(self, *, ParameterName: str, ParameterValue: str): ...
@@ -199,10 +202,10 @@ class DeliveryStream:
             self,
             *,
             BucketARN: str,
-            BufferingHints: "DeliveryStream.BufferingHints",
-            CompressionFormat: str,
             RoleARN: str,
+            BufferingHints: "DeliveryStream.BufferingHints" = ...,
             CloudWatchLoggingOptions: "DeliveryStream.CloudWatchLoggingOptions" = ...,
+            CompressionFormat: str = ...,
             EncryptionConfiguration: "DeliveryStream.EncryptionConfiguration" = ...,
             ErrorOutputPrefix: str = ...,
             Prefix: str = ...
@@ -211,12 +214,12 @@ class DeliveryStream:
         def __init__(
             self,
             *,
-            CatalogId: str,
-            DatabaseName: str,
-            Region: str,
-            RoleARN: str,
-            TableName: str,
-            VersionId: str
+            CatalogId: str = ...,
+            DatabaseName: str = ...,
+            Region: str = ...,
+            RoleARN: str = ...,
+            TableName: str = ...,
+            VersionId: str = ...
         ): ...
     class Serializer:
         def __init__(
@@ -240,7 +243,7 @@ class DeliveryStream:
             S3BackupMode: str = ...
         ): ...
     class SplunkRetryOptions:
-        def __init__(self, *, DurationInSeconds: int): ...
+        def __init__(self, *, DurationInSeconds: int = ...): ...
     class VpcConfiguration:
         def __init__(
             self, *, RoleARN: str, SecurityGroupIds: List[str], SubnetIds: List[str]

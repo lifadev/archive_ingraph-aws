@@ -64,6 +64,29 @@ class PolicyPrincipalAttachment:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class ProvisioningTemplate:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-provisioningtemplate.html"""
+
+    TemplateArn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ProvisioningRoleArn: str,
+        TemplateBody: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        Enabled: bool = ...,
+        PreProvisioningHook: "ProvisioningTemplate.ProvisioningHook" = ...,
+        Tags: List[Any] = ...,
+        TemplateName: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ProvisioningHook:
+        def __init__(self, *, PayloadVersion: str = ..., TargetArn: str = ...): ...
+
 class Thing:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html"""
 

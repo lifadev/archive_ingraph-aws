@@ -18,6 +18,37 @@ from . import Tag
 
 _NAMESPACE = "AWS::EFS"
 
+class AccessPoint:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-accesspoint.html"""
+
+    AccessPointId: Final[str]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        FileSystemId: str,
+        AccessPointTags: List["AccessPoint.AccessPointTag"] = ...,
+        ClientToken: str = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        PosixUser: "AccessPoint.PosixUser" = ...,
+        RootDirectory: "AccessPoint.RootDirectory" = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AccessPointTag:
+        def __init__(self, *, Key: str = ..., Value: str = ...): ...
+    class CreationInfo:
+        def __init__(self, *, OwnerGid: str, OwnerUid: str, Permissions: str): ...
+    class PosixUser:
+        def __init__(self, *, Gid: str, Uid: str, SecondaryGids: List[str] = ...): ...
+    class RootDirectory:
+        def __init__(
+            self, *, CreationInfo: "AccessPoint.CreationInfo" = ..., Path: str = ...
+        ): ...
+
 class FileSystem:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html"""
 
@@ -30,6 +61,7 @@ class FileSystem:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Encrypted: bool = ...,
+        FileSystemPolicy: Any = ...,
         FileSystemTags: List["FileSystem.ElasticFileSystemTag"] = ...,
         KmsKeyId: str = ...,
         LifecyclePolicies: List["FileSystem.LifecyclePolicy"] = ...,

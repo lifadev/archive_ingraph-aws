@@ -28,6 +28,7 @@ class ProfilingGroup:
         self,
         *,
         ProfilingGroupName: str,
+        AgentPermissions: Any = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...

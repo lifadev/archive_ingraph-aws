@@ -182,6 +182,74 @@ class DBParameterGroup:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class DBProxy:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxy.html"""
+
+    DBProxyArn: Final[str]
+
+    Endpoint: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Auth: List["DBProxy.AuthFormat"],
+        DBProxyName: str,
+        EngineFamily: str,
+        RoleArn: str,
+        VpcSubnetIds: List[str],
+        DebugLogging: bool = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        IdleClientTimeout: int = ...,
+        RequireTLS: bool = ...,
+        Tags: List["DBProxy.TagFormat"] = ...,
+        UpdateReplacePolicy: str = ...,
+        VpcSecurityGroupIds: List[str] = ...
+    ): ...
+    class AuthFormat:
+        def __init__(
+            self,
+            *,
+            AuthScheme: str = ...,
+            Description: str = ...,
+            IAMAuth: str = ...,
+            SecretArn: str = ...,
+            UserName: str = ...
+        ): ...
+    class TagFormat:
+        def __init__(self, *, Key: str = ..., Value: str = ...): ...
+
+class DBProxyTargetGroup:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbproxytargetgroup.html"""
+
+    TargetGroupArn: Final[str]
+
+    TargetGroupName: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DBProxyName: str,
+        ConnectionPoolConfigurationInfo: "DBProxyTargetGroup.ConnectionPoolConfigurationInfoFormat" = ...,
+        DBClusterIdentifiers: List[str] = ...,
+        DBInstanceIdentifiers: List[str] = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ConnectionPoolConfigurationInfoFormat:
+        def __init__(
+            self,
+            *,
+            ConnectionBorrowTimeout: int = ...,
+            InitQuery: str = ...,
+            MaxConnectionsPercent: int = ...,
+            MaxIdleConnectionsPercent: int = ...,
+            SessionPinningFilters: List[str] = ...
+        ): ...
+
 class DBSecurityGroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-security-group.html"""
 
