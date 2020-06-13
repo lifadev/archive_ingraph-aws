@@ -26,6 +26,8 @@ class Certificate:
         self,
         *,
         DomainName: str,
+        CertificateAuthorityArn: str = ...,
+        CertificateTransparencyLoggingPreference: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DomainValidationOptions: List["Certificate.DomainValidationOption"] = ...,
@@ -35,4 +37,10 @@ class Certificate:
         ValidationMethod: str = ...
     ): ...
     class DomainValidationOption:
-        def __init__(self, *, DomainName: str, ValidationDomain: str): ...
+        def __init__(
+            self,
+            *,
+            DomainName: str,
+            HostedZoneId: str = ...,
+            ValidationDomain: str = ...
+        ): ...

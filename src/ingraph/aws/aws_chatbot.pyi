@@ -21,6 +21,8 @@ _NAMESPACE = "AWS::Chatbot"
 class SlackChannelConfiguration:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-chatbot-slackchannelconfiguration.html"""
 
+    Arn: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
@@ -29,7 +31,6 @@ class SlackChannelConfiguration:
         IamRoleArn: str,
         SlackChannelId: str,
         SlackWorkspaceId: str,
-        Arn: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         LoggingLevel: str = ...,

@@ -47,9 +47,11 @@ class Topic:
     def __init__(
         self,
         *,
+        ContentBasedDeduplication: bool = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DisplayName: str = ...,
+        FifoTopic: bool = ...,
         KmsMasterKeyId: str = ...,
         Subscription: List["Topic.Subscription"] = ...,
         Tags: List["Tag"] = ...,

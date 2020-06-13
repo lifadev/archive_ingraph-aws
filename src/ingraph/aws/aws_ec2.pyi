@@ -334,6 +334,8 @@ class FlowLog:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html"""
 
     Ref: Final[str]
+
+    Id: Final[str]
     def __init__(
         self,
         *,
@@ -868,6 +870,33 @@ class PlacementGroup:
         Strategy: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+
+class PrefixList:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-prefixlist.html"""
+
+    PrefixListId: Final[str]
+
+    OwnerId: Final[str]
+
+    Version: Final[int]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        AddressFamily: str,
+        MaxEntries: int,
+        PrefixListName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Entries: List["PrefixList.Entry"] = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Entry:
+        def __init__(self, *, Cidr: str, Description: str = ...): ...
 
 class Route:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html"""
@@ -1634,6 +1663,7 @@ class Volume:
         Iops: int = ...,
         KmsKeyId: str = ...,
         MultiAttachEnabled: bool = ...,
+        OutpostArn: str = ...,
         Size: int = ...,
         SnapshotId: str = ...,
         Tags: List["Tag"] = ...,

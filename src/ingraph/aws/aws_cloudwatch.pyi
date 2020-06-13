@@ -70,6 +70,7 @@ class Alarm:
             Expression: str = ...,
             Label: str = ...,
             MetricStat: "Alarm.MetricStat" = ...,
+            Period: int = ...,
             ReturnData: bool = ...
         ): ...
     class MetricStat:

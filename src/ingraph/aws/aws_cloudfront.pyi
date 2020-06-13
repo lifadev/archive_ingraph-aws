@@ -163,6 +163,8 @@ class Distribution:
             *,
             DomainName: str,
             Id: str,
+            ConnectionAttempts: int = ...,
+            ConnectionTimeout: int = ...,
             CustomOriginConfig: "Distribution.CustomOriginConfig" = ...,
             OriginCustomHeaders: List["Distribution.OriginCustomHeader"] = ...,
             OriginPath: str = ...,

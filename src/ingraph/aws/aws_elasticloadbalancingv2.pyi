@@ -268,7 +268,13 @@ class LoadBalancer:
     class LoadBalancerAttribute:
         def __init__(self, *, Key: str = ..., Value: str = ...): ...
     class SubnetMapping:
-        def __init__(self, *, AllocationId: str, SubnetId: str): ...
+        def __init__(
+            self,
+            *,
+            SubnetId: str,
+            AllocationId: str = ...,
+            PrivateIPv4Address: str = ...
+        ): ...
 
 class TargetGroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html"""

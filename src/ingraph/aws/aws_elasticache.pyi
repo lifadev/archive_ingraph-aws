@@ -93,6 +93,10 @@ class ReplicationGroup:
 
     ReadEndPoint_Ports_List: Final[List[str]]
 
+    ReaderEndPoint_Address: Final[str]
+
+    ReaderEndPoint_Port: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
@@ -111,6 +115,7 @@ class ReplicationGroup:
         Engine: str = ...,
         EngineVersion: str = ...,
         KmsKeyId: str = ...,
+        MultiAZEnabled: bool = ...,
         NodeGroupConfiguration: List["ReplicationGroup.NodeGroupConfiguration"] = ...,
         NotificationTopicArn: str = ...,
         NumCacheClusters: int = ...,

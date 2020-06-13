@@ -128,6 +128,8 @@ class Bucket:
         ): ...
     class DefaultRetention:
         def __init__(self, *, Days: int = ..., Mode: str = ..., Years: int = ...): ...
+    class DeleteMarkerReplication:
+        def __init__(self, *, Status: str = ...): ...
     class Destination:
         def __init__(
             self,
@@ -166,6 +168,10 @@ class Bucket:
     class LoggingConfiguration:
         def __init__(
             self, *, DestinationBucketName: str = ..., LogFilePrefix: str = ...
+        ): ...
+    class Metrics:
+        def __init__(
+            self, *, EventThreshold: "Bucket.ReplicationTimeValue", Status: str
         ): ...
     class MetricsConfiguration:
         def __init__(
@@ -228,6 +234,8 @@ class Bucket:
             AccessControlTranslation: "Bucket.AccessControlTranslation" = ...,
             Account: str = ...,
             EncryptionConfiguration: "Bucket.EncryptionConfiguration" = ...,
+            Metrics: "Bucket.Metrics" = ...,
+            ReplicationTime: "Bucket.ReplicationTime" = ...,
             StorageClass: str = ...
         ): ...
     class ReplicationRule:
@@ -235,11 +243,30 @@ class Bucket:
             self,
             *,
             Destination: "Bucket.ReplicationDestination",
-            Prefix: str,
             Status: str,
+            DeleteMarkerReplication: "Bucket.DeleteMarkerReplication" = ...,
+            Filter: "Bucket.ReplicationRuleFilter" = ...,
             Id: str = ...,
+            Prefix: str = ...,
+            Priority: int = ...,
             SourceSelectionCriteria: "Bucket.SourceSelectionCriteria" = ...
         ): ...
+    class ReplicationRuleAndOperator:
+        def __init__(
+            self, *, Prefix: str = ..., TagFilters: List["Bucket.TagFilter"] = ...
+        ): ...
+    class ReplicationRuleFilter:
+        def __init__(
+            self,
+            *,
+            And: "Bucket.ReplicationRuleAndOperator" = ...,
+            Prefix: str = ...,
+            TagFilter: "Bucket.TagFilter" = ...
+        ): ...
+    class ReplicationTime:
+        def __init__(self, *, Status: str, Time: "Bucket.ReplicationTimeValue"): ...
+    class ReplicationTimeValue:
+        def __init__(self, *, Minutes: int): ...
     class RoutingRule:
         def __init__(
             self,

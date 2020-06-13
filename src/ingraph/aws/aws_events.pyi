@@ -110,6 +110,14 @@ class Rule:
             PlatformVersion: str = ...,
             TaskCount: int = ...
         ): ...
+    class HttpParameters:
+        def __init__(
+            self,
+            *,
+            HeaderParameters: Dict[str, str] = ...,
+            PathParameterValues: List[str] = ...,
+            QueryStringParameters: Dict[str, str] = ...
+        ): ...
     class InputTransformer:
         def __init__(
             self, *, InputTemplate: str, InputPathsMap: Dict[str, str] = ...
@@ -134,6 +142,7 @@ class Rule:
             Id: str,
             BatchParameters: "Rule.BatchParameters" = ...,
             EcsParameters: "Rule.EcsParameters" = ...,
+            HttpParameters: "Rule.HttpParameters" = ...,
             Input: str = ...,
             InputPath: str = ...,
             InputTransformer: "Rule.InputTransformer" = ...,
