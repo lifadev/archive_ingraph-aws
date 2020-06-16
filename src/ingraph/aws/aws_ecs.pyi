@@ -131,8 +131,6 @@ class TaskDefinition:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-taskdefinition.html"""
 
     Ref: Final[str]
-
-    Arn: Final[str]
     def __init__(
         self,
         *,
@@ -153,7 +151,6 @@ class TaskDefinition:
         ProxyConfiguration: "TaskDefinition.ProxyConfiguration" = ...,
         RequiresCompatibilities: List[str] = ...,
         Tags: List["Tag"] = ...,
-        TaskDefinitionStatus: str = ...,
         TaskRoleArn: str = ...,
         UpdateReplacePolicy: str = ...,
         Volumes: List["TaskDefinition.Volume"] = ...
@@ -271,8 +268,6 @@ class TaskDefinition:
             ReadOnly: bool = ...,
             SourceVolume: str = ...
         ): ...
-    class Options:
-        def __init__(self) -> None: ...
     class PortMapping:
         def __init__(
             self, *, ContainerPort: int = ..., HostPort: int = ..., Protocol: str = ...
