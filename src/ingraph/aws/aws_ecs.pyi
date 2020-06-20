@@ -18,6 +18,38 @@ from . import Tag
 
 _NAMESPACE = "AWS::ECS"
 
+class CapacityProvider:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-capacityprovider.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        AutoScalingGroupProvider: "CapacityProvider.AutoScalingGroupProvider",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Name: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AutoScalingGroupProvider:
+        def __init__(
+            self,
+            *,
+            AutoScalingGroupArn: str,
+            ManagedScaling: "CapacityProvider.ManagedScaling" = ...,
+            ManagedTerminationProtection: str = ...
+        ): ...
+    class ManagedScaling:
+        def __init__(
+            self,
+            *,
+            MaximumScalingStepSize: int = ...,
+            MinimumScalingStepSize: int = ...,
+            Status: str = ...,
+            TargetCapacity: int = ...
+        ): ...
+
 class Cluster:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html"""
 
@@ -27,13 +59,21 @@ class Cluster:
     def __init__(
         self,
         *,
+        CapacityProviders: List[str] = ...,
         ClusterName: str = ...,
         ClusterSettings: List["Cluster.ClusterSettings"] = ...,
+        DefaultCapacityProviderStrategy: List[
+            "Cluster.CapacityProviderStrategyItem"
+        ] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class CapacityProviderStrategyItem:
+        def __init__(
+            self, *, Base: int = ..., CapacityProvider: str = ..., Weight: int = ...
+        ): ...
     class ClusterSetting:
         def __init__(self, *, Name: str, Value: str): ...
     class ClusterSettings:

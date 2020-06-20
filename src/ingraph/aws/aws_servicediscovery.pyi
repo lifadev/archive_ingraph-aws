@@ -33,6 +33,7 @@ class HttpNamespace:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 
@@ -67,6 +68,7 @@ class PrivateDnsNamespace:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 
@@ -85,6 +87,7 @@ class PublicDnsNamespace:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 
@@ -109,6 +112,7 @@ class Service:
         HealthCheckCustomConfig: "Service.HealthCheckCustomConfig" = ...,
         Name: str = ...,
         NamespaceId: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class DnsConfig:

@@ -121,3 +121,21 @@ class Environment:
         def __init__(self, *, AlarmArn: str = ..., AlarmRoleArn: str = ...): ...
     class Tags:
         def __init__(self, *, Key: str = ..., Value: str = ...): ...
+
+class HostedConfigurationVersion:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-hostedconfigurationversion.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ApplicationId: str,
+        ConfigurationProfileId: str,
+        Content: str,
+        ContentType: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        LatestVersionNumber: float = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
