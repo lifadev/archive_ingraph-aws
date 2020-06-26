@@ -42,6 +42,7 @@ class App:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        EnableBranchAutoDeletion: bool = ...,
         EnvironmentVariables: List["App.EnvironmentVariable"] = ...,
         IAMServiceRole: str = ...,
         OauthToken: str = ...,
@@ -125,14 +126,23 @@ class Domain:
     CertificateRecord: Final[str]
 
     Ref: Final[str]
+
+    AutoSubDomainIAMRole: Final[str]
+
+    EnableAutoSubDomain: Final[bool]
+
+    AutoSubDomainCreationPatterns: Final[List[str]]
     def __init__(
         self,
         *,
         AppId: str,
         DomainName: str,
         SubDomainSettings: List["Domain.SubDomainSetting"],
+        AutoSubDomainCreationPatterns: List[str] = ...,
+        AutoSubDomainIAMRole: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        EnableAutoSubDomain: bool = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class SubDomainSetting:

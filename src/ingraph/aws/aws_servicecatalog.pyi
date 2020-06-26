@@ -80,6 +80,8 @@ class CloudFormationProvisionedProduct:
     RecordId: Final[str]
 
     Ref: Final[str]
+
+    ProvisionedProductId: Final[str]
     def __init__(
         self,
         *,
@@ -101,7 +103,7 @@ class CloudFormationProvisionedProduct:
         UpdateReplacePolicy: str = ...
     ): ...
     class ProvisioningParameter:
-        def __init__(self, *, Key: str = ..., Value: str = ...): ...
+        def __init__(self, *, Key: str, Value: str): ...
     class ProvisioningPreferences:
         def __init__(
             self,

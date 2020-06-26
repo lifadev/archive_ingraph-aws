@@ -92,6 +92,7 @@ class MaintenanceWindow:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         EndDate: str = ...,
+        ScheduleOffset: int = ...,
         ScheduleTimezone: str = ...,
         StartDate: str = ...,
         Tags: List["Tag"] = ...,

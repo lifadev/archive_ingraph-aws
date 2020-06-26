@@ -69,6 +69,7 @@ class EndpointConfig:
         self,
         *,
         ProductionVariants: List["EndpointConfig.ProductionVariant"],
+        DataCaptureConfig: "EndpointConfig.DataCaptureConfig" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EndpointConfigName: str = ...,
@@ -76,6 +77,23 @@ class EndpointConfig:
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class CaptureContentTypeHeader:
+        def __init__(
+            self, *, CsvContentTypes: List[str] = ..., JsonContentTypes: List[str] = ...
+        ): ...
+    class CaptureOption:
+        def __init__(self, *, CaptureMode: str): ...
+    class DataCaptureConfig:
+        def __init__(
+            self,
+            *,
+            CaptureOptions: List["EndpointConfig.CaptureOption"],
+            DestinationS3Uri: str,
+            InitialSamplingPercentage: int,
+            CaptureContentTypeHeader: "EndpointConfig.CaptureContentTypeHeader" = ...,
+            EnableCapture: bool = ...,
+            KmsKeyId: str = ...
+        ): ...
     class ProductionVariant:
         def __init__(
             self,
@@ -111,11 +129,12 @@ class Model:
         def __init__(
             self,
             *,
-            Image: str,
             ContainerHostname: str = ...,
             Environment: Any = ...,
+            Image: str = ...,
             Mode: str = ...,
-            ModelDataUrl: str = ...
+            ModelDataUrl: str = ...,
+            ModelPackageName: str = ...
         ): ...
     class VpcConfig:
         def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
