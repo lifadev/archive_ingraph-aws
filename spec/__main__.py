@@ -171,6 +171,13 @@ def _nomalize_attrs(data: Any) -> None:
             k.replace(".", "_") + ("_" if k in coms else ""): v
             for k, v in value[_ASKEY].items()
         }
+        # patch 16.0.0
+        if name == "AWS::ServiceCatalog::CloudFormationProvisionedProduct":
+            bad = value[_ASKEY].get("Outputs", {})
+            if bad.get("Type") == "Map" and bad.get("PrimitiveItemType") == "String":
+                del value[_ASKEY]["Outputs"]
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_props(data: Any) -> None:
@@ -183,7 +190,7 @@ def _normalize_props(data: Any) -> None:
         # patch 12.3.0
         if name == "AWS::ImageBuilder::InfrastructureConfiguration":
             bad = value[_PSKEY].get("Logging", {})
-            if bad.get("PrimitiveType") == "Json" and bad.get("Type") == "Logging":
+            if bad.get("Type") == "Logging" and bad.get("PrimitiveType") == "Json":
                 del value[_PSKEY]["Logging"]["PrimitiveType"]
             else:
                 raise NotImplementedError("patch outdated")
