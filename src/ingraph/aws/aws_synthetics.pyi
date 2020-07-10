@@ -33,13 +33,13 @@ class Canary:
         Code: "Canary.Code",
         ExecutionRoleArn: str,
         Name: str,
-        RunConfig: "Canary.RunConfig",
         RuntimeVersion: str,
         Schedule: "Canary.Schedule",
         StartCanaryAfterCreation: bool,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         FailureRetentionPeriod: int = ...,
+        RunConfig: "Canary.RunConfig" = ...,
         SuccessRetentionPeriod: int = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
@@ -56,9 +56,9 @@ class Canary:
             Script: str = ...
         ): ...
     class RunConfig:
-        def __init__(self, *, TimeoutInSeconds: int): ...
+        def __init__(self, *, TimeoutInSeconds: int, MemoryInMB: int = ...): ...
     class Schedule:
-        def __init__(self, *, DurationInSeconds: str, Expression: str): ...
+        def __init__(self, *, Expression: str, DurationInSeconds: str = ...): ...
     class VPCConfig:
         def __init__(
             self, *, SecurityGroupIds: List[str], SubnetIds: List[str], VpcId: str = ...

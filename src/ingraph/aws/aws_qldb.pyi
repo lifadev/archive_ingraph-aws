@@ -33,3 +33,28 @@ class Ledger:
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+
+class Stream:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-qldb-stream.html"""
+
+    Arn: Final[str]
+
+    Id: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        InclusiveStartTime: str,
+        KinesisConfiguration: "Stream.KinesisConfiguration",
+        LedgerName: str,
+        RoleArn: str,
+        StreamName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ExclusiveEndTime: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class KinesisConfiguration:
+        def __init__(self, *, AggregationEnabled: bool = ..., StreamArn: str = ...): ...

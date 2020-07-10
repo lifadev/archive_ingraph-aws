@@ -18,6 +18,25 @@ from . import Tag
 
 _NAMESPACE = "AWS::Athena"
 
+class DataCatalog:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-datacatalog.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Name: str,
+        Type: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        Parameters: Dict[str, str] = ...,
+        Tags: "DataCatalog.Tags" = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Tags:
+        def __init__(self, *, Tags: List["Tag"] = ...): ...
+
 class NamedQuery:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html"""
 

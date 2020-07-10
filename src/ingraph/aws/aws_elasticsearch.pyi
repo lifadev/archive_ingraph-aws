@@ -33,9 +33,11 @@ class Domain:
         *,
         AccessPolicies: Any = ...,
         AdvancedOptions: Dict[str, str] = ...,
+        AdvancedSecurityOptions: "Domain.AdvancedSecurityOptionsInput" = ...,
         CognitoOptions: "Domain.CognitoOptions" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        DomainEndpointOptions: "Domain.DomainEndpointOptions" = ...,
         DomainName: str = ...,
         EBSOptions: "Domain.EBSOptions" = ...,
         ElasticsearchClusterConfig: "Domain.ElasticsearchClusterConfig" = ...,
@@ -49,6 +51,14 @@ class Domain:
         UpdateReplacePolicy: str = ...,
         VPCOptions: "Domain.VPCOptions" = ...
     ): ...
+    class AdvancedSecurityOptionsInput:
+        def __init__(
+            self,
+            *,
+            Enabled: bool = ...,
+            InternalUserDatabaseEnabled: bool = ...,
+            MasterUserOptions: "Domain.MasterUserOptions" = ...
+        ): ...
     class CognitoOptions:
         def __init__(
             self,
@@ -57,6 +67,10 @@ class Domain:
             IdentityPoolId: str = ...,
             RoleArn: str = ...,
             UserPoolId: str = ...
+        ): ...
+    class DomainEndpointOptions:
+        def __init__(
+            self, *, EnforceHTTPS: bool = ..., TLSSecurityPolicy: str = ...
         ): ...
     class EBSOptions:
         def __init__(
@@ -84,6 +98,14 @@ class Domain:
     class LogPublishingOption:
         def __init__(
             self, *, CloudWatchLogsLogGroupArn: str = ..., Enabled: bool = ...
+        ): ...
+    class MasterUserOptions:
+        def __init__(
+            self,
+            *,
+            MasterUserARN: str = ...,
+            MasterUserName: str = ...,
+            MasterUserPassword: str = ...
         ): ...
     class NodeToNodeEncryptionOptions:
         def __init__(self, *, Enabled: bool = ...): ...

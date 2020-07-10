@@ -115,23 +115,23 @@ class Branch:
 class Domain:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-amplify-domain.html"""
 
+    AutoSubDomainIAMRole: Final[str]
+
     DomainName: Final[str]
 
     StatusReason: Final[str]
+
+    EnableAutoSubDomain: Final[bool]
 
     Arn: Final[str]
 
     DomainStatus: Final[str]
 
+    AutoSubDomainCreationPatterns: Final[List[str]]
+
     CertificateRecord: Final[str]
 
     Ref: Final[str]
-
-    AutoSubDomainIAMRole: Final[str]
-
-    EnableAutoSubDomain: Final[bool]
-
-    AutoSubDomainCreationPatterns: Final[List[str]]
     def __init__(
         self,
         *,

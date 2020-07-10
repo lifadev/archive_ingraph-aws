@@ -65,6 +65,8 @@ class Project:
             Packaging: str = ...,
             Path: str = ...
         ): ...
+    class BuildStatusConfig:
+        def __init__(self, *, Context: str = ..., TargetUrl: str = ...): ...
     class CloudWatchLogsConfig:
         def __init__(
             self, *, Status: str, GroupName: str = ..., StreamName: str = ...
@@ -131,6 +133,7 @@ class Project:
             Type: str,
             Auth: "Project.SourceAuth" = ...,
             BuildSpec: str = ...,
+            BuildStatusConfig: "Project.BuildStatusConfig" = ...,
             GitCloneDepth: int = ...,
             GitSubmodulesConfig: "Project.GitSubmodulesConfig" = ...,
             InsecureSsl: bool = ...,

@@ -40,6 +40,7 @@ class Component:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         KmsKeyId: str = ...,
+        SupportedOsVersions: List[str] = ...,
         Tags: Dict[str, str] = ...,
         UpdateReplacePolicy: str = ...,
         Uri: str = ...
@@ -87,6 +88,7 @@ class Image:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DistributionConfigurationArn: str = ...,
+        EnhancedImageMetadataEnabled: bool = ...,
         ImageTestsConfiguration: "Image.ImageTestsConfiguration" = ...,
         Tags: Dict[str, str] = ...,
         UpdateReplacePolicy: str = ...
@@ -112,6 +114,7 @@ class ImagePipeline:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         DistributionConfigurationArn: str = ...,
+        EnhancedImageMetadataEnabled: bool = ...,
         ImageTestsConfiguration: "ImagePipeline.ImageTestsConfiguration" = ...,
         Schedule: "ImagePipeline.Schedule" = ...,
         Status: str = ...,
@@ -148,7 +151,8 @@ class ImageRecipe:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         Tags: Dict[str, str] = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        WorkingDirectory: str = ...
     ): ...
     class ComponentConfiguration:
         def __init__(self, *, ComponentArn: str = ...): ...
@@ -191,6 +195,7 @@ class InfrastructureConfiguration:
         InstanceTypes: List[str] = ...,
         KeyPair: str = ...,
         Logging: "InfrastructureConfiguration.Logging" = ...,
+        ResourceTags: Dict[str, str] = ...,
         SecurityGroupIds: List[str] = ...,
         SnsTopicArn: str = ...,
         SubnetId: str = ...,

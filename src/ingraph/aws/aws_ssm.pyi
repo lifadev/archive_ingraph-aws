@@ -28,6 +28,7 @@ class Association:
         self,
         *,
         Name: str,
+        ApplyOnlyAtCronInterval: bool = ...,
         AssociationName: str = ...,
         AutomationTargetParameterName: str = ...,
         ComplianceSeverity: str = ...,

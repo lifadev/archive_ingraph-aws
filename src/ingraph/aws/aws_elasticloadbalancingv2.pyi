@@ -29,6 +29,7 @@ class Listener:
         LoadBalancerArn: str,
         Port: int,
         Protocol: str,
+        AlpnPolicy: List[str] = ...,
         Certificates: List["Listener.Certificate"] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,

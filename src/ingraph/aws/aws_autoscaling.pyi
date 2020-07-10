@@ -46,6 +46,7 @@ class AutoScalingGroup:
         MaxInstanceLifetime: int = ...,
         MetricsCollection: List["AutoScalingGroup.MetricsCollection"] = ...,
         MixedInstancesPolicy: "AutoScalingGroup.MixedInstancesPolicy" = ...,
+        NewInstancesProtectedFromScaleIn: bool = ...,
         NotificationConfigurations: List[
             "AutoScalingGroup.NotificationConfiguration"
         ] = ...,

@@ -225,13 +225,12 @@ class DBProxyTargetGroup:
 
     TargetGroupArn: Final[str]
 
-    TargetGroupName: Final[str]
-
     Ref: Final[str]
     def __init__(
         self,
         *,
         DBProxyName: str,
+        TargetGroupName: str,
         ConnectionPoolConfigurationInfo: "DBProxyTargetGroup.ConnectionPoolConfigurationInfoFormat" = ...,
         DBClusterIdentifiers: List[str] = ...,
         DBInstanceIdentifiers: List[str] = ...,

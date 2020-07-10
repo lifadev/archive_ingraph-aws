@@ -127,6 +127,7 @@ class Function:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         Environment: "Function.Environment" = ...,
+        FileSystemConfigs: List["Function.FileSystemConfig"] = ...,
         FunctionName: str = ...,
         KmsKeyArn: str = ...,
         Layers: List[str] = ...,
@@ -151,6 +152,8 @@ class Function:
         def __init__(self, *, TargetArn: str = ...): ...
     class Environment:
         def __init__(self, *, Variables: Dict[str, str] = ...): ...
+    class FileSystemConfig:
+        def __init__(self, *, Arn: str, LocalMountPath: str): ...
     class TracingConfig:
         def __init__(self, *, Mode: str = ...): ...
     class VpcConfig:

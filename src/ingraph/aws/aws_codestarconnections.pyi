@@ -35,6 +35,7 @@ class Connection:
         ProviderType: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        HostArn: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
