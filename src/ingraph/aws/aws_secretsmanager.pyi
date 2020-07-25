@@ -42,10 +42,23 @@ class RotationSchedule:
         SecretId: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        HostedRotationLambda: "RotationSchedule.HostedRotationLambda" = ...,
         RotationLambdaARN: str = ...,
         RotationRules: "RotationSchedule.RotationRules" = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class HostedRotationLambda:
+        def __init__(
+            self,
+            *,
+            RotationType: str,
+            KmsKeyArn: str = ...,
+            MasterSecretArn: str = ...,
+            MasterSecretKmsKeyArn: str = ...,
+            RotationLambdaName: str = ...,
+            VpcSecurityGroupIds: str = ...,
+            VpcSubnetIds: str = ...
+        ): ...
     class RotationRules:
         def __init__(self, *, AutomaticallyAfterDays: int = ...): ...
 

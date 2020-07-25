@@ -45,6 +45,7 @@ class FileSystem:
         def __init__(
             self,
             *,
+            AutoImportPolicy: str = ...,
             AutomaticBackupRetentionDays: int = ...,
             CopyTagsToBackups: bool = ...,
             DailyAutomaticBackupStartTime: str = ...,

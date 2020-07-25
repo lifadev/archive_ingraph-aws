@@ -63,6 +63,7 @@ class DataflowEndpointGroup:
             self,
             *,
             Address: "DataflowEndpointGroup.SocketAddress" = ...,
+            Mtu: int = ...,
             Name: str = ...
         ): ...
     class EndpointDetails:

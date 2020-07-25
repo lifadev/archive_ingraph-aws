@@ -67,9 +67,9 @@ class DistributionConfiguration:
         def __init__(
             self,
             *,
+            Region: str,
             AmiDistributionConfiguration: Any = ...,
-            LicenseConfigurationArns: List[str] = ...,
-            Region: str = ...
+            LicenseConfigurationArns: List[str] = ...
         ): ...
 
 class Image:

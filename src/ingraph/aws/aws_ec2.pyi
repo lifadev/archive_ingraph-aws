@@ -347,7 +347,10 @@ class FlowLog:
         DependsOn: List[Any] = ...,
         LogDestination: str = ...,
         LogDestinationType: str = ...,
+        LogFormat: str = ...,
         LogGroupName: str = ...,
+        MaxAggregationInterval: int = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 

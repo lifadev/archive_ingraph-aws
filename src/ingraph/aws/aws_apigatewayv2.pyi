@@ -66,6 +66,64 @@ class Api:
             MaxAge: int = ...
         ): ...
 
+class ApiGatewayManagedOverrides:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-apigatewaymanagedoverrides.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ApiId: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Integration: "ApiGatewayManagedOverrides.IntegrationOverrides" = ...,
+        Route: "ApiGatewayManagedOverrides.RouteOverrides" = ...,
+        Stage: "ApiGatewayManagedOverrides.StageOverrides" = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AccessLogSettings:
+        def __init__(self, *, DestinationArn: str = ..., Format: str = ...): ...
+    class IntegrationOverrides:
+        def __init__(
+            self,
+            *,
+            Description: str = ...,
+            IntegrationMethod: str = ...,
+            PayloadFormatVersion: str = ...,
+            TimeoutInMillis: int = ...
+        ): ...
+    class RouteOverrides:
+        def __init__(
+            self,
+            *,
+            AuthorizationScopes: List[str] = ...,
+            AuthorizationType: str = ...,
+            AuthorizerId: str = ...,
+            OperationName: str = ...,
+            Target: str = ...
+        ): ...
+    class RouteSettings:
+        def __init__(
+            self,
+            *,
+            DataTraceEnabled: bool = ...,
+            DetailedMetricsEnabled: bool = ...,
+            LoggingLevel: str = ...,
+            ThrottlingBurstLimit: int = ...,
+            ThrottlingRateLimit: float = ...
+        ): ...
+    class StageOverrides:
+        def __init__(
+            self,
+            *,
+            AccessLogSettings: "ApiGatewayManagedOverrides.AccessLogSettings" = ...,
+            AutoDeploy: bool = ...,
+            DefaultRouteSettings: "ApiGatewayManagedOverrides.RouteSettings" = ...,
+            Description: str = ...,
+            RouteSettings: Any = ...,
+            StageVariables: Any = ...
+        ): ...
+
 class ApiMapping:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-apimapping.html"""
 
@@ -293,3 +351,19 @@ class Stage:
             ThrottlingBurstLimit: int = ...,
             ThrottlingRateLimit: float = ...
         ): ...
+
+class VpcLink:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-vpclink.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Name: str,
+        SubnetIds: List[str],
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        SecurityGroupIds: List[str] = ...,
+        Tags: Any = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...

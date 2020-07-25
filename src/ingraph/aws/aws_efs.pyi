@@ -55,9 +55,12 @@ class FileSystem:
     Ref: Final[str]
 
     FileSystemId: Final[str]
+
+    Arn: Final[str]
     def __init__(
         self,
         *,
+        BackupPolicy: "FileSystem.BackupPolicy" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Encrypted: bool = ...,
@@ -70,6 +73,8 @@ class FileSystem:
         ThroughputMode: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class BackupPolicy:
+        def __init__(self, *, Status: str): ...
     class ElasticFileSystemTag:
         def __init__(self, *, Key: str, Value: str): ...
     class LifecyclePolicy:

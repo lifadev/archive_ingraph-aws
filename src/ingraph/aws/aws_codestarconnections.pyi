@@ -32,10 +32,10 @@ class Connection:
         self,
         *,
         ConnectionName: str,
-        ProviderType: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         HostArn: str = ...,
+        ProviderType: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...

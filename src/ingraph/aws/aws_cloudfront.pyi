@@ -54,20 +54,22 @@ class Distribution:
         def __init__(
             self,
             *,
-            ForwardedValues: "Distribution.ForwardedValues",
             PathPattern: str,
             TargetOriginId: str,
             ViewerProtocolPolicy: str,
             AllowedMethods: List[str] = ...,
+            CachePolicyId: str = ...,
             CachedMethods: List[str] = ...,
             Compress: bool = ...,
             DefaultTTL: float = ...,
             FieldLevelEncryptionId: str = ...,
+            ForwardedValues: "Distribution.ForwardedValues" = ...,
             LambdaFunctionAssociations: List[
                 "Distribution.LambdaFunctionAssociation"
             ] = ...,
             MaxTTL: float = ...,
             MinTTL: float = ...,
+            OriginRequestPolicyId: str = ...,
             SmoothStreaming: bool = ...,
             TrustedSigners: List[str] = ...
         ): ...
@@ -97,19 +99,21 @@ class Distribution:
         def __init__(
             self,
             *,
-            ForwardedValues: "Distribution.ForwardedValues",
             TargetOriginId: str,
             ViewerProtocolPolicy: str,
             AllowedMethods: List[str] = ...,
+            CachePolicyId: str = ...,
             CachedMethods: List[str] = ...,
             Compress: bool = ...,
             DefaultTTL: float = ...,
             FieldLevelEncryptionId: str = ...,
+            ForwardedValues: "Distribution.ForwardedValues" = ...,
             LambdaFunctionAssociations: List[
                 "Distribution.LambdaFunctionAssociation"
             ] = ...,
             MaxTTL: float = ...,
             MinTTL: float = ...,
+            OriginRequestPolicyId: str = ...,
             SmoothStreaming: bool = ...,
             TrustedSigners: List[str] = ...
         ): ...
