@@ -191,7 +191,7 @@ def _normalize_props(data: Any) -> None:
         if name == "AWS::ImageBuilder::InfrastructureConfiguration":
             bad = value[_PSKEY].get("Logging", {})
             if bad.get("Type") == "Logging" and bad.get("PrimitiveType") == "Json":
-                del value[_PSKEY]["Logging"]["PrimitiveType"]
+                del bad["PrimitiveType"]
             else:
                 raise NotImplementedError("patch outdated")
 
@@ -203,6 +203,16 @@ def _normalize_proptypes(data: Any) -> None:
         ptypes = {}
         ptrans = {}
         for k, v in value[_PTSKEY].items():
+            # patch 16.3.0
+            if name == "AWS::ECS::TaskDefinition" and k == "EFSVolumeConfiguration":
+                bad = v[_PSKEY].get("AuthorizationConfig")
+                if (
+                    bad.get("Type") == "AuthorizationConfig"
+                    and bad.get("PrimitiveType") == "Json"
+                ):
+                    del bad["PrimitiveType"]
+                else:
+                    raise NotImplementedError("patch outdated")
             if k not in coms:
                 ptypes[k] = v
                 continue
