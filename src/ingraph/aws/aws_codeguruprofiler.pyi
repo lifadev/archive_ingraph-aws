@@ -29,8 +29,12 @@ class ProfilingGroup:
         *,
         ProfilingGroupName: str,
         AgentPermissions: Any = ...,
+        AnomalyDetectionNotificationConfiguration: List["ProfilingGroup.Channel"] = ...,
         ComputePlatform: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class Channel:
+        def __init__(self, *, channelUri: str, channelId: str = ...): ...

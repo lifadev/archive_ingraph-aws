@@ -33,6 +33,7 @@ class DeliveryStream:
         DependsOn: List[Any] = ...,
         ElasticsearchDestinationConfiguration: "DeliveryStream.ElasticsearchDestinationConfiguration" = ...,
         ExtendedS3DestinationConfiguration: "DeliveryStream.ExtendedS3DestinationConfiguration" = ...,
+        HttpEndpointDestinationConfiguration: "DeliveryStream.HttpEndpointDestinationConfiguration" = ...,
         KinesisStreamSourceConfiguration: "DeliveryStream.KinesisStreamSourceConfiguration" = ...,
         RedshiftDestinationConfiguration: "DeliveryStream.RedshiftDestinationConfiguration" = ...,
         S3DestinationConfiguration: "DeliveryStream.S3DestinationConfiguration" = ...,
@@ -121,6 +122,31 @@ class DeliveryStream:
         ): ...
     class HiveJsonSerDe:
         def __init__(self, *, TimestampFormats: List[str] = ...): ...
+    class HttpEndpointCommonAttribute:
+        def __init__(self, *, AttributeName: str, AttributeValue: str): ...
+    class HttpEndpointConfiguration:
+        def __init__(self, *, Url: str, AccessKey: str = ..., Name: str = ...): ...
+    class HttpEndpointDestinationConfiguration:
+        def __init__(
+            self,
+            *,
+            EndpointConfiguration: "DeliveryStream.HttpEndpointConfiguration",
+            S3Configuration: "DeliveryStream.S3DestinationConfiguration",
+            BufferingHints: "DeliveryStream.BufferingHints" = ...,
+            CloudWatchLoggingOptions: "DeliveryStream.CloudWatchLoggingOptions" = ...,
+            ProcessingConfiguration: "DeliveryStream.ProcessingConfiguration" = ...,
+            RequestConfiguration: "DeliveryStream.HttpEndpointRequestConfiguration" = ...,
+            RetryOptions: "DeliveryStream.RetryOptions" = ...,
+            RoleARN: str = ...,
+            S3BackupMode: str = ...
+        ): ...
+    class HttpEndpointRequestConfiguration:
+        def __init__(
+            self,
+            *,
+            CommonAttributes: List["DeliveryStream.HttpEndpointCommonAttribute"] = ...,
+            ContentEncoding: str = ...
+        ): ...
     class InputFormatConfiguration:
         def __init__(self, *, Deserializer: "DeliveryStream.Deserializer" = ...): ...
     class KMSEncryptionConfig:
@@ -196,6 +222,8 @@ class DeliveryStream:
             S3BackupMode: str = ...
         ): ...
     class RedshiftRetryOptions:
+        def __init__(self, *, DurationInSeconds: int = ...): ...
+    class RetryOptions:
         def __init__(self, *, DurationInSeconds: int = ...): ...
     class S3DestinationConfiguration:
         def __init__(

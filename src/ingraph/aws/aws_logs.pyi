@@ -47,6 +47,7 @@ class LogGroup:
         *,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        KmsKeyId: str = ...,
         LogGroupName: str = ...,
         RetentionInDays: int = ...,
         UpdateReplacePolicy: str = ...

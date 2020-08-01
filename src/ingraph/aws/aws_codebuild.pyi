@@ -32,6 +32,7 @@ class Project:
         ServiceRole: str,
         Source: "Project.Source",
         BadgeEnabled: bool = ...,
+        BuildBatchConfig: "Project.ProjectBuildBatchConfig" = ...,
         Cache: "Project.ProjectCache" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
@@ -65,6 +66,13 @@ class Project:
             Packaging: str = ...,
             Path: str = ...
         ): ...
+    class BatchRestrictions:
+        def __init__(
+            self,
+            *,
+            ComputeTypesAllowed: List[str] = ...,
+            MaximumBuildsAllowed: int = ...
+        ): ...
     class BuildStatusConfig:
         def __init__(self, *, Context: str = ..., TargetUrl: str = ...): ...
     class CloudWatchLogsConfig:
@@ -96,6 +104,15 @@ class Project:
             *,
             CloudWatchLogs: "Project.CloudWatchLogsConfig" = ...,
             S3Logs: "Project.S3LogsConfig" = ...
+        ): ...
+    class ProjectBuildBatchConfig:
+        def __init__(
+            self,
+            *,
+            CombineArtifacts: bool = ...,
+            Restrictions: "Project.BatchRestrictions" = ...,
+            ServiceRole: str = ...,
+            TimeoutInMins: int = ...
         ): ...
     class ProjectCache:
         def __init__(

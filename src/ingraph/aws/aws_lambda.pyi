@@ -86,6 +86,8 @@ class EventSourceMapping:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html"""
 
     Ref: Final[str]
+
+    Id: Final[str]
     def __init__(
         self,
         *,
@@ -102,6 +104,7 @@ class EventSourceMapping:
         MaximumRetryAttempts: int = ...,
         ParallelizationFactor: int = ...,
         StartingPosition: str = ...,
+        Topics: List[str] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class DestinationConfig:

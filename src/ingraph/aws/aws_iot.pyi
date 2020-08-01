@@ -85,12 +85,14 @@ class ProvisioningTemplate:
         Description: str = ...,
         Enabled: bool = ...,
         PreProvisioningHook: "ProvisioningTemplate.ProvisioningHook" = ...,
-        Tags: List[Any] = ...,
+        Tags: "ProvisioningTemplate.Tags" = ...,
         TemplateName: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class ProvisioningHook:
         def __init__(self, *, PayloadVersion: str = ..., TargetArn: str = ...): ...
+    class Tags:
+        def __init__(self, *, Tags: List[Any] = ...): ...
 
 class Thing:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html"""

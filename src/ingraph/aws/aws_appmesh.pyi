@@ -18,6 +18,74 @@ from . import Tag
 
 _NAMESPACE = "AWS::AppMesh"
 
+class GatewayRoute:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appmesh-gatewayroute.html"""
+
+    Uid: Final[str]
+
+    MeshName: Final[str]
+
+    VirtualGatewayName: Final[str]
+
+    MeshOwner: Final[str]
+
+    ResourceOwner: Final[str]
+
+    GatewayRouteName: Final[str]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        GatewayRouteName: str,
+        MeshName: str,
+        Spec: "GatewayRoute.GatewayRouteSpec",
+        VirtualGatewayName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        MeshOwner: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class GatewayRouteSpec:
+        def __init__(
+            self,
+            *,
+            GrpcRoute: "GatewayRoute.GrpcGatewayRoute" = ...,
+            Http2Route: "GatewayRoute.HttpGatewayRoute" = ...,
+            HttpRoute: "GatewayRoute.HttpGatewayRoute" = ...
+        ): ...
+    class GatewayRouteTarget:
+        def __init__(
+            self, *, VirtualService: "GatewayRoute.GatewayRouteVirtualService"
+        ): ...
+    class GatewayRouteVirtualService:
+        def __init__(self, *, VirtualServiceName: str): ...
+    class GrpcGatewayRoute:
+        def __init__(
+            self,
+            *,
+            Action: "GatewayRoute.GrpcGatewayRouteAction",
+            Match: "GatewayRoute.GrpcGatewayRouteMatch"
+        ): ...
+    class GrpcGatewayRouteAction:
+        def __init__(self, *, Target: "GatewayRoute.GatewayRouteTarget"): ...
+    class GrpcGatewayRouteMatch:
+        def __init__(self, *, ServiceName: str = ...): ...
+    class HttpGatewayRoute:
+        def __init__(
+            self,
+            *,
+            Action: "GatewayRoute.HttpGatewayRouteAction",
+            Match: "GatewayRoute.HttpGatewayRouteMatch"
+        ): ...
+    class HttpGatewayRouteAction:
+        def __init__(self, *, Target: "GatewayRoute.GatewayRouteTarget"): ...
+    class HttpGatewayRouteMatch:
+        def __init__(self, *, Prefix: str): ...
+
 class Mesh:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appmesh-mesh.html"""
 
@@ -204,6 +272,124 @@ class Route:
         def __init__(self, *, Idle: "Route.Duration" = ...): ...
     class WeightedTarget:
         def __init__(self, *, VirtualNode: str, Weight: int): ...
+
+class VirtualGateway:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appmesh-virtualgateway.html"""
+
+    Uid: Final[str]
+
+    VirtualGatewayName: Final[str]
+
+    MeshName: Final[str]
+
+    MeshOwner: Final[str]
+
+    ResourceOwner: Final[str]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        MeshName: str,
+        Spec: "VirtualGateway.VirtualGatewaySpec",
+        VirtualGatewayName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        MeshOwner: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class VirtualGatewayAccessLog:
+        def __init__(
+            self, *, File: "VirtualGateway.VirtualGatewayFileAccessLog" = ...
+        ): ...
+    class VirtualGatewayBackendDefaults:
+        def __init__(
+            self, *, ClientPolicy: "VirtualGateway.VirtualGatewayClientPolicy" = ...
+        ): ...
+    class VirtualGatewayClientPolicy:
+        def __init__(
+            self, *, TLS: "VirtualGateway.VirtualGatewayClientPolicyTls" = ...
+        ): ...
+    class VirtualGatewayClientPolicyTls:
+        def __init__(
+            self,
+            *,
+            Validation: "VirtualGateway.VirtualGatewayTlsValidationContext",
+            Enforce: bool = ...,
+            Ports: List[int] = ...
+        ): ...
+    class VirtualGatewayFileAccessLog:
+        def __init__(self, *, Path: str): ...
+    class VirtualGatewayHealthCheckPolicy:
+        def __init__(
+            self,
+            *,
+            HealthyThreshold: int,
+            IntervalMillis: int,
+            Protocol: str,
+            TimeoutMillis: int,
+            UnhealthyThreshold: int,
+            Path: str = ...,
+            Port: int = ...
+        ): ...
+    class VirtualGatewayListener:
+        def __init__(
+            self,
+            *,
+            PortMapping: "VirtualGateway.VirtualGatewayPortMapping",
+            HealthCheck: "VirtualGateway.VirtualGatewayHealthCheckPolicy" = ...,
+            TLS: "VirtualGateway.VirtualGatewayListenerTls" = ...
+        ): ...
+    class VirtualGatewayListenerTls:
+        def __init__(
+            self,
+            *,
+            Certificate: "VirtualGateway.VirtualGatewayListenerTlsCertificate",
+            Mode: str
+        ): ...
+    class VirtualGatewayListenerTlsAcmCertificate:
+        def __init__(self, *, CertificateArn: str): ...
+    class VirtualGatewayListenerTlsCertificate:
+        def __init__(
+            self,
+            *,
+            ACM: "VirtualGateway.VirtualGatewayListenerTlsAcmCertificate" = ...,
+            File: "VirtualGateway.VirtualGatewayListenerTlsFileCertificate" = ...
+        ): ...
+    class VirtualGatewayListenerTlsFileCertificate:
+        def __init__(self, *, CertificateChain: str, PrivateKey: str): ...
+    class VirtualGatewayLogging:
+        def __init__(
+            self, *, AccessLog: "VirtualGateway.VirtualGatewayAccessLog" = ...
+        ): ...
+    class VirtualGatewayPortMapping:
+        def __init__(self, *, Port: int, Protocol: str): ...
+    class VirtualGatewaySpec:
+        def __init__(
+            self,
+            *,
+            Listeners: List["VirtualGateway.VirtualGatewayListener"],
+            BackendDefaults: "VirtualGateway.VirtualGatewayBackendDefaults" = ...,
+            Logging: "VirtualGateway.VirtualGatewayLogging" = ...
+        ): ...
+    class VirtualGatewayTlsValidationContext:
+        def __init__(
+            self, *, Trust: "VirtualGateway.VirtualGatewayTlsValidationContextTrust"
+        ): ...
+    class VirtualGatewayTlsValidationContextAcmTrust:
+        def __init__(self, *, CertificateAuthorityArns: List[str]): ...
+    class VirtualGatewayTlsValidationContextFileTrust:
+        def __init__(self, *, CertificateChain: str): ...
+    class VirtualGatewayTlsValidationContextTrust:
+        def __init__(
+            self,
+            *,
+            ACM: "VirtualGateway.VirtualGatewayTlsValidationContextAcmTrust" = ...,
+            File: "VirtualGateway.VirtualGatewayTlsValidationContextFileTrust" = ...
+        ): ...
 
 class VirtualNode:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appmesh-virtualnode.html"""

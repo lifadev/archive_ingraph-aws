@@ -63,6 +63,8 @@ class HostedZone:
     NameServers: Final[List[str]]
 
     Ref: Final[str]
+
+    Id: Final[str]
     def __init__(
         self,
         *,
