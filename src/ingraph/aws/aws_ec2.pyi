@@ -53,6 +53,28 @@ class CapacityReservation:
     class TagSpecification:
         def __init__(self, *, ResourceType: str = ..., Tags: List["Tag"] = ...): ...
 
+class CarrierGateway:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-carriergateway.html"""
+
+    CarrierGatewayId: Final[str]
+
+    State: Final[str]
+
+    OwnerId: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        VpcId: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Tags: "CarrierGateway.Tags" = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Tags:
+        def __init__(self, *, Tags: List["Tag"] = ...): ...
+
 class ClientVpnAuthorizationRule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnauthorizationrule.html"""
 
@@ -1347,6 +1369,7 @@ class TransitGateway:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         DnsSupport: str = ...,
+        MulticastSupport: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         VpnEcmpSupport: str = ...

@@ -38,6 +38,7 @@ class Server:
         IdentityProviderType: str = ...,
         LoggingRole: str = ...,
         Protocols: List["Server.Protocol"] = ...,
+        SecurityPolicyName: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...

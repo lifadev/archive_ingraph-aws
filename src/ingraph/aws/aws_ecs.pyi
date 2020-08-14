@@ -214,6 +214,7 @@ class TaskDefinition:
             DockerSecurityOptions: List[str] = ...,
             EntryPoint: List[str] = ...,
             Environment: List["TaskDefinition.KeyValuePair"] = ...,
+            EnvironmentFiles: List["TaskDefinition.EnvironmentFile"] = ...,
             Essential: bool = ...,
             ExtraHosts: List["TaskDefinition.HostEntry"] = ...,
             FirelensConfiguration: "TaskDefinition.FirelensConfiguration" = ...,
@@ -273,6 +274,8 @@ class TaskDefinition:
             TransitEncryption: str = ...,
             TransitEncryptionPort: int = ...
         ): ...
+    class EnvironmentFile:
+        def __init__(self, *, Type: str = ..., Value: str = ...): ...
     class FirelensConfiguration:
         def __init__(
             self, *, Options: "TaskDefinition.Options" = ..., Type: str = ...

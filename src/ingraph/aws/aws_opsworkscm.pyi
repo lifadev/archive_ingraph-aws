@@ -23,6 +23,8 @@ class Server:
 
     Endpoint: Final[str]
 
+    Id: Final[str]
+
     Arn: Final[str]
 
     Ref: Final[str]

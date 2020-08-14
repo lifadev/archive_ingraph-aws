@@ -139,6 +139,136 @@ class Model:
     class VpcConfig:
         def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
 
+class MonitoringSchedule:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-monitoringschedule.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        MonitoringScheduleConfig: "MonitoringSchedule.MonitoringScheduleConfig",
+        MonitoringScheduleName: str,
+        CreationTime: str = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        EndpointName: str = ...,
+        FailureReason: str = ...,
+        LastModifiedTime: str = ...,
+        LastMonitoringExecutionSummary: "MonitoringSchedule.MonitoringExecutionSummary" = ...,
+        MonitoringScheduleArn: str = ...,
+        MonitoringScheduleStatus: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class BaselineConfig:
+        def __init__(
+            self,
+            *,
+            ConstraintsResource: "MonitoringSchedule.ConstraintsResource" = ...,
+            StatisticsResource: "MonitoringSchedule.StatisticsResource" = ...
+        ): ...
+    class ClusterConfig:
+        def __init__(
+            self,
+            *,
+            InstanceCount: int,
+            InstanceType: str,
+            VolumeSizeInGB: int,
+            VolumeKmsKeyId: str = ...
+        ): ...
+    class ConstraintsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class EndpointInput:
+        def __init__(
+            self,
+            *,
+            EndpointName: str,
+            LocalPath: str,
+            S3DataDistributionType: str = ...,
+            S3InputMode: str = ...
+        ): ...
+    class Environment:
+        def __init__(self) -> None: ...
+    class MonitoringAppSpecification:
+        def __init__(
+            self,
+            *,
+            ImageUri: str,
+            ContainerArguments: List[str] = ...,
+            ContainerEntrypoint: List[str] = ...,
+            PostAnalyticsProcessorSourceUri: str = ...,
+            RecordPreprocessorSourceUri: str = ...
+        ): ...
+    class MonitoringExecutionSummary:
+        def __init__(
+            self,
+            *,
+            CreationTime: str,
+            LastModifiedTime: str,
+            MonitoringExecutionStatus: str,
+            MonitoringScheduleName: str,
+            ScheduledTime: str,
+            EndpointName: str = ...,
+            FailureReason: str = ...,
+            ProcessingJobArn: str = ...
+        ): ...
+    class MonitoringInput:
+        def __init__(self, *, EndpointInput: "MonitoringSchedule.EndpointInput"): ...
+    class MonitoringInputs:
+        def __init__(
+            self, *, MonitoringInputs: List["MonitoringSchedule.MonitoringInput"] = ...
+        ): ...
+    class MonitoringJobDefinition:
+        def __init__(
+            self,
+            *,
+            MonitoringAppSpecification: "MonitoringSchedule.MonitoringAppSpecification",
+            MonitoringInputs: "MonitoringSchedule.MonitoringInputs",
+            MonitoringOutputConfig: "MonitoringSchedule.MonitoringOutputConfig",
+            MonitoringResources: "MonitoringSchedule.MonitoringResources",
+            RoleArn: str,
+            BaselineConfig: "MonitoringSchedule.BaselineConfig" = ...,
+            Environment: "MonitoringSchedule.Environment" = ...,
+            NetworkConfig: "MonitoringSchedule.NetworkConfig" = ...,
+            StoppingCondition: "MonitoringSchedule.StoppingCondition" = ...
+        ): ...
+    class MonitoringOutput:
+        def __init__(self, *, S3Output: "MonitoringSchedule.S3Output"): ...
+    class MonitoringOutputConfig:
+        def __init__(
+            self,
+            *,
+            MonitoringOutputs: List["MonitoringSchedule.MonitoringOutput"],
+            KmsKeyId: str = ...
+        ): ...
+    class MonitoringResources:
+        def __init__(self, *, ClusterConfig: "MonitoringSchedule.ClusterConfig"): ...
+    class MonitoringScheduleConfig:
+        def __init__(
+            self,
+            *,
+            MonitoringJobDefinition: "MonitoringSchedule.MonitoringJobDefinition",
+            ScheduleConfig: "MonitoringSchedule.ScheduleConfig" = ...
+        ): ...
+    class NetworkConfig:
+        def __init__(
+            self,
+            *,
+            EnableInterContainerTrafficEncryption: bool = ...,
+            EnableNetworkIsolation: bool = ...,
+            VpcConfig: "MonitoringSchedule.VpcConfig" = ...
+        ): ...
+    class S3Output:
+        def __init__(self, *, LocalPath: str, S3Uri: str, S3UploadMode: str = ...): ...
+    class ScheduleConfig:
+        def __init__(self, *, ScheduleExpression: str): ...
+    class StatisticsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class StoppingCondition:
+        def __init__(self, *, MaxRuntimeInSeconds: int): ...
+    class VpcConfig:
+        def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
+
 class NotebookInstance:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-notebookinstance.html"""
 

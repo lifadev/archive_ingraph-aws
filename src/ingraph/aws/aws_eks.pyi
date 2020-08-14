@@ -78,6 +78,7 @@ class Nodegroup:
         ForceUpdateEnabled: bool = ...,
         InstanceTypes: List[str] = ...,
         Labels: Any = ...,
+        LaunchTemplate: "Nodegroup.LaunchTemplateSpecification" = ...,
         NodegroupName: str = ...,
         ReleaseVersion: str = ...,
         RemoteAccess: "Nodegroup.RemoteAccess" = ...,
@@ -86,6 +87,8 @@ class Nodegroup:
         UpdateReplacePolicy: str = ...,
         Version: str = ...
     ): ...
+    class LaunchTemplateSpecification:
+        def __init__(self, *, Id: str = ..., Name: str = ..., Version: str = ...): ...
     class RemoteAccess:
         def __init__(
             self, *, Ec2SshKey: str, SourceSecurityGroups: List[str] = ...

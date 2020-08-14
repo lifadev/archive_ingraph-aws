@@ -22,6 +22,8 @@ class HealthCheck:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-healthcheck.html"""
 
     Ref: Final[str]
+
+    HealthCheckId: Final[str]
     def __init__(
         self,
         *,

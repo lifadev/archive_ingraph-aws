@@ -50,6 +50,7 @@ class FileSystem:
             CopyTagsToBackups: bool = ...,
             DailyAutomaticBackupStartTime: str = ...,
             DeploymentType: str = ...,
+            DriveCacheType: str = ...,
             ExportPath: str = ...,
             ImportPath: str = ...,
             ImportedFileChunkSize: int = ...,

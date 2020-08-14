@@ -29,11 +29,11 @@ class Certificate:
     def __init__(
         self,
         *,
-        CertificateSigningRequest: str,
         Status: str,
         CACertificatePem: str = ...,
         CertificateMode: str = ...,
         CertificatePem: str = ...,
+        CertificateSigningRequest: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...

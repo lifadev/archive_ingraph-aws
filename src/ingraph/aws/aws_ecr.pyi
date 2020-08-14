@@ -29,6 +29,8 @@ class Repository:
         *,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        ImageScanningConfiguration: Any = ...,
+        ImageTagMutability: str = ...,
         LifecyclePolicy: "Repository.LifecyclePolicy" = ...,
         RepositoryName: str = ...,
         RepositoryPolicyText: Any = ...,
