@@ -173,7 +173,7 @@ def _nomalize_attrs(data: Any) -> None:
         }
         # patch 16.0.0
         if name == "AWS::ServiceCatalog::CloudFormationProvisionedProduct":
-            bad = value[_ASKEY].get("Outputs", {})
+            bad = value[_ASKEY].get("Outputs")
             if bad.get("Type") == "Map" and bad.get("PrimitiveItemType") == "String":
                 del value[_ASKEY]["Outputs"]
             else:
@@ -189,9 +189,16 @@ def _normalize_props(data: Any) -> None:
         }
         # patch 12.3.0
         if name == "AWS::ImageBuilder::InfrastructureConfiguration":
-            bad = value[_PSKEY].get("Logging", {})
+            bad = value[_PSKEY].get("Logging")
             if bad.get("Type") == "Logging" and bad.get("PrimitiveType") == "Json":
                 del bad["PrimitiveType"]
+            else:
+                raise NotImplementedError("patch outdated")
+        # patch 18.0.0
+        if name == "AWS::KMS::Key":
+            bad = value[_PSKEY].get("KeyPolicy")
+            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
+                bad["PrimitiveType"] = "Json"
             else:
                 raise NotImplementedError("patch outdated")
 
