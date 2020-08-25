@@ -193,7 +193,6 @@ class TaskDefinition:
         ProxyConfiguration: "TaskDefinition.ProxyConfiguration" = ...,
         RequiresCompatibilities: List[str] = ...,
         Tags: List["Tag"] = ...,
-        TaskDefinitionStatus: str = ...,
         TaskRoleArn: str = ...,
         UpdateReplacePolicy: str = ...,
         Volumes: List["TaskDefinition.Volume"] = ...
@@ -277,9 +276,7 @@ class TaskDefinition:
     class EnvironmentFile:
         def __init__(self, *, Type: str = ..., Value: str = ...): ...
     class FirelensConfiguration:
-        def __init__(
-            self, *, Options: "TaskDefinition.Options" = ..., Type: str = ...
-        ): ...
+        def __init__(self, *, Options: Dict[str, str] = ..., Type: str = ...): ...
     class HealthCheck:
         def __init__(
             self,
@@ -317,7 +314,7 @@ class TaskDefinition:
             self,
             *,
             LogDriver: str,
-            Options: "TaskDefinition.Options" = ...,
+            Options: Dict[str, str] = ...,
             SecretOptions: List["TaskDefinition.Secret"] = ...
         ): ...
     class MountPoint:
@@ -328,8 +325,6 @@ class TaskDefinition:
             ReadOnly: bool = ...,
             SourceVolume: str = ...
         ): ...
-    class Options:
-        def __init__(self) -> None: ...
     class PortMapping:
         def __init__(
             self, *, ContainerPort: int = ..., HostPort: int = ..., Protocol: str = ...

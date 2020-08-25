@@ -119,6 +119,7 @@ class Model:
         Containers: List["Model.ContainerDefinition"] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        EnableNetworkIsolation: bool = ...,
         ModelName: str = ...,
         PrimaryContainer: "Model.ContainerDefinition" = ...,
         Tags: List["Tag"] = ...,

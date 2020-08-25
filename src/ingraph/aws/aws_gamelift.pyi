@@ -22,6 +22,8 @@ class Alias:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-alias.html"""
 
     Ref: Final[str]
+
+    AliasId: Final[str]
     def __init__(
         self,
         *,

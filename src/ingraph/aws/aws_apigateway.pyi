@@ -234,10 +234,10 @@ class DomainName:
     def __init__(
         self,
         *,
-        DomainName: str,
         CertificateArn: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        DomainName: str = ...,
         EndpointConfiguration: "DomainName.EndpointConfiguration" = ...,
         RegionalCertificateArn: str = ...,
         SecurityPolicy: str = ...,

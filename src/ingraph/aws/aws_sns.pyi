@@ -51,7 +51,6 @@ class Topic:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DisplayName: str = ...,
-        FifoTopic: bool = ...,
         KmsMasterKeyId: str = ...,
         Subscription: List["Topic.Subscription"] = ...,
         Tags: List["Tag"] = ...,

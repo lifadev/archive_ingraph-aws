@@ -38,6 +38,8 @@ class Key:
     Arn: Final[str]
 
     Ref: Final[str]
+
+    KeyId: Final[str]
     def __init__(
         self,
         *,

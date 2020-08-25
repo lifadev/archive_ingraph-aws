@@ -222,6 +222,7 @@ class Integration:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         IntegrationMethod: str = ...,
+        IntegrationSubtype: str = ...,
         IntegrationUri: str = ...,
         PassthroughBehavior: str = ...,
         PayloadFormatVersion: str = ...,

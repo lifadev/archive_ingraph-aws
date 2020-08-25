@@ -160,8 +160,19 @@ class FunctionConfiguration:
         RequestMappingTemplateS3Location: str = ...,
         ResponseMappingTemplate: str = ...,
         ResponseMappingTemplateS3Location: str = ...,
+        SyncConfig: "FunctionConfiguration.SyncConfig" = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class LambdaConflictHandlerConfig:
+        def __init__(self, *, LambdaConflictHandlerArn: str = ...): ...
+    class SyncConfig:
+        def __init__(
+            self,
+            *,
+            ConflictDetection: str,
+            ConflictHandler: str = ...,
+            LambdaConflictHandlerConfig: "FunctionConfiguration.LambdaConflictHandlerConfig" = ...
+        ): ...
 
 class GraphQLApi:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appsync-graphqlapi.html"""
