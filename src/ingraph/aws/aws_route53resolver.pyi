@@ -49,6 +49,60 @@ class ResolverEndpoint:
     class IpAddressRequest:
         def __init__(self, *, SubnetId: str, Ip: str = ...): ...
 
+class ResolverQueryLoggingConfig:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverqueryloggingconfig.html"""
+
+    Id: Final[str]
+
+    OwnerId: Final[str]
+
+    Status: Final[str]
+
+    ShareStatus: Final[str]
+
+    AssociationCount: Final[int]
+
+    Arn: Final[str]
+
+    CreatorRequestId: Final[str]
+
+    CreationTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        DestinationArn: str = ...,
+        Name: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
+class ResolverQueryLoggingConfigAssociation:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverqueryloggingconfigassociation.html"""
+
+    Id: Final[str]
+
+    Status: Final[str]
+
+    Error: Final[str]
+
+    ErrorMessage: Final[str]
+
+    CreationTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ResolverQueryLogConfigId: str = ...,
+        ResourceId: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class ResolverRule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverrule.html"""
 

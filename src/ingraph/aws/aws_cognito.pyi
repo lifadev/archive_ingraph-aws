@@ -243,6 +243,7 @@ class UserPoolClient:
         self,
         *,
         UserPoolId: str,
+        AccessTokenValidity: int = ...,
         AllowedOAuthFlows: List[str] = ...,
         AllowedOAuthFlowsUserPoolClient: bool = ...,
         AllowedOAuthScopes: List[str] = ...,
@@ -254,11 +255,13 @@ class UserPoolClient:
         DependsOn: List[Any] = ...,
         ExplicitAuthFlows: List[str] = ...,
         GenerateSecret: bool = ...,
+        IdTokenValidity: int = ...,
         LogoutURLs: List[str] = ...,
         PreventUserExistenceErrors: str = ...,
         ReadAttributes: List[str] = ...,
         RefreshTokenValidity: int = ...,
         SupportedIdentityProviders: List[str] = ...,
+        TokenValidityUnits: "UserPoolClient.TokenValidityUnits" = ...,
         UpdateReplacePolicy: str = ...,
         WriteAttributes: List[str] = ...
     ): ...
@@ -270,6 +273,10 @@ class UserPoolClient:
             ExternalId: str = ...,
             RoleArn: str = ...,
             UserDataShared: bool = ...
+        ): ...
+    class TokenValidityUnits:
+        def __init__(
+            self, *, AccessToken: str = ..., IdToken: str = ..., RefreshToken: str = ...
         ): ...
 
 class UserPoolDomain:

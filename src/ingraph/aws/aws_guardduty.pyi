@@ -26,11 +26,16 @@ class Detector:
         self,
         *,
         Enable: bool,
+        DataSources: "Detector.CFNDataSourceConfigurations" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         FindingPublishingFrequency: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class CFNDataSourceConfigurations:
+        def __init__(self, *, S3Logs: "Detector.CFNS3LogsConfiguration" = ...): ...
+    class CFNS3LogsConfiguration:
+        def __init__(self, *, Enable: bool = ...): ...
 
 class Filter:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-filter.html"""

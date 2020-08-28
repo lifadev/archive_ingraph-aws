@@ -90,6 +90,7 @@ class CloudFormationProvisionedProduct:
         DependsOn: List[Any] = ...,
         NotificationArns: List[str] = ...,
         PathId: str = ...,
+        PathName: str = ...,
         ProductId: str = ...,
         ProductName: str = ...,
         ProvisionedProductName: str = ...,

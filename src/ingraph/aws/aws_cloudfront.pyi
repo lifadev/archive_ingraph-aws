@@ -70,6 +70,7 @@ class Distribution:
             MaxTTL: float = ...,
             MinTTL: float = ...,
             OriginRequestPolicyId: str = ...,
+            RealtimeLogConfigArn: str = ...,
             SmoothStreaming: bool = ...,
             TrustedSigners: List[str] = ...
         ): ...
@@ -114,6 +115,7 @@ class Distribution:
             MaxTTL: float = ...,
             MinTTL: float = ...,
             OriginRequestPolicyId: str = ...,
+            RealtimeLogConfigArn: str = ...,
             SmoothStreaming: bool = ...,
             TrustedSigners: List[str] = ...
         ): ...
