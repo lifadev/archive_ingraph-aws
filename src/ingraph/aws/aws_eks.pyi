@@ -55,6 +55,32 @@ class Cluster:
             self, *, SubnetIds: List[str], SecurityGroupIds: List[str] = ...
         ): ...
 
+class FargateProfile:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-fargateprofile.html"""
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ClusterName: str,
+        PodExecutionRoleArn: str,
+        Selectors: List["FargateProfile.Selector"],
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        FargateProfileName: str = ...,
+        Subnets: List[str] = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Label:
+        def __init__(self, *, Key: str, Value: str): ...
+    class Selector:
+        def __init__(
+            self, *, Namespace: str, Labels: List["FargateProfile.Label"] = ...
+        ): ...
+
 class Nodegroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-nodegroup.html"""
 

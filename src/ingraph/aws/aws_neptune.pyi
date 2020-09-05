@@ -33,6 +33,7 @@ class DBCluster:
     def __init__(
         self,
         *,
+        AssociatedRoles: List["DBCluster.DBClusterRole"] = ...,
         AvailabilityZones: List[str] = ...,
         BackupRetentionPeriod: int = ...,
         DBClusterIdentifier: str = ...,
@@ -58,6 +59,8 @@ class DBCluster:
         UseLatestRestorableTime: bool = ...,
         VpcSecurityGroupIds: List[str] = ...
     ): ...
+    class DBClusterRole:
+        def __init__(self, *, RoleArn: str, FeatureName: str = ...): ...
 
 class DBClusterParameterGroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptune-dbclusterparametergroup.html"""

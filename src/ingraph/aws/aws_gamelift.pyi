@@ -115,6 +115,63 @@ class Fleet:
             self, *, ConcurrentExecutions: int, LaunchPath: str, Parameters: str = ...
         ): ...
 
+class GameServerGroup:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gameservergroup.html"""
+
+    AutoScalingGroupArn: Final[str]
+
+    GameServerGroupArn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        GameServerGroupName: str,
+        InstanceDefinitions: "GameServerGroup.InstanceDefinitions",
+        LaunchTemplate: "GameServerGroup.LaunchTemplate",
+        RoleArn: str,
+        AutoScalingPolicy: "GameServerGroup.AutoScalingPolicy" = ...,
+        BalancingStrategy: str = ...,
+        DeleteOption: str = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        GameServerProtectionPolicy: str = ...,
+        MaxSize: float = ...,
+        MinSize: float = ...,
+        Tags: "GameServerGroup.Tags" = ...,
+        UpdateReplacePolicy: str = ...,
+        VpcSubnets: "GameServerGroup.VpcSubnets" = ...
+    ): ...
+    class AutoScalingPolicy:
+        def __init__(
+            self,
+            *,
+            TargetTrackingConfiguration: "GameServerGroup.TargetTrackingConfiguration",
+            EstimatedInstanceWarmup: float = ...
+        ): ...
+    class InstanceDefinition:
+        def __init__(self, *, InstanceType: str, WeightedCapacity: str = ...): ...
+    class InstanceDefinitions:
+        def __init__(
+            self,
+            *,
+            InstanceDefinitions: List["GameServerGroup.InstanceDefinition"] = ...
+        ): ...
+    class LaunchTemplate:
+        def __init__(
+            self,
+            *,
+            LaunchTemplateId: str = ...,
+            LaunchTemplateName: str = ...,
+            Version: str = ...
+        ): ...
+    class Tags:
+        def __init__(self, *, Tags: List["Tag"] = ...): ...
+    class TargetTrackingConfiguration:
+        def __init__(self, *, TargetValue: float): ...
+    class VpcSubnets:
+        def __init__(self, *, VpcSubnets: List[str] = ...): ...
+
 class GameSessionQueue:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html"""
 

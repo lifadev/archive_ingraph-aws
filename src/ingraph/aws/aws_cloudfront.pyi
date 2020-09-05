@@ -18,6 +18,51 @@ from . import Tag
 
 _NAMESPACE = "AWS::CloudFront"
 
+class CachePolicy:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cachepolicy.html"""
+
+    Id: Final[str]
+
+    LastModifiedTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        CachePolicyConfig: "CachePolicy.CachePolicyConfig",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class CachePolicyConfig:
+        def __init__(
+            self,
+            *,
+            MinTTL: float,
+            Name: str,
+            Comment: str = ...,
+            DefaultTTL: float = ...,
+            MaxTTL: float = ...,
+            ParametersInCacheKeyAndForwardedToOrigin: "CachePolicy.ParametersInCacheKeyAndForwardedToOrigin" = ...
+        ): ...
+    class CookiesConfig:
+        def __init__(self, *, CookieBehavior: str, Cookies: List[str] = ...): ...
+    class HeadersConfig:
+        def __init__(self, *, HeaderBehavior: str, Headers: List[str] = ...): ...
+    class ParametersInCacheKeyAndForwardedToOrigin:
+        def __init__(
+            self,
+            *,
+            CookiesConfig: "CachePolicy.CookiesConfig",
+            EnableAcceptEncodingGzip: bool,
+            HeadersConfig: "CachePolicy.HeadersConfig",
+            QueryStringsConfig: "CachePolicy.QueryStringsConfig"
+        ): ...
+    class QueryStringsConfig:
+        def __init__(
+            self, *, QueryStringBehavior: str, QueryStrings: List[str] = ...
+        ): ...
+
 class CloudFrontOriginAccessIdentity:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cloudfrontoriginaccessidentity.html"""
 
@@ -214,6 +259,68 @@ class Distribution:
             MinimumProtocolVersion: str = ...,
             SslSupportMethod: str = ...
         ): ...
+
+class OriginRequestPolicy:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-originrequestpolicy.html"""
+
+    Id: Final[str]
+
+    LastModifiedTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        OriginRequestPolicyConfig: "OriginRequestPolicy.OriginRequestPolicyConfig",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class CookiesConfig:
+        def __init__(self, *, CookieBehavior: str, Cookies: List[str] = ...): ...
+    class HeadersConfig:
+        def __init__(self, *, HeaderBehavior: str, Headers: List[str] = ...): ...
+    class OriginRequestPolicyConfig:
+        def __init__(
+            self,
+            *,
+            CookiesConfig: "OriginRequestPolicy.CookiesConfig",
+            HeadersConfig: "OriginRequestPolicy.HeadersConfig",
+            Name: str,
+            QueryStringsConfig: "OriginRequestPolicy.QueryStringsConfig",
+            Comment: str = ...
+        ): ...
+    class QueryStringsConfig:
+        def __init__(
+            self, *, QueryStringBehavior: str, QueryStrings: List[str] = ...
+        ): ...
+
+class RealtimeLogConfig:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-realtimelogconfig.html"""
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        EndPoints: List["RealtimeLogConfig.EndPoint"],
+        Fields: List[str],
+        Name: str,
+        SamplingRate: float,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class EndPoint:
+        def __init__(
+            self,
+            *,
+            KinesisStreamConfig: "RealtimeLogConfig.KinesisStreamConfig",
+            StreamType: str
+        ): ...
+    class KinesisStreamConfig:
+        def __init__(self, *, RoleArn: str, StreamArn: str): ...
 
 class StreamingDistribution:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html"""

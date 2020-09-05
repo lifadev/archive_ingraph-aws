@@ -64,7 +64,8 @@ class DataflowEndpointGroup:
             *,
             Address: "DataflowEndpointGroup.SocketAddress" = ...,
             Mtu: int = ...,
-            Name: str = ...
+            Name: str = ...,
+            Status: str = ...
         ): ...
     class EndpointDetails:
         def __init__(
