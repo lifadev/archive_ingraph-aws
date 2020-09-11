@@ -837,7 +837,7 @@ class NetworkInterface:
         GroupSet: List[str] = ...,
         InterfaceType: str = ...,
         Ipv6AddressCount: int = ...,
-        Ipv6Addresses: "NetworkInterface.InstanceIpv6Address" = ...,
+        Ipv6Addresses: List["NetworkInterface.InstanceIpv6Address"] = ...,
         PrivateIpAddress: str = ...,
         PrivateIpAddresses: List[
             "NetworkInterface.PrivateIpAddressSpecification"
@@ -1556,6 +1556,7 @@ class VPCEndpointService:
         *,
         NetworkLoadBalancerArns: List[str],
         AcceptanceRequired: bool = ...,
+        ApplianceLoadBalancerArns: List[str] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...

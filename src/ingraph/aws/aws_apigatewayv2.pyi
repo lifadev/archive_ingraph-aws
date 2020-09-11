@@ -152,10 +152,12 @@ class Authorizer:
         IdentitySource: List[str],
         Name: str,
         AuthorizerCredentialsArn: str = ...,
+        AuthorizerPayloadFormatVersion: str = ...,
         AuthorizerResultTtlInSeconds: int = ...,
         AuthorizerUri: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        EnableSimpleResponses: bool = ...,
         IdentityValidationExpression: str = ...,
         JwtConfiguration: "Authorizer.JWTConfiguration" = ...,
         UpdateReplacePolicy: str = ...

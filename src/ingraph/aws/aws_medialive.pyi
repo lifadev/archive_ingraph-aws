@@ -33,7 +33,7 @@ class Channel:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Destinations: List["Channel.OutputDestination"] = ...,
-        EncoderSettings: Any = ...,
+        EncoderSettings: "Channel.EncoderSettings" = ...,
         InputAttachments: List["Channel.InputAttachment"] = ...,
         InputSpecification: "Channel.InputSpecification" = ...,
         LogLevel: str = ...,

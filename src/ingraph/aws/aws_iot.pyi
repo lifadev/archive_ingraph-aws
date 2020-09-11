@@ -18,6 +18,31 @@ from . import Tag
 
 _NAMESPACE = "AWS::IoT"
 
+class Authorizer:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-authorizer.html"""
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        AuthorizerFunctionArn: str,
+        AuthorizerName: str = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        SigningDisabled: bool = ...,
+        Status: str = ...,
+        Tags: "Authorizer.Tags" = ...,
+        TokenKeyName: str = ...,
+        TokenSigningPublicKeys: "Authorizer.TokenSigningPublicKeys" = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Tags:
+        def __init__(self, *, Tags: List[Any] = ...): ...
+    class TokenSigningPublicKeys:
+        def __init__(self) -> None: ...
+
 class Certificate:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-certificate.html"""
 

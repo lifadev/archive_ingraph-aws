@@ -132,7 +132,6 @@ class Function:
         Environment: "Function.Environment" = ...,
         FileSystemConfigs: List["Function.FileSystemConfig"] = ...,
         FunctionName: str = ...,
-        Id: str = ...,
         KmsKeyArn: str = ...,
         Layers: List[str] = ...,
         MemorySize: int = ...,
