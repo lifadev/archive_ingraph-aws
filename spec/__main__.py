@@ -201,6 +201,13 @@ def _normalize_props(data: Any) -> None:
                 bad["PrimitiveType"] = "Json"
             else:
                 raise NotImplementedError("patch outdated")
+        # patch 18.3.0
+        if name == "AWS::ECR::Repository":
+            bad = value[_PSKEY].get("RepositoryPolicyText")
+            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
+                bad["PrimitiveType"] = "Json"
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_proptypes(data: Any) -> None:
