@@ -184,6 +184,7 @@ class ReportGroup:
         *,
         ExportConfig: "ReportGroup.ReportExportConfig",
         Type: str,
+        DeleteReports: bool = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Name: str = ...,

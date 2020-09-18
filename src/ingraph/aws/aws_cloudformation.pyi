@@ -66,6 +66,61 @@ class Stack:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class StackSet:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stackset.html"""
+
+    StackSetId: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        AdministrationRoleARN: str = ...,
+        AutoDeployment: "StackSet.AutoDeployment" = ...,
+        Capabilities: List[str] = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        ExecutionRoleName: str = ...,
+        OperationPreferences: "StackSet.OperationPreferences" = ...,
+        Parameters: List["StackSet.Parameter"] = ...,
+        PermissionModel: str = ...,
+        StackInstancesGroup: List["StackSet.StackInstances"] = ...,
+        StackSetName: str = ...,
+        Tags: List["Tag"] = ...,
+        TemplateBody: str = ...,
+        TemplateURL: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AutoDeployment:
+        def __init__(
+            self, *, Enabled: bool = ..., RetainStacksOnAccountRemoval: bool = ...
+        ): ...
+    class DeploymentTargets:
+        def __init__(
+            self, *, Accounts: List[str] = ..., OrganizationalUnitIds: List[str] = ...
+        ): ...
+    class OperationPreferences:
+        def __init__(
+            self,
+            *,
+            FailureToleranceCount: int = ...,
+            FailureTolerancePercentage: int = ...,
+            MaxConcurrentCount: int = ...,
+            MaxConcurrentPercentage: int = ...,
+            RegionOrder: List[str] = ...
+        ): ...
+    class Parameter:
+        def __init__(self, *, ParameterKey: str, ParameterValue: str): ...
+    class StackInstances:
+        def __init__(
+            self,
+            *,
+            DeploymentTargets: "StackSet.DeploymentTargets",
+            Regions: List[str],
+            ParameterOverrides: List["StackSet.Parameter"] = ...
+        ): ...
+
 class WaitCondition:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waitcondition.html"""
 

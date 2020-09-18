@@ -239,6 +239,7 @@ class DomainName:
         DependsOn: List[Any] = ...,
         DomainName: str = ...,
         EndpointConfiguration: "DomainName.EndpointConfiguration" = ...,
+        MutualTlsAuthentication: "DomainName.MutualTlsAuthentication" = ...,
         RegionalCertificateArn: str = ...,
         SecurityPolicy: str = ...,
         Tags: List["Tag"] = ...,
@@ -246,6 +247,10 @@ class DomainName:
     ): ...
     class EndpointConfiguration:
         def __init__(self, *, Types: List[str] = ...): ...
+    class MutualTlsAuthentication:
+        def __init__(
+            self, *, TruststoreUri: str = ..., TruststoreVersion: str = ...
+        ): ...
 
 class GatewayResponse:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-gatewayresponse.html"""

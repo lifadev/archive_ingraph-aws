@@ -21,6 +21,8 @@ _NAMESPACE = "AWS::ApiGatewayV2"
 class Api:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-api.html"""
 
+    ApiEndpoint: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
@@ -34,6 +36,7 @@ class Api:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        DisableExecuteApiEndpoint: bool = ...,
         DisableSchemaValidation: bool = ...,
         FailOnWarnings: bool = ...,
         Name: str = ...,
@@ -195,6 +198,7 @@ class DomainName:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DomainNameConfigurations: List["DomainName.DomainNameConfiguration"] = ...,
+        MutualTlsAuthentication: "DomainName.MutualTlsAuthentication" = ...,
         Tags: Any = ...,
         UpdateReplacePolicy: str = ...
     ): ...
@@ -204,7 +208,12 @@ class DomainName:
             *,
             CertificateArn: str = ...,
             CertificateName: str = ...,
-            EndpointType: str = ...
+            EndpointType: str = ...,
+            SecurityPolicy: str = ...
+        ): ...
+    class MutualTlsAuthentication:
+        def __init__(
+            self, *, TruststoreUri: str = ..., TruststoreVersion: str = ...
         ): ...
 
 class Integration:

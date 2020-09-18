@@ -103,6 +103,10 @@ class Service:
     def __init__(
         self,
         *,
+        CapacityProviderStrategy: List["Service.CapacityProviderStrategyItem"] = ...,
+        CapacityProviderStrategyItem: List[
+            "Service.CapacityProviderStrategyItem"
+        ] = ...,
         Cluster: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
@@ -110,6 +114,7 @@ class Service:
         DeploymentController: "Service.DeploymentController" = ...,
         DesiredCount: int = ...,
         EnableECSManagedTags: bool = ...,
+        ForceDesiredCountUpdate: bool = ...,
         HealthCheckGracePeriodSeconds: int = ...,
         LaunchType: str = ...,
         LoadBalancers: List["Service.LoadBalancer"] = ...,
@@ -120,6 +125,7 @@ class Service:
         PropagateTags: str = ...,
         Role: str = ...,
         SchedulingStrategy: str = ...,
+        ServiceArn: str = ...,
         ServiceName: str = ...,
         ServiceRegistries: List["Service.ServiceRegistry"] = ...,
         Tags: List["Tag"] = ...,
@@ -133,6 +139,10 @@ class Service:
             Subnets: List[str],
             AssignPublicIp: str = ...,
             SecurityGroups: List[str] = ...
+        ): ...
+    class CapacityProviderStrategyItem:
+        def __init__(
+            self, *, Base: int = ..., CapacityProvider: str = ..., Weight: int = ...
         ): ...
     class DeploymentConfiguration:
         def __init__(
@@ -151,7 +161,10 @@ class Service:
         ): ...
     class NetworkConfiguration:
         def __init__(
-            self, *, AwsvpcConfiguration: "Service.AwsVpcConfiguration" = ...
+            self,
+            *,
+            AwsVpcConfiguration: "Service.AwsVpcConfiguration" = ...,
+            AwsvpcConfiguration: "Service.AwsVpcConfiguration" = ...
         ): ...
     class PlacementConstraint:
         def __init__(self, *, Type: str, Expression: str = ...): ...
