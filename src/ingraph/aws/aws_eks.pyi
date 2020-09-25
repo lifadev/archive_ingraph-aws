@@ -40,6 +40,7 @@ class Cluster:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EncryptionConfig: List["Cluster.EncryptionConfig"] = ...,
+        KubernetesNetworkConfig: "Cluster.KubernetesNetworkConfig" = ...,
         Name: str = ...,
         UpdateReplacePolicy: str = ...,
         Version: str = ...
@@ -48,6 +49,8 @@ class Cluster:
         def __init__(
             self, *, Provider: "Cluster.Provider" = ..., Resources: List[str] = ...
         ): ...
+    class KubernetesNetworkConfig:
+        def __init__(self, *, ServiceIpv4Cidr: str = ...): ...
     class Provider:
         def __init__(self, *, KeyArn: str = ...): ...
     class ResourcesVpcConfig:

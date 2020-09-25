@@ -104,9 +104,6 @@ class Service:
         self,
         *,
         CapacityProviderStrategy: List["Service.CapacityProviderStrategyItem"] = ...,
-        CapacityProviderStrategyItem: List[
-            "Service.CapacityProviderStrategyItem"
-        ] = ...,
         Cluster: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
@@ -114,7 +111,6 @@ class Service:
         DeploymentController: "Service.DeploymentController" = ...,
         DesiredCount: int = ...,
         EnableECSManagedTags: bool = ...,
-        ForceDesiredCountUpdate: bool = ...,
         HealthCheckGracePeriodSeconds: int = ...,
         LaunchType: str = ...,
         LoadBalancers: List["Service.LoadBalancer"] = ...,

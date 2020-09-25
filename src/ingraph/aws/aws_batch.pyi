@@ -89,14 +89,17 @@ class JobDefinition:
             Image: str,
             Command: List[str] = ...,
             Environment: List["JobDefinition.Environment"] = ...,
+            ExecutionRoleArn: str = ...,
             InstanceType: str = ...,
             JobRoleArn: str = ...,
             LinuxParameters: "JobDefinition.LinuxParameters" = ...,
+            LogConfiguration: "JobDefinition.LogConfiguration" = ...,
             Memory: int = ...,
             MountPoints: List["JobDefinition.MountPoints"] = ...,
             Privileged: bool = ...,
             ReadonlyRootFilesystem: bool = ...,
             ResourceRequirements: List["JobDefinition.ResourceRequirement"] = ...,
+            Secrets: List["JobDefinition.Secret"] = ...,
             Ulimits: List["JobDefinition.Ulimit"] = ...,
             User: str = ...,
             Vcpus: int = ...,
@@ -113,7 +116,24 @@ class JobDefinition:
     class Environment:
         def __init__(self, *, Name: str = ..., Value: str = ...): ...
     class LinuxParameters:
-        def __init__(self, *, Devices: List["JobDefinition.Device"] = ...): ...
+        def __init__(
+            self,
+            *,
+            Devices: List["JobDefinition.Device"] = ...,
+            InitProcessEnabled: bool = ...,
+            MaxSwap: int = ...,
+            SharedMemorySize: int = ...,
+            Swappiness: int = ...,
+            Tmpfs: List["JobDefinition.Tmpfs"] = ...
+        ): ...
+    class LogConfiguration:
+        def __init__(
+            self,
+            *,
+            LogDriver: str,
+            Options: Any = ...,
+            SecretOptions: List["JobDefinition.Secret"] = ...
+        ): ...
     class MountPoints:
         def __init__(
             self,
@@ -141,8 +161,14 @@ class JobDefinition:
         def __init__(self, *, Type: str = ..., Value: str = ...): ...
     class RetryStrategy:
         def __init__(self, *, Attempts: int = ...): ...
+    class Secret:
+        def __init__(self, *, Name: str, ValueFrom: str): ...
     class Timeout:
         def __init__(self, *, AttemptDurationSeconds: int = ...): ...
+    class Tmpfs:
+        def __init__(
+            self, *, ContainerPath: str, Size: int, MountOptions: List[str] = ...
+        ): ...
     class Ulimit:
         def __init__(self, *, HardLimit: int, Name: str, SoftLimit: int): ...
     class Volumes:

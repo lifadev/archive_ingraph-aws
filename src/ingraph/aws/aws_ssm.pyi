@@ -69,13 +69,24 @@ class Document:
         self,
         *,
         Content: Any,
+        Attachments: List["Document.AttachmentsSource"] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        DocumentFormat: str = ...,
         DocumentType: str = ...,
         Name: str = ...,
+        Requires: List["Document.DocumentRequires"] = ...,
         Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...
+        TargetType: str = ...,
+        UpdateReplacePolicy: str = ...,
+        VersionName: str = ...
     ): ...
+    class AttachmentsSource:
+        def __init__(
+            self, *, Key: str = ..., Name: str = ..., Values: List[str] = ...
+        ): ...
+    class DocumentRequires:
+        def __init__(self, *, Name: str = ..., Version: str = ...): ...
 
 class MaintenanceWindow:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-maintenancewindow.html"""

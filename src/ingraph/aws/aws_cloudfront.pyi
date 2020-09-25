@@ -38,12 +38,12 @@ class CachePolicy:
         def __init__(
             self,
             *,
+            DefaultTTL: float,
+            MaxTTL: float,
             MinTTL: float,
             Name: str,
-            Comment: str = ...,
-            DefaultTTL: float = ...,
-            MaxTTL: float = ...,
-            ParametersInCacheKeyAndForwardedToOrigin: "CachePolicy.ParametersInCacheKeyAndForwardedToOrigin" = ...
+            ParametersInCacheKeyAndForwardedToOrigin: "CachePolicy.ParametersInCacheKeyAndForwardedToOrigin",
+            Comment: str = ...
         ): ...
     class CookiesConfig:
         def __init__(self, *, CookieBehavior: str, Cookies: List[str] = ...): ...
