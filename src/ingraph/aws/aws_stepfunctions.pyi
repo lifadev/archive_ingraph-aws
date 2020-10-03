@@ -27,6 +27,7 @@ class Activity:
     def __init__(
         self,
         *,
+        Name: str,
         Arn: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,

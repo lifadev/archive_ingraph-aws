@@ -301,6 +301,7 @@ class Faq:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        FileFormat: str = ...,
         Tags: "Faq.TagList" = ...,
         UpdateReplacePolicy: str = ...
     ): ...

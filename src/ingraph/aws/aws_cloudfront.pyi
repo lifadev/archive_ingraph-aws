@@ -56,7 +56,8 @@ class CachePolicy:
             CookiesConfig: "CachePolicy.CookiesConfig",
             EnableAcceptEncodingGzip: bool,
             HeadersConfig: "CachePolicy.HeadersConfig",
-            QueryStringsConfig: "CachePolicy.QueryStringsConfig"
+            QueryStringsConfig: "CachePolicy.QueryStringsConfig",
+            EnableAcceptEncodingBrotli: bool = ...
         ): ...
     class QueryStringsConfig:
         def __init__(

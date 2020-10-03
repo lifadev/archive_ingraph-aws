@@ -37,12 +37,17 @@ class BackupPlan:
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class AdvancedBackupSettingResourceType:
+        def __init__(self, *, BackupOptions: Any, ResourceType: str): ...
     class BackupPlanResourceType:
         def __init__(
             self,
             *,
             BackupPlanName: str,
-            BackupPlanRule: List["BackupPlan.BackupRuleResourceType"]
+            BackupPlanRule: List["BackupPlan.BackupRuleResourceType"],
+            AdvancedBackupSettings: List[
+                "BackupPlan.AdvancedBackupSettingResourceType"
+            ] = ...
         ): ...
     class BackupRuleResourceType:
         def __init__(

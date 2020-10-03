@@ -18,6 +18,35 @@ from . import Tag
 
 _NAMESPACE = "AWS::WorkSpaces"
 
+class ConnectionAlias:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-connectionalias.html"""
+
+    Associations: Final[List]
+
+    AliasId: Final[str]
+
+    ConnectionAliasState: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ConnectionString: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ConnectionAliasAssociation:
+        def __init__(
+            self,
+            *,
+            AssociatedAccountId: str = ...,
+            AssociationStatus: str = ...,
+            ConnectionIdentifier: str = ...,
+            ResourceId: str = ...
+        ): ...
+
 class Workspace:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspace.html"""
 

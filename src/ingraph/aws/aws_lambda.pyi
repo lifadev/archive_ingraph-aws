@@ -85,9 +85,9 @@ class EventInvokeConfig:
 class EventSourceMapping:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html"""
 
-    Ref: Final[str]
-
     Id: Final[str]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,
@@ -132,7 +132,6 @@ class Function:
         Environment: "Function.Environment" = ...,
         FileSystemConfigs: List["Function.FileSystemConfig"] = ...,
         FunctionName: str = ...,
-        Id: str = ...,
         KmsKeyArn: str = ...,
         Layers: List[str] = ...,
         MemorySize: int = ...,

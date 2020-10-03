@@ -132,9 +132,9 @@ class Service:
         def __init__(
             self,
             *,
-            Subnets: List[str],
             AssignPublicIp: str = ...,
-            SecurityGroups: List[str] = ...
+            SecurityGroups: List[str] = ...,
+            Subnets: List[str] = ...
         ): ...
     class CapacityProviderStrategyItem:
         def __init__(
@@ -150,17 +150,14 @@ class Service:
         def __init__(
             self,
             *,
-            ContainerPort: int,
             ContainerName: str = ...,
+            ContainerPort: int = ...,
             LoadBalancerName: str = ...,
             TargetGroupArn: str = ...
         ): ...
     class NetworkConfiguration:
         def __init__(
-            self,
-            *,
-            AwsVpcConfiguration: "Service.AwsVpcConfiguration" = ...,
-            AwsvpcConfiguration: "Service.AwsVpcConfiguration" = ...
+            self, *, AwsvpcConfiguration: "Service.AwsVpcConfiguration" = ...
         ): ...
     class PlacementConstraint:
         def __init__(self, *, Type: str, Expression: str = ...): ...

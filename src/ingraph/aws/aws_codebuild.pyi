@@ -134,6 +134,7 @@ class Project:
         def __init__(
             self,
             *,
+            BuildType: str = ...,
             FilterGroups: List["Project.FilterGroup"] = ...,
             Webhook: bool = ...
         ): ...

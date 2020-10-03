@@ -147,11 +147,11 @@ class ConformancePack:
         self,
         *,
         ConformancePackName: str,
-        DeliveryS3Bucket: str,
         ConformancePackInputParameters: List[
             "ConformancePack.ConformancePackInputParameter"
         ] = ...,
         DeletionPolicy: str = ...,
+        DeliveryS3Bucket: str = ...,
         DeliveryS3KeyPrefix: str = ...,
         DependsOn: List[Any] = ...,
         TemplateBody: str = ...,
@@ -230,12 +230,12 @@ class OrganizationConformancePack:
     def __init__(
         self,
         *,
-        DeliveryS3Bucket: str,
         OrganizationConformancePackName: str,
         ConformancePackInputParameters: List[
             "OrganizationConformancePack.ConformancePackInputParameter"
         ] = ...,
         DeletionPolicy: str = ...,
+        DeliveryS3Bucket: str = ...,
         DeliveryS3KeyPrefix: str = ...,
         DependsOn: List[Any] = ...,
         ExcludedAccounts: List[str] = ...,

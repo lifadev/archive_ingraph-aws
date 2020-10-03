@@ -52,11 +52,11 @@ class AccessPoint:
 class FileSystem:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html"""
 
-    Ref: Final[str]
-
     FileSystemId: Final[str]
 
     Arn: Final[str]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,

@@ -75,13 +75,13 @@ class CloudFormationProduct:
 class CloudFormationProvisionedProduct:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicecatalog-cloudformationprovisionedproduct.html"""
 
-    CloudformationStackArn: Final[str]
+    ProvisionedProductId: Final[str]
 
     RecordId: Final[str]
 
-    Ref: Final[str]
+    CloudformationStackArn: Final[str]
 
-    ProvisionedProductId: Final[str]
+    Ref: Final[str]
     def __init__(
         self,
         *,

@@ -26,12 +26,15 @@ class Table:
     StreamArn: Final[str]
 
     Ref: Final[str]
+
+    TableId: Final[str]
     def __init__(
         self,
         *,
         KeySchema: List["Table.KeySchema"],
         AttributeDefinitions: List["Table.AttributeDefinition"] = ...,
         BillingMode: str = ...,
+        ContributorInsightsSpecification: "Table.ContributorInsightsSpecification" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         GlobalSecondaryIndexes: List["Table.GlobalSecondaryIndex"] = ...,
@@ -47,6 +50,8 @@ class Table:
     ): ...
     class AttributeDefinition:
         def __init__(self, *, AttributeName: str, AttributeType: str): ...
+    class ContributorInsightsSpecification:
+        def __init__(self, *, Enabled: bool): ...
     class GlobalSecondaryIndex:
         def __init__(
             self,
@@ -54,6 +59,7 @@ class Table:
             IndexName: str,
             KeySchema: List["Table.KeySchema"],
             Projection: "Table.Projection",
+            ContributorInsightsSpecification: "Table.ContributorInsightsSpecification" = ...,
             ProvisionedThroughput: "Table.ProvisionedThroughput" = ...
         ): ...
     class KeySchema:
