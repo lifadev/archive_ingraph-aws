@@ -23,16 +23,17 @@ class Component:
 
     Arn: Final[str]
 
-    Name: Final[str]
-
     Type: Final[str]
 
     Encrypted: Final[bool]
 
     Ref: Final[str]
+
+    Name: Final[str]
     def __init__(
         self,
         *,
+        Name: str,
         Platform: str,
         Version: str,
         ChangeDescription: str = ...,
@@ -52,13 +53,14 @@ class DistributionConfiguration:
 
     Arn: Final[str]
 
-    Name: Final[str]
-
     Ref: Final[str]
+
+    Name: Final[str]
     def __init__(
         self,
         *,
         Distributions: List["DistributionConfiguration.Distribution"],
+        Name: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
@@ -107,14 +109,15 @@ class ImagePipeline:
 
     Arn: Final[str]
 
-    Name: Final[str]
-
     Ref: Final[str]
+
+    Name: Final[str]
     def __init__(
         self,
         *,
         ImageRecipeArn: str,
         InfrastructureConfigurationArn: str,
+        Name: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
@@ -143,13 +146,14 @@ class ImageRecipe:
 
     Arn: Final[str]
 
-    Name: Final[str]
-
     Ref: Final[str]
+
+    Name: Final[str]
     def __init__(
         self,
         *,
         Components: List["ImageRecipe.ComponentConfiguration"],
+        Name: str,
         ParentImage: str,
         Version: str,
         BlockDeviceMappings: List["ImageRecipe.InstanceBlockDeviceMapping"] = ...,
@@ -189,13 +193,14 @@ class InfrastructureConfiguration:
 
     Arn: Final[str]
 
-    Name: Final[str]
-
     Ref: Final[str]
+
+    Name: Final[str]
     def __init__(
         self,
         *,
         InstanceProfileName: str,
+        Name: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,

@@ -28,6 +28,7 @@ class DeliveryStream:
         self,
         *,
         DeletionPolicy: str = ...,
+        DeliveryStreamEncryptionConfigurationInput: "DeliveryStream.DeliveryStreamEncryptionConfigurationInput" = ...,
         DeliveryStreamName: str = ...,
         DeliveryStreamType: str = ...,
         DependsOn: List[Any] = ...,
@@ -38,6 +39,7 @@ class DeliveryStream:
         RedshiftDestinationConfiguration: "DeliveryStream.RedshiftDestinationConfiguration" = ...,
         S3DestinationConfiguration: "DeliveryStream.S3DestinationConfiguration" = ...,
         SplunkDestinationConfiguration: "DeliveryStream.SplunkDestinationConfiguration" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class BufferingHints:
@@ -67,6 +69,8 @@ class DeliveryStream:
             OutputFormatConfiguration: "DeliveryStream.OutputFormatConfiguration" = ...,
             SchemaConfiguration: "DeliveryStream.SchemaConfiguration" = ...
         ): ...
+    class DeliveryStreamEncryptionConfigurationInput:
+        def __init__(self, *, KeyType: str, KeyARN: str = ...): ...
     class Deserializer:
         def __init__(
             self,
