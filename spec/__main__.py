@@ -178,6 +178,13 @@ def _nomalize_attrs(data: Any) -> None:
                 del value[_ASKEY]["Outputs"]
             else:
                 raise NotImplementedError("patch outdated")
+        # path 19.0.0
+        if name == "AWS::MediaPackage::Channel":
+            bad = value[_ASKEY].get("HlsIngest")
+            if bad.get("Type") == "HlsIngest":
+                del value[_ASKEY]["HlsIngest"]
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_props(data: Any) -> None:
@@ -225,6 +232,21 @@ def _normalize_proptypes(data: Any) -> None:
                     and bad.get("PrimitiveType") == "Json"
                 ):
                     del bad["PrimitiveType"]
+                else:
+                    raise NotImplementedError("patch outdated")
+            # patch 19.0.0
+            if name == "AWS::MediaPackage::PackagingConfiguration" and (
+                k
+                in {
+                    "CmafEncryption",
+                    "DashEncryption",
+                    "HlsEncryption",
+                    "MssEncryption",
+                }
+            ):
+                bad = v[_PSKEY].get("SpekeKeyProvider")
+                if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
+                    bad["PrimitiveType"] = "Json"
                 else:
                     raise NotImplementedError("patch outdated")
             if k not in coms:
