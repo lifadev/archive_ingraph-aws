@@ -27,12 +27,12 @@ class Listener:
         *,
         DefaultActions: List["Listener.Action"],
         LoadBalancerArn: str,
-        Port: int,
-        Protocol: str,
         AlpnPolicy: List[str] = ...,
         Certificates: List["Listener.Certificate"] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        Port: int = ...,
+        Protocol: str = ...,
         SslPolicy: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
@@ -274,6 +274,7 @@ class LoadBalancer:
             *,
             SubnetId: str,
             AllocationId: str = ...,
+            IPv6Address: str = ...,
             PrivateIPv4Address: str = ...
         ): ...
 
@@ -312,7 +313,7 @@ class TargetGroup:
         VpcId: str = ...
     ): ...
     class Matcher:
-        def __init__(self, *, HttpCode: str): ...
+        def __init__(self, *, HttpCode: str = ...): ...
     class TargetDescription:
         def __init__(
             self, *, Id: str, AvailabilityZone: str = ..., Port: int = ...

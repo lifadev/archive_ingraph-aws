@@ -108,6 +108,7 @@ class ClientVpnEndpoint:
         Description: str = ...,
         DnsServers: List[str] = ...,
         SecurityGroupIds: List[str] = ...,
+        SelfServicePortal: str = ...,
         SplitTunnel: bool = ...,
         TagSpecifications: List["ClientVpnEndpoint.TagSpecification"] = ...,
         TransportProtocol: str = ...,
@@ -137,7 +138,9 @@ class ClientVpnEndpoint:
     class DirectoryServiceAuthenticationRequest:
         def __init__(self, *, DirectoryId: str): ...
     class FederatedAuthenticationRequest:
-        def __init__(self, *, SAMLProviderArn: str): ...
+        def __init__(
+            self, *, SAMLProviderArn: str, SelfServiceSAMLProviderArn: str = ...
+        ): ...
     class TagSpecification:
         def __init__(self, *, ResourceType: str, Tags: List["Tag"]): ...
 
@@ -931,6 +934,7 @@ class Route:
         self,
         *,
         RouteTableId: str,
+        CarrierGatewayId: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DestinationCidrBlock: str = ...,
@@ -938,10 +942,12 @@ class Route:
         EgressOnlyInternetGatewayId: str = ...,
         GatewayId: str = ...,
         InstanceId: str = ...,
+        LocalGatewayId: str = ...,
         NatGatewayId: str = ...,
         NetworkInterfaceId: str = ...,
         TransitGatewayId: str = ...,
         UpdateReplacePolicy: str = ...,
+        VpcEndpointId: str = ...,
         VpcPeeringConnectionId: str = ...
     ): ...
 
@@ -1217,6 +1223,8 @@ class Subnet:
 
     NetworkAclAssociationId: Final[str]
 
+    OutpostArn: Final[str]
+
     VpcId: Final[str]
 
     Ref: Final[str]
@@ -1231,6 +1239,7 @@ class Subnet:
         DependsOn: List[Any] = ...,
         Ipv6CidrBlock: str = ...,
         MapPublicIpOnLaunch: bool = ...,
+        OutpostArn: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...

@@ -54,6 +54,29 @@ class Alias:
     class VersionWeight:
         def __init__(self, *, FunctionVersion: str, FunctionWeight: float): ...
 
+class CodeSigningConfig:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-codesigningconfig.html"""
+
+    CodeSigningConfigId: Final[str]
+
+    CodeSigningConfigArn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        AllowedPublishers: "CodeSigningConfig.AllowedPublishers",
+        CodeSigningPolicies: "CodeSigningConfig.CodeSigningPolicies" = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AllowedPublishers:
+        def __init__(self, *, SigningProfileVersionArns: List[str]): ...
+    class CodeSigningPolicies:
+        def __init__(self, *, UntrustedArtifactOnDeployment: str): ...
+
 class EventInvokeConfig:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventinvokeconfig.html"""
 
@@ -103,6 +126,10 @@ class EventSourceMapping:
         MaximumRecordAgeInSeconds: int = ...,
         MaximumRetryAttempts: int = ...,
         ParallelizationFactor: int = ...,
+        Queues: List[str] = ...,
+        SourceAccessConfigurations: List[
+            "EventSourceMapping.SourceAccessConfiguration"
+        ] = ...,
         StartingPosition: str = ...,
         Topics: List[str] = ...,
         UpdateReplacePolicy: str = ...
@@ -111,6 +138,8 @@ class EventSourceMapping:
         def __init__(self, *, OnFailure: "EventSourceMapping.OnFailure" = ...): ...
     class OnFailure:
         def __init__(self, *, Destination: str = ...): ...
+    class SourceAccessConfiguration:
+        def __init__(self, *, Type: str = ..., URI: str = ...): ...
 
 class Function:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html"""

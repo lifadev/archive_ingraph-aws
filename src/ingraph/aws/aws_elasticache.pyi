@@ -114,6 +114,7 @@ class ReplicationGroup:
         DependsOn: List[Any] = ...,
         Engine: str = ...,
         EngineVersion: str = ...,
+        GlobalReplicationGroupId: str = ...,
         KmsKeyId: str = ...,
         MultiAZEnabled: bool = ...,
         NodeGroupConfiguration: List["ReplicationGroup.NodeGroupConfiguration"] = ...,

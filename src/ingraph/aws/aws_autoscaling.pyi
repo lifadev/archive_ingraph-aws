@@ -21,6 +21,16 @@ _NAMESPACE = "AWS::AutoScaling"
 class AutoScalingGroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"""
 
+    LaunchConfigurationName: Final[str]
+
+    LaunchTemplateSpecification: Final[str]
+
+    MixedInstancesPolicy: Final[str]
+
+    PlacementGroup: Final[str]
+
+    VPCZoneIdentifier: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
@@ -29,6 +39,7 @@ class AutoScalingGroup:
         MinSize: str,
         AutoScalingGroupName: str = ...,
         AvailabilityZones: List[str] = ...,
+        CapacityRebalance: bool = ...,
         Cooldown: str = ...,
         CreationPolicy: "AutoScalingGroup.CreationPolicy" = ...,
         DeletionPolicy: str = ...,
@@ -38,14 +49,14 @@ class AutoScalingGroup:
         HealthCheckType: str = ...,
         InstanceId: str = ...,
         LaunchConfigurationName: str = ...,
-        LaunchTemplate: "AutoScalingGroup.LaunchTemplateSpecification" = ...,
+        LaunchTemplate: "AutoScalingGroup.LaunchTemplateSpecification_" = ...,
         LifecycleHookSpecificationList: List[
             "AutoScalingGroup.LifecycleHookSpecification"
         ] = ...,
         LoadBalancerNames: List[str] = ...,
         MaxInstanceLifetime: int = ...,
         MetricsCollection: List["AutoScalingGroup.MetricsCollection"] = ...,
-        MixedInstancesPolicy: "AutoScalingGroup.MixedInstancesPolicy" = ...,
+        MixedInstancesPolicy: "AutoScalingGroup.MixedInstancesPolicy_" = ...,
         NewInstancesProtectedFromScaleIn: bool = ...,
         NotificationConfigurations: List[
             "AutoScalingGroup.NotificationConfiguration"
@@ -98,12 +109,18 @@ class AutoScalingGroup:
         def __init__(
             self,
             *,
-            LaunchTemplateSpecification: "AutoScalingGroup.LaunchTemplateSpecification",
+            LaunchTemplateSpecification: "AutoScalingGroup.LaunchTemplateSpecification_",
             Overrides: List["AutoScalingGroup.LaunchTemplateOverrides"] = ...
         ): ...
     class LaunchTemplateOverrides:
-        def __init__(self, *, InstanceType: str = ..., WeightedCapacity: str = ...): ...
-    class LaunchTemplateSpecification:
+        def __init__(
+            self,
+            *,
+            InstanceType: str = ...,
+            LaunchTemplateSpecification: "AutoScalingGroup.LaunchTemplateSpecification_" = ...,
+            WeightedCapacity: str = ...
+        ): ...
+    class LaunchTemplateSpecification_:
         def __init__(
             self,
             *,
@@ -125,7 +142,7 @@ class AutoScalingGroup:
         ): ...
     class MetricsCollection:
         def __init__(self, *, Granularity: str, Metrics: List[str] = ...): ...
-    class MixedInstancesPolicy:
+    class MixedInstancesPolicy_:
         def __init__(
             self,
             *,
@@ -169,6 +186,7 @@ class LaunchConfiguration:
         KernelId: str = ...,
         KeyName: str = ...,
         LaunchConfigurationName: str = ...,
+        MetadataOptions: "LaunchConfiguration.MetadataOption" = ...,
         PlacementTenancy: str = ...,
         RamDiskId: str = ...,
         SecurityGroups: List[str] = ...,
@@ -195,6 +213,14 @@ class LaunchConfiguration:
             Ebs: "LaunchConfiguration.BlockDevice" = ...,
             NoDevice: bool = ...,
             VirtualName: str = ...
+        ): ...
+    class MetadataOption:
+        def __init__(
+            self,
+            *,
+            HttpEndpoint: str = ...,
+            HttpPutResponseHopLimit: int = ...,
+            HttpTokens: str = ...
         ): ...
 
 class LifecycleHook:

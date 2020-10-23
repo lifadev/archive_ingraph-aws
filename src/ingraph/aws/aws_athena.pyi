@@ -52,7 +52,8 @@ class NamedQuery:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         Name: str = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        WorkGroup: str = ...
     ): ...
 
 class WorkGroup:

@@ -41,10 +41,13 @@ class Cluster:
         DependsOn: List[Any] = ...,
         EbsRootVolumeSize: int = ...,
         KerberosAttributes: "Cluster.KerberosAttributes" = ...,
+        LogEncryptionKmsKeyId: str = ...,
         LogUri: str = ...,
+        ManagedScalingPolicy: "Cluster.ManagedScalingPolicy" = ...,
         ReleaseLabel: str = ...,
         ScaleDownBehavior: str = ...,
         SecurityConfiguration: str = ...,
+        StepConcurrencyLevel: int = ...,
         Steps: List["Cluster.StepConfig"] = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
@@ -86,6 +89,16 @@ class Cluster:
             Namespace: str = ...,
             Statistic: str = ...,
             Unit: str = ...
+        ): ...
+    class ComputeLimits:
+        def __init__(
+            self,
+            *,
+            MaximumCapacityUnits: int,
+            MinimumCapacityUnits: int,
+            UnitType: str,
+            MaximumCoreCapacityUnits: int = ...,
+            MaximumOnDemandCapacityUnits: int = ...
         ): ...
     class Configuration:
         def __init__(
@@ -130,7 +143,10 @@ class Cluster:
         ): ...
     class InstanceFleetProvisioningSpecifications:
         def __init__(
-            self, *, SpotSpecification: "Cluster.SpotProvisioningSpecification"
+            self,
+            *,
+            OnDemandSpecification: "Cluster.OnDemandProvisioningSpecification" = ...,
+            SpotSpecification: "Cluster.SpotProvisioningSpecification" = ...
         ): ...
     class InstanceGroupConfig:
         def __init__(
@@ -189,8 +205,12 @@ class Cluster:
         ): ...
     class KeyValue:
         def __init__(self, *, Key: str = ..., Value: str = ...): ...
+    class ManagedScalingPolicy:
+        def __init__(self, *, ComputeLimits: "Cluster.ComputeLimits" = ...): ...
     class MetricDimension:
         def __init__(self, *, Key: str, Value: str): ...
+    class OnDemandProvisioningSpecification:
+        def __init__(self, *, AllocationStrategy: str): ...
     class PlacementType:
         def __init__(self, *, AvailabilityZone: str): ...
     class ScalingAction:
@@ -231,6 +251,7 @@ class Cluster:
             *,
             TimeoutAction: str,
             TimeoutDurationMinutes: int,
+            AllocationStrategy: str = ...,
             BlockDurationMinutes: int = ...
         ): ...
     class StepConfig:
@@ -290,7 +311,8 @@ class InstanceFleetConfig:
         def __init__(
             self,
             *,
-            SpotSpecification: "InstanceFleetConfig.SpotProvisioningSpecification"
+            OnDemandSpecification: "InstanceFleetConfig.OnDemandProvisioningSpecification" = ...,
+            SpotSpecification: "InstanceFleetConfig.SpotProvisioningSpecification" = ...
         ): ...
     class InstanceTypeConfig:
         def __init__(
@@ -303,12 +325,15 @@ class InstanceFleetConfig:
             EbsConfiguration: "InstanceFleetConfig.EbsConfiguration" = ...,
             WeightedCapacity: int = ...
         ): ...
+    class OnDemandProvisioningSpecification:
+        def __init__(self, *, AllocationStrategy: str): ...
     class SpotProvisioningSpecification:
         def __init__(
             self,
             *,
             TimeoutAction: str,
             TimeoutDurationMinutes: int,
+            AllocationStrategy: str = ...,
             BlockDurationMinutes: int = ...
         ): ...
     class VolumeSpecification:

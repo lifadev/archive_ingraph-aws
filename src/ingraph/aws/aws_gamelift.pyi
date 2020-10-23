@@ -213,7 +213,6 @@ class MatchmakingConfiguration:
         self,
         *,
         AcceptanceRequired: bool,
-        GameSessionQueueArns: List[str],
         Name: str,
         RequestTimeoutSeconds: int,
         RuleSetName: str,
@@ -224,8 +223,10 @@ class MatchmakingConfiguration:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        FlexMatchMode: str = ...,
         GameProperties: List["MatchmakingConfiguration.GameProperty"] = ...,
         GameSessionData: str = ...,
+        GameSessionQueueArns: List[str] = ...,
         NotificationTarget: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...

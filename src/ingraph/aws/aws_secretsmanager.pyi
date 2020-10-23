@@ -27,6 +27,7 @@ class ResourcePolicy:
         *,
         ResourcePolicy: Any,
         SecretId: str,
+        BlockPublicPolicy: bool = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...

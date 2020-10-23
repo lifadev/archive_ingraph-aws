@@ -90,6 +90,9 @@ class Domain:
             DedicatedMasterType: str = ...,
             InstanceCount: int = ...,
             InstanceType: str = ...,
+            WarmCount: int = ...,
+            WarmEnabled: bool = ...,
+            WarmType: str = ...,
             ZoneAwarenessConfig: "Domain.ZoneAwarenessConfig" = ...,
             ZoneAwarenessEnabled: bool = ...
         ): ...

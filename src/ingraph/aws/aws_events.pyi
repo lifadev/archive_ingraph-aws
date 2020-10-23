@@ -99,6 +99,8 @@ class Rule:
         ): ...
     class BatchRetryStrategy:
         def __init__(self, *, Attempts: int = ...): ...
+    class DeadLetterConfig:
+        def __init__(self, *, Arn: str = ...): ...
     class EcsParameters:
         def __init__(
             self,
@@ -128,6 +130,24 @@ class Rule:
         def __init__(
             self, *, AwsVpcConfiguration: "Rule.AwsVpcConfiguration" = ...
         ): ...
+    class RedshiftDataParameters:
+        def __init__(
+            self,
+            *,
+            Database: str,
+            Sql: str,
+            DbUser: str = ...,
+            SecretManagerArn: str = ...,
+            StatementName: str = ...,
+            WithEvent: bool = ...
+        ): ...
+    class RetryPolicy:
+        def __init__(
+            self,
+            *,
+            MaximumEventAgeInSeconds: int = ...,
+            MaximumRetryAttempts: int = ...
+        ): ...
     class RunCommandParameters:
         def __init__(self, *, RunCommandTargets: List["Rule.RunCommandTarget"]): ...
     class RunCommandTarget:
@@ -141,12 +161,15 @@ class Rule:
             Arn: str,
             Id: str,
             BatchParameters: "Rule.BatchParameters" = ...,
+            DeadLetterConfig: "Rule.DeadLetterConfig" = ...,
             EcsParameters: "Rule.EcsParameters" = ...,
             HttpParameters: "Rule.HttpParameters" = ...,
             Input: str = ...,
             InputPath: str = ...,
             InputTransformer: "Rule.InputTransformer" = ...,
             KinesisParameters: "Rule.KinesisParameters" = ...,
+            RedshiftDataParameters: "Rule.RedshiftDataParameters" = ...,
+            RetryPolicy: "Rule.RetryPolicy" = ...,
             RoleArn: str = ...,
             RunCommandParameters: "Rule.RunCommandParameters" = ...,
             SqsParameters: "Rule.SqsParameters" = ...

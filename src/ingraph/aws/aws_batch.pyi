@@ -32,6 +32,7 @@ class ComputeEnvironment:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         State: str = ...,
+        Tags: Any = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class ComputeResources:
@@ -79,6 +80,7 @@ class JobDefinition:
         NodeProperties: "JobDefinition.NodeProperties" = ...,
         Parameters: Any = ...,
         RetryStrategy: "JobDefinition.RetryStrategy" = ...,
+        Tags: Any = ...,
         Timeout: "JobDefinition.Timeout" = ...,
         UpdateReplacePolicy: str = ...
     ): ...
@@ -191,6 +193,7 @@ class JobQueue:
         DependsOn: List[Any] = ...,
         JobQueueName: str = ...,
         State: str = ...,
+        Tags: Any = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class ComputeEnvironmentOrder:

@@ -133,10 +133,13 @@ class Model:
             ContainerHostname: str = ...,
             Environment: Any = ...,
             Image: str = ...,
+            ImageConfig: "Model.ImageConfig" = ...,
             Mode: str = ...,
             ModelDataUrl: str = ...,
             ModelPackageName: str = ...
         ): ...
+    class ImageConfig:
+        def __init__(self, *, RepositoryAccessMode: str): ...
     class VpcConfig:
         def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
 

@@ -48,6 +48,7 @@ class DBCluster:
         EnableIAMDatabaseAuthentication: bool = ...,
         EngineMode: str = ...,
         EngineVersion: str = ...,
+        GlobalClusterIdentifier: str = ...,
         KmsKeyId: str = ...,
         MasterUserPassword: str = ...,
         MasterUsername: str = ...,

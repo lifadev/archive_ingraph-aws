@@ -48,6 +48,7 @@ class ApiKey:
         self,
         *,
         ApiId: str,
+        ApiKeyId: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
