@@ -57,6 +57,7 @@ class EndpointGroup:
         HealthCheckPath: str = ...,
         HealthCheckPort: int = ...,
         HealthCheckProtocol: str = ...,
+        PortOverrides: List["EndpointGroup.PortOverride"] = ...,
         ThresholdCount: int = ...,
         TrafficDialPercentage: float = ...,
         UpdateReplacePolicy: str = ...
@@ -69,6 +70,8 @@ class EndpointGroup:
             ClientIPPreservationEnabled: bool = ...,
             Weight: int = ...
         ): ...
+    class PortOverride:
+        def __init__(self, *, EndpointPort: int, ListenerPort: int): ...
 
 class Listener:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-globalaccelerator-listener.html"""

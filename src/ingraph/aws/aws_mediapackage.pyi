@@ -102,8 +102,6 @@ class OriginEndpoint:
         UpdateReplacePolicy: str = ...,
         Whitelist: List[str] = ...
     ): ...
-    class AdTriggers:
-        def __init__(self, *, AdTriggers: List[str] = ...): ...
     class Authorization:
         def __init__(self, *, CdnIdentifierSecret: str, SecretsRoleArn: str): ...
     class CmafEncryption:
@@ -134,7 +132,7 @@ class OriginEndpoint:
         def __init__(
             self,
             *,
-            AdTriggers: "OriginEndpoint.AdTriggers" = ...,
+            AdTriggers: List[str] = ...,
             AdsOnDeliveryRestrictions: str = ...,
             Encryption: "OriginEndpoint.DashEncryption" = ...,
             ManifestLayout: str = ...,
@@ -164,7 +162,7 @@ class OriginEndpoint:
             *,
             Id: str,
             AdMarkers: str = ...,
-            AdTriggers: "OriginEndpoint.AdTriggers" = ...,
+            AdTriggers: List[str] = ...,
             AdsOnDeliveryRestrictions: str = ...,
             IncludeIframeOnlyStream: bool = ...,
             ManifestName: str = ...,
@@ -178,7 +176,7 @@ class OriginEndpoint:
             self,
             *,
             AdMarkers: str = ...,
-            AdTriggers: "OriginEndpoint.AdTriggers" = ...,
+            AdTriggers: List[str] = ...,
             AdsOnDeliveryRestrictions: str = ...,
             Encryption: "OriginEndpoint.HlsEncryption" = ...,
             IncludeIframeOnlyStream: bool = ...,

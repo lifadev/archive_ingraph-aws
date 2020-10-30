@@ -56,7 +56,6 @@ class Broker:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EncryptionOptions: "Broker.EncryptionOptions" = ...,
-        LdapMetadata: "Broker.LdapMetadata" = ...,
         LdapServerMetadata: "Broker.LdapServerMetadata" = ...,
         Logs: "Broker.LogList" = ...,
         MaintenanceWindowStartTime: "Broker.MaintenanceWindow" = ...,
@@ -70,15 +69,6 @@ class Broker:
         def __init__(self, *, Id: str, Revision: int): ...
     class EncryptionOptions:
         def __init__(self, *, UseAwsOwnedKey: bool, KmsKeyId: str = ...): ...
-    class InterBrokerCred:
-        def __init__(self, *, Password: str, Username: str): ...
-    class LdapMetadata:
-        def __init__(
-            self,
-            *,
-            ServerMetadata: "Broker.ServerMetadata",
-            InterBrokerCreds: List["Broker.InterBrokerCred"] = ...
-        ): ...
     class LdapServerMetadata:
         def __init__(
             self,
@@ -99,22 +89,6 @@ class Broker:
         def __init__(self, *, Audit: bool = ..., General: bool = ...): ...
     class MaintenanceWindow:
         def __init__(self, *, DayOfWeek: str, TimeOfDay: str, TimeZone: str): ...
-    class ServerMetadata:
-        def __init__(
-            self,
-            *,
-            Hosts: List[str],
-            RoleBase: str,
-            RoleSearchMatching: str,
-            ServiceAccountPassword: str,
-            ServiceAccountUsername: str,
-            UserBase: str,
-            UserSearchMatching: str,
-            RoleName: str = ...,
-            RoleSearchSubtree: bool = ...,
-            UserRoleName: str = ...,
-            UserSearchSubtree: bool = ...
-        ): ...
     class TagsEntry:
         def __init__(self, *, Key: str, Value: str): ...
     class User:

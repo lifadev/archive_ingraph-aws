@@ -22,6 +22,8 @@ class Listener:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html"""
 
     Ref: Final[str]
+
+    ListenerArn: Final[str]
     def __init__(
         self,
         *,

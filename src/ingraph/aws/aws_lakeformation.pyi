@@ -28,6 +28,7 @@ class DataLakeSettings:
         Admins: "DataLakeSettings.Admins" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        TrustedResourceOwners: List[str] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class Admins:

@@ -28,8 +28,6 @@ class Component:
     Encrypted: Final[bool]
 
     Ref: Final[str]
-
-    Name: Final[str]
     def __init__(
         self,
         *,
@@ -54,8 +52,6 @@ class DistributionConfiguration:
     Arn: Final[str]
 
     Ref: Final[str]
-
-    Name: Final[str]
     def __init__(
         self,
         *,
@@ -110,8 +106,6 @@ class ImagePipeline:
     Arn: Final[str]
 
     Ref: Final[str]
-
-    Name: Final[str]
     def __init__(
         self,
         *,
@@ -147,8 +141,6 @@ class ImageRecipe:
     Arn: Final[str]
 
     Ref: Final[str]
-
-    Name: Final[str]
     def __init__(
         self,
         *,
@@ -194,8 +186,6 @@ class InfrastructureConfiguration:
     Arn: Final[str]
 
     Ref: Final[str]
-
-    Name: Final[str]
     def __init__(
         self,
         *,

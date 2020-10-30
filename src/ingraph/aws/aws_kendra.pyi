@@ -29,14 +29,14 @@ class DataSource:
     def __init__(
         self,
         *,
-        DataSourceConfiguration: "DataSource.DataSourceConfiguration",
         IndexId: str,
         Name: str,
-        RoleArn: str,
         Type: str,
+        DataSourceConfiguration: "DataSource.DataSourceConfiguration" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        RoleArn: str = ...,
         Schedule: str = ...,
         Tags: "DataSource.TagList" = ...,
         UpdateReplacePolicy: str = ...
@@ -141,6 +141,7 @@ class DataSource:
             AccessControlListConfiguration: "DataSource.AccessControlListConfiguration" = ...,
             DocumentsMetadataConfiguration: "DataSource.DocumentsMetadataConfiguration" = ...,
             ExclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
+            InclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
             InclusionPrefixes: "DataSource.DataSourceInclusionsExclusionsStrings" = ...
         ): ...
     class S3Path:

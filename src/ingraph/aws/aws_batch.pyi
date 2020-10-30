@@ -117,6 +117,15 @@ class JobDefinition:
         ): ...
     class Environment:
         def __init__(self, *, Name: str = ..., Value: str = ...): ...
+    class EvaluateOnExit:
+        def __init__(
+            self,
+            *,
+            Action: str,
+            OnExitCode: str = ...,
+            OnReason: str = ...,
+            OnStatusReason: str = ...
+        ): ...
     class LinuxParameters:
         def __init__(
             self,
@@ -162,7 +171,12 @@ class JobDefinition:
     class ResourceRequirement:
         def __init__(self, *, Type: str = ..., Value: str = ...): ...
     class RetryStrategy:
-        def __init__(self, *, Attempts: int = ...): ...
+        def __init__(
+            self,
+            *,
+            Attempts: int = ...,
+            EvaluateOnExit: List["JobDefinition.EvaluateOnExit"] = ...
+        ): ...
     class Secret:
         def __init__(self, *, Name: str, ValueFrom: str): ...
     class Timeout:

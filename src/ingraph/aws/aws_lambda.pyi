@@ -126,12 +126,14 @@ class EventSourceMapping:
         MaximumRecordAgeInSeconds: int = ...,
         MaximumRetryAttempts: int = ...,
         ParallelizationFactor: int = ...,
+        PartialBatchResponse: bool = ...,
         Queues: List[str] = ...,
         SourceAccessConfigurations: List[
             "EventSourceMapping.SourceAccessConfiguration"
         ] = ...,
         StartingPosition: str = ...,
         Topics: List[str] = ...,
+        TumblingWindowInSeconds: int = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class DestinationConfig:
