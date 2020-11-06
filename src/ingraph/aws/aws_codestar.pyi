@@ -25,14 +25,15 @@ class GitHubRepository:
     def __init__(
         self,
         *,
-        RepositoryAccessToken: str,
         RepositoryName: str,
         RepositoryOwner: str,
         Code: "GitHubRepository.Code" = ...,
+        ConnectionArn: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EnableIssues: bool = ...,
         IsPrivate: bool = ...,
+        RepositoryAccessToken: str = ...,
         RepositoryDescription: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...

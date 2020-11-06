@@ -325,6 +325,24 @@ class EventSubscription:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class GlobalCluster:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-globalcluster.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DeletionPolicy: str = ...,
+        DeletionProtection: bool = ...,
+        DependsOn: List[Any] = ...,
+        Engine: str = ...,
+        EngineVersion: str = ...,
+        GlobalClusterIdentifier: str = ...,
+        SourceDBClusterIdentifier: str = ...,
+        StorageEncrypted: bool = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class OptionGroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html"""
 

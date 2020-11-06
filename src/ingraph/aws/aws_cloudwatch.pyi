@@ -162,3 +162,31 @@ class InsightRule:
     ): ...
     class Tags:
         def __init__(self) -> None: ...
+
+class MetricStream:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudwatch-metricstream.html"""
+
+    Arn: Final[str]
+
+    CreationDate: Final[str]
+
+    LastUpdateDate: Final[str]
+
+    State: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        FirehoseArn: str,
+        RoleArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ExcludeFilters: List["MetricStream.MetricStreamFilter"] = ...,
+        IncludeFilters: List["MetricStream.MetricStreamFilter"] = ...,
+        Name: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class MetricStreamFilter:
+        def __init__(self, *, Namespace: str): ...

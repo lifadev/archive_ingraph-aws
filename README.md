@@ -27,10 +27,10 @@ Unless otherwise stated, the source code of the project is released
 under the [Apache License Version 2][apachev2].
 
 [github]: https://github.com/lifadev/ingraph-aws
-[badge-version]: https://img.shields.io/badge/version-0.0.28-blue?style=flat-square
-[version]: https://pypi.org/project/ingraph.aws/0.0.28/
+[badge-version]: https://img.shields.io/badge/version-0.0.29-blue?style=flat-square
+[version]: https://pypi.org/project/ingraph.aws/0.0.29/
 [specs]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html
-[badge-cfn]: https://img.shields.io/badge/cloudformation-20.0.0-blue?style=flat-square
+[badge-cfn]: https://img.shields.io/badge/cloudformation-20.1.0-blue?style=flat-square
 [badge-license]: https://img.shields.io/badge/license-Apache2-blue?style=flat-square
 [license]: https://github.com/lifadev/ingraph-aws#license
 [ingraph]: https://lifa.dev/ingraph

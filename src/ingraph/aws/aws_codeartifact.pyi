@@ -37,6 +37,7 @@ class Domain:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         PermissionsPolicyDocument: Any = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 
@@ -61,6 +62,7 @@ class Repository:
         Description: str = ...,
         ExternalConnections: List[str] = ...,
         PermissionsPolicyDocument: Any = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         Upstreams: List[str] = ...
     ): ...

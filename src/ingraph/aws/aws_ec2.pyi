@@ -599,7 +599,12 @@ class LaunchTemplate:
             CapacityReservationTarget: "LaunchTemplate.CapacityReservationTarget" = ...
         ): ...
     class CapacityReservationTarget:
-        def __init__(self, *, CapacityReservationId: str = ...): ...
+        def __init__(
+            self,
+            *,
+            CapacityReservationId: str = ...,
+            CapacityReservationResourceGroupArn: str = ...
+        ): ...
     class CpuOptions:
         def __init__(self, *, CoreCount: int = ..., ThreadsPerCore: int = ...): ...
     class CreditSpecification:
@@ -684,6 +689,7 @@ class LaunchTemplate:
         def __init__(
             self,
             *,
+            AssociateCarrierIpAddress: bool = ...,
             AssociatePublicIpAddress: bool = ...,
             DeleteOnTermination: bool = ...,
             Description: str = ...,
@@ -692,6 +698,7 @@ class LaunchTemplate:
             InterfaceType: str = ...,
             Ipv6AddressCount: int = ...,
             Ipv6Addresses: List["LaunchTemplate.Ipv6Add"] = ...,
+            NetworkCardIndex: int = ...,
             NetworkInterfaceId: str = ...,
             PrivateIpAddress: str = ...,
             PrivateIpAddresses: List["LaunchTemplate.PrivateIpAdd"] = ...,

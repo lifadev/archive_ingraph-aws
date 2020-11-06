@@ -18,6 +18,26 @@ from . import Tag
 
 _NAMESPACE = "AWS::Events"
 
+class Archive:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-archive.html"""
+
+    ArchiveName: Final[str]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        SourceArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        EventPattern: Any = ...,
+        RetentionDays: int = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class EventBus:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-eventbus.html"""
 

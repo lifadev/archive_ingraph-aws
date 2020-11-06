@@ -64,6 +64,49 @@ class Certificate:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class DomainConfiguration:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-domainconfiguration.html"""
+
+    Arn: Final[str]
+
+    DomainType: Final[str]
+
+    ServerCertificates: Final[List]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        AuthorizerConfig: "DomainConfiguration.AuthorizerConfig" = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        DomainConfigurationName: str = ...,
+        DomainConfigurationStatus: str = ...,
+        DomainName: str = ...,
+        ServerCertificateArns: List[str] = ...,
+        ServiceType: str = ...,
+        Tags: "DomainConfiguration.Tags" = ...,
+        UpdateReplacePolicy: str = ...,
+        ValidationCertificateArn: str = ...
+    ): ...
+    class AuthorizerConfig:
+        def __init__(
+            self,
+            *,
+            AllowAuthorizerOverride: bool = ...,
+            DefaultAuthorizerName: str = ...
+        ): ...
+    class ServerCertificateSummary:
+        def __init__(
+            self,
+            *,
+            ServerCertificateArn: str = ...,
+            ServerCertificateStatus: str = ...,
+            ServerCertificateStatusDetail: str = ...
+        ): ...
+    class Tags:
+        def __init__(self, *, Tags: List[Any] = ...): ...
+
 class Policy:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-policy.html"""
 
