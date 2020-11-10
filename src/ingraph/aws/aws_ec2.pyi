@@ -103,6 +103,7 @@ class ClientVpnEndpoint:
         ClientCidrBlock: str,
         ConnectionLogOptions: "ClientVpnEndpoint.ConnectionLogOptions",
         ServerCertificateArn: str,
+        ClientConnectOptions: "ClientVpnEndpoint.ClientConnectOptions" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
@@ -127,6 +128,8 @@ class ClientVpnEndpoint:
             FederatedAuthentication: "ClientVpnEndpoint.FederatedAuthenticationRequest" = ...,
             MutualAuthentication: "ClientVpnEndpoint.CertificateAuthenticationRequest" = ...
         ): ...
+    class ClientConnectOptions:
+        def __init__(self, *, Enabled: bool, LambdaFunctionArn: str = ...): ...
     class ConnectionLogOptions:
         def __init__(
             self,
@@ -1575,6 +1578,7 @@ class VPCEndpointService:
         ApplianceLoadBalancerArns: List[str] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        GatewayLoadBalancerArns: List[str] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 

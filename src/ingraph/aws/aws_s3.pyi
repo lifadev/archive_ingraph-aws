@@ -74,6 +74,9 @@ class Bucket:
         CorsConfiguration: "Bucket.CorsConfiguration" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        IntelligentTieringConfigurations: List[
+            "Bucket.IntelligentTieringConfiguration"
+        ] = ...,
         InventoryConfigurations: List["Bucket.InventoryConfiguration"] = ...,
         LifecycleConfiguration: "Bucket.LifecycleConfiguration" = ...,
         LoggingConfiguration: "Bucket.LoggingConfiguration" = ...,
@@ -81,6 +84,7 @@ class Bucket:
         NotificationConfiguration: "Bucket.NotificationConfiguration" = ...,
         ObjectLockConfiguration: "Bucket.ObjectLockConfiguration" = ...,
         ObjectLockEnabled: bool = ...,
+        OwnershipControls: "Bucket.OwnershipControls" = ...,
         PublicAccessBlockConfiguration: "Bucket.PublicAccessBlockConfiguration" = ...,
         ReplicationConfiguration: "Bucket.ReplicationConfiguration" = ...,
         Tags: List["Tag"] = ...,
@@ -143,6 +147,16 @@ class Bucket:
         def __init__(self, *, ReplicaKmsKeyID: str): ...
     class FilterRule:
         def __init__(self, *, Name: str, Value: str): ...
+    class IntelligentTieringConfiguration:
+        def __init__(
+            self,
+            *,
+            Id: str,
+            Status: str,
+            Tierings: List["Bucket.Tiering"],
+            Prefix: str = ...,
+            TagFilters: List["Bucket.TagFilter"] = ...
+        ): ...
     class InventoryConfiguration:
         def __init__(
             self,
@@ -199,6 +213,10 @@ class Bucket:
         ): ...
     class ObjectLockRule:
         def __init__(self, *, DefaultRetention: "Bucket.DefaultRetention" = ...): ...
+    class OwnershipControls:
+        def __init__(self, *, Rules: List["Bucket.OwnershipControlsRule"]): ...
+    class OwnershipControlsRule:
+        def __init__(self, *, ObjectOwnership: str = ...): ...
     class PublicAccessBlockConfiguration:
         def __init__(
             self,
@@ -317,6 +335,8 @@ class Bucket:
         def __init__(self, *, DataExport: "Bucket.DataExport" = ...): ...
     class TagFilter:
         def __init__(self, *, Key: str, Value: str): ...
+    class Tiering:
+        def __init__(self, *, AccessTier: str, Days: int): ...
     class TopicConfiguration:
         def __init__(
             self, *, Event: str, Topic: str, Filter: "Bucket.NotificationFilter" = ...
