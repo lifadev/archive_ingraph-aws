@@ -136,6 +136,7 @@ class ConnectorProfile:
             self,
             *,
             AccessToken: str = ...,
+            ClientCredentialsArn: str = ...,
             ConnectorOAuthRequest: "ConnectorProfile.ConnectorOAuthRequest" = ...,
             RefreshToken: str = ...
         ): ...

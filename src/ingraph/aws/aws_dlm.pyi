@@ -35,6 +35,13 @@ class LifecyclePolicy:
         State: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class Action:
+        def __init__(
+            self,
+            *,
+            CrossRegionCopy: List["LifecyclePolicy.CrossRegionCopyAction"],
+            Name: str
+        ): ...
     class CreateRule:
         def __init__(
             self,
@@ -43,6 +50,14 @@ class LifecyclePolicy:
             Interval: int = ...,
             IntervalUnit: str = ...,
             Times: List[str] = ...
+        ): ...
+    class CrossRegionCopyAction:
+        def __init__(
+            self,
+            *,
+            EncryptionConfiguration: "LifecyclePolicy.EncryptionConfiguration",
+            Target: str,
+            RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...
         ): ...
     class CrossRegionCopyRetainRule:
         def __init__(self, *, Interval: int, IntervalUnit: str): ...
@@ -55,6 +70,20 @@ class LifecyclePolicy:
             CmkArn: str = ...,
             CopyTags: bool = ...,
             RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...
+        ): ...
+    class EncryptionConfiguration:
+        def __init__(self, *, Encrypted: bool, CmkArn: str = ...): ...
+    class EventParameters:
+        def __init__(
+            self,
+            *,
+            EventType: str,
+            SnapshotOwner: List[str],
+            DescriptionRegex: str = ...
+        ): ...
+    class EventSource:
+        def __init__(
+            self, *, Type: str, Parameters: "LifecyclePolicy.EventParameters" = ...
         ): ...
     class FastRestoreRule:
         def __init__(
@@ -74,6 +103,8 @@ class LifecyclePolicy:
             ResourceTypes: List[str],
             Schedules: List["LifecyclePolicy.Schedule"],
             TargetTags: List["Tag"],
+            Actions: List["LifecyclePolicy.Action"] = ...,
+            EventSource: "LifecyclePolicy.EventSource" = ...,
             Parameters: "LifecyclePolicy.Parameters" = ...,
             PolicyType: str = ...
         ): ...
@@ -91,6 +122,15 @@ class LifecyclePolicy:
             FastRestoreRule: "LifecyclePolicy.FastRestoreRule" = ...,
             Name: str = ...,
             RetainRule: "LifecyclePolicy.RetainRule" = ...,
+            ShareRules: List["LifecyclePolicy.ShareRule"] = ...,
             TagsToAdd: List["Tag"] = ...,
             VariableTags: List["Tag"] = ...
+        ): ...
+    class ShareRule:
+        def __init__(
+            self,
+            *,
+            TargetAccounts: List[str] = ...,
+            UnshareInterval: int = ...,
+            UnshareIntervalUnit: str = ...
         ): ...

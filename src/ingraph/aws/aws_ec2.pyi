@@ -626,6 +626,8 @@ class LaunchTemplate:
         ): ...
     class ElasticGpuSpecification:
         def __init__(self, *, Type: str = ...): ...
+    class EnclaveOptions:
+        def __init__(self, *, Enabled: bool = ...): ...
     class HibernationOptions:
         def __init__(self, *, Configured: bool = ...): ...
     class IamInstanceProfile:
@@ -655,6 +657,7 @@ class LaunchTemplate:
             ElasticInferenceAccelerators: List[
                 "LaunchTemplate.LaunchTemplateElasticInferenceAccelerator"
             ] = ...,
+            EnclaveOptions: "LaunchTemplate.EnclaveOptions" = ...,
             HibernationOptions: "LaunchTemplate.HibernationOptions" = ...,
             IamInstanceProfile: "LaunchTemplate.IamInstanceProfile" = ...,
             ImageId: str = ...,
