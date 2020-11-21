@@ -251,15 +251,6 @@ def _normalize_proptypes(data: Any) -> None:
                     raise NotImplementedError("patch outdated")
             # patch 20.3.0
             if name == "AWS::DataBrew::Recipe":
-                if k == "RecipeStep":
-                    bad = v[_PSKEY].get("Action")
-                    if (
-                        bad.get("Type") == "Action"
-                        and bad.get("PrimitiveType") == "Json"
-                    ):
-                        del bad["PrimitiveType"]
-                    else:
-                        raise NotImplementedError("patch outdated")
                 if k == "Action":
                     bad = v[_PSKEY].get("Parameters")
                     if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
