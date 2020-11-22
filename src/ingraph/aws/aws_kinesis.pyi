@@ -24,6 +24,8 @@ class Stream:
     Arn: Final[str]
 
     Ref: Final[str]
+
+    Id: Final[str]
     def __init__(
         self,
         *,

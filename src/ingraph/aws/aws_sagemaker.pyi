@@ -150,6 +150,10 @@ class MonitoringSchedule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-monitoringschedule.html"""
 
     Ref: Final[str]
+
+    CreationTime: Final[str]
+
+    LastModifiedTime: Final[str]
     def __init__(
         self,
         *,

@@ -100,13 +100,13 @@ class LifecyclePolicy:
         def __init__(
             self,
             *,
-            ResourceTypes: List[str],
-            Schedules: List["LifecyclePolicy.Schedule"],
-            TargetTags: List["Tag"],
             Actions: List["LifecyclePolicy.Action"] = ...,
             EventSource: "LifecyclePolicy.EventSource" = ...,
             Parameters: "LifecyclePolicy.Parameters" = ...,
-            PolicyType: str = ...
+            PolicyType: str = ...,
+            ResourceTypes: List[str] = ...,
+            Schedules: List["LifecyclePolicy.Schedule"] = ...,
+            TargetTags: List["Tag"] = ...
         ): ...
     class RetainRule:
         def __init__(

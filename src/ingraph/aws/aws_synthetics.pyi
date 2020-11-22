@@ -61,6 +61,7 @@ class Canary:
             *,
             TimeoutInSeconds: int,
             ActiveTracing: bool = ...,
+            EnvironmentVariables: Dict[str, str] = ...,
             MemoryInMB: int = ...
         ): ...
     class Schedule:

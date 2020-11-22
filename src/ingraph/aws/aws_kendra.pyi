@@ -57,6 +57,116 @@ class DataSource:
             DocumentTitleColumnName: str = ...,
             FieldMappings: "DataSource.DataSourceToIndexFieldMappingList" = ...
         ): ...
+    class ConfluenceAttachmentConfiguration:
+        def __init__(
+            self,
+            *,
+            AttachmentFieldMappings: "DataSource.ConfluenceAttachmentFieldMappingsList" = ...,
+            CrawlAttachments: bool = ...
+        ): ...
+    class ConfluenceAttachmentFieldMappingsList:
+        def __init__(
+            self,
+            *,
+            ConfluenceAttachmentFieldMappingsList: List[
+                "DataSource.ConfluenceAttachmentToIndexFieldMapping"
+            ] = ...
+        ): ...
+    class ConfluenceAttachmentToIndexFieldMapping:
+        def __init__(
+            self,
+            *,
+            DataSourceFieldName: str,
+            IndexFieldName: str,
+            DateFieldFormat: str = ...
+        ): ...
+    class ConfluenceBlogConfiguration:
+        def __init__(
+            self,
+            *,
+            BlogFieldMappings: "DataSource.ConfluenceBlogFieldMappingsList" = ...
+        ): ...
+    class ConfluenceBlogFieldMappingsList:
+        def __init__(
+            self,
+            *,
+            ConfluenceBlogFieldMappingsList: List[
+                "DataSource.ConfluenceBlogToIndexFieldMapping"
+            ] = ...
+        ): ...
+    class ConfluenceBlogToIndexFieldMapping:
+        def __init__(
+            self,
+            *,
+            DataSourceFieldName: str,
+            IndexFieldName: str,
+            DateFieldFormat: str = ...
+        ): ...
+    class ConfluenceConfiguration:
+        def __init__(
+            self,
+            *,
+            SecretArn: str,
+            ServerUrl: str,
+            Version: str,
+            AttachmentConfiguration: "DataSource.ConfluenceAttachmentConfiguration" = ...,
+            BlogConfiguration: "DataSource.ConfluenceBlogConfiguration" = ...,
+            ExclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
+            InclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
+            PageConfiguration: "DataSource.ConfluencePageConfiguration" = ...,
+            SpaceConfiguration: "DataSource.ConfluenceSpaceConfiguration" = ...,
+            VpcConfiguration: "DataSource.DataSourceVpcConfiguration" = ...
+        ): ...
+    class ConfluencePageConfiguration:
+        def __init__(
+            self,
+            *,
+            PageFieldMappings: "DataSource.ConfluencePageFieldMappingsList" = ...
+        ): ...
+    class ConfluencePageFieldMappingsList:
+        def __init__(
+            self,
+            *,
+            ConfluencePageFieldMappingsList: List[
+                "DataSource.ConfluencePageToIndexFieldMapping"
+            ] = ...
+        ): ...
+    class ConfluencePageToIndexFieldMapping:
+        def __init__(
+            self,
+            *,
+            DataSourceFieldName: str,
+            IndexFieldName: str,
+            DateFieldFormat: str = ...
+        ): ...
+    class ConfluenceSpaceConfiguration:
+        def __init__(
+            self,
+            *,
+            CrawlArchivedSpaces: bool = ...,
+            CrawlPersonalSpaces: bool = ...,
+            ExcludeSpaces: "DataSource.ConfluenceSpaceList" = ...,
+            IncludeSpaces: "DataSource.ConfluenceSpaceList" = ...,
+            SpaceFieldMappings: "DataSource.ConfluenceSpaceFieldMappingsList" = ...
+        ): ...
+    class ConfluenceSpaceFieldMappingsList:
+        def __init__(
+            self,
+            *,
+            ConfluenceSpaceFieldMappingsList: List[
+                "DataSource.ConfluenceSpaceToIndexFieldMapping"
+            ] = ...
+        ): ...
+    class ConfluenceSpaceList:
+        def __init__(self, *, ConfluenceSpaceList: List[str] = ...): ...
+    class ConfluenceSpaceToIndexFieldMapping:
+        def __init__(
+            self,
+            *,
+            DataSourceFieldName: str,
+            IndexFieldName: str,
+            DateFieldFormat: str = ...
+        ): ...
     class ConnectionConfiguration:
         def __init__(
             self,
@@ -71,6 +181,7 @@ class DataSource:
         def __init__(
             self,
             *,
+            ConfluenceConfiguration: "DataSource.ConfluenceConfiguration" = ...,
             DatabaseConfiguration: "DataSource.DatabaseConfiguration" = ...,
             OneDriveConfiguration: "DataSource.OneDriveConfiguration" = ...,
             S3Configuration: "DataSource.S3DataSourceConfiguration" = ...,
@@ -120,6 +231,7 @@ class DataSource:
             OneDriveUsers: "DataSource.OneDriveUsers",
             SecretArn: str,
             TenantDomain: str,
+            DisableLocalGroups: bool = ...,
             ExclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
             FieldMappings: "DataSource.DataSourceToIndexFieldMappingList" = ...,
             InclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...
@@ -272,6 +384,7 @@ class DataSource:
             SharePointVersion: str,
             Urls: List[str],
             CrawlAttachments: bool = ...,
+            DisableLocalGroups: bool = ...,
             DocumentTitleFieldName: str = ...,
             ExclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
             FieldMappings: "DataSource.DataSourceToIndexFieldMappingList" = ...,
@@ -332,7 +445,9 @@ class Index:
         DocumentMetadataConfigurations: "Index.DocumentMetadataConfigurationList" = ...,
         ServerSideEncryptionConfiguration: "Index.ServerSideEncryptionConfiguration" = ...,
         Tags: "Index.TagList" = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        UserContextPolicy: str = ...,
+        UserTokenConfigurations: "Index.UserTokenConfigurationList" = ...
     ): ...
     class CapacityUnitsConfiguration:
         def __init__(self, *, QueryCapacityUnits: int, StorageCapacityUnits: int): ...
@@ -352,6 +467,22 @@ class Index:
             DocumentMetadataConfigurationList: List[
                 "Index.DocumentMetadataConfiguration"
             ] = ...
+        ): ...
+    class JsonTokenTypeConfiguration:
+        def __init__(
+            self, *, GroupAttributeField: str, UserNameAttributeField: str
+        ): ...
+    class JwtTokenTypeConfiguration:
+        def __init__(
+            self,
+            *,
+            KeyLocation: str,
+            ClaimRegex: str = ...,
+            GroupAttributeField: str = ...,
+            Issuer: str = ...,
+            SecretManagerArn: str = ...,
+            URL: str = ...,
+            UserNameAttributeField: str = ...
         ): ...
     class Relevance:
         def __init__(
@@ -376,6 +507,19 @@ class Index:
         def __init__(self, *, KmsKeyId: str = ...): ...
     class TagList:
         def __init__(self, *, TagList: List["Tag"] = ...): ...
+    class UserTokenConfiguration:
+        def __init__(
+            self,
+            *,
+            JsonTokenTypeConfiguration: "Index.JsonTokenTypeConfiguration" = ...,
+            JwtTokenTypeConfiguration: "Index.JwtTokenTypeConfiguration" = ...
+        ): ...
+    class UserTokenConfigurationList:
+        def __init__(
+            self,
+            *,
+            UserTokenConfigurationList: List["Index.UserTokenConfiguration"] = ...
+        ): ...
     class ValueImportanceItem:
         def __init__(self, *, Key: str = ..., Value: int = ...): ...
     class ValueImportanceItems:

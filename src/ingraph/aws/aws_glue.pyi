@@ -76,8 +76,8 @@ class Connection:
         def __init__(
             self,
             *,
-            ConnectionProperties: Any,
             ConnectionType: str,
+            ConnectionProperties: Any = ...,
             Description: str = ...,
             MatchCriteria: List[str] = ...,
             Name: str = ...,
@@ -128,7 +128,13 @@ class Crawler:
             Path: str = ...
         ): ...
     class S3Target:
-        def __init__(self, *, Exclusions: List[str] = ..., Path: str = ...): ...
+        def __init__(
+            self,
+            *,
+            ConnectionName: str = ...,
+            Exclusions: List[str] = ...,
+            Path: str = ...
+        ): ...
     class Schedule:
         def __init__(self, *, ScheduleExpression: str = ...): ...
     class SchemaChangePolicy:
@@ -185,14 +191,27 @@ class Database:
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class DataLakePrincipal:
+        def __init__(self, *, DataLakePrincipalIdentifier: str = ...): ...
+    class DatabaseIdentifier:
+        def __init__(self, *, CatalogId: str = ..., DatabaseName: str = ...): ...
     class DatabaseInput:
         def __init__(
             self,
             *,
+            CreateTableDefaultPermissions: List["Database.PrincipalPrivileges"] = ...,
             Description: str = ...,
             LocationUri: str = ...,
             Name: str = ...,
-            Parameters: Any = ...
+            Parameters: Any = ...,
+            TargetDatabase: "Database.DatabaseIdentifier" = ...
+        ): ...
+    class PrincipalPrivileges:
+        def __init__(
+            self,
+            *,
+            Permissions: List[str] = ...,
+            Principal: "Database.DataLakePrincipal" = ...
         ): ...
 
 class DevEndpoint:
@@ -286,6 +305,7 @@ class MLTransform:
         NumberOfWorkers: int = ...,
         Tags: Any = ...,
         Timeout: int = ...,
+        TransformEncryption: "MLTransform.TransformEncryption" = ...,
         UpdateReplacePolicy: str = ...,
         WorkerType: str = ...
     ): ...
@@ -309,6 +329,15 @@ class MLTransform:
         ): ...
     class InputRecordTables:
         def __init__(self, *, GlueTables: List["MLTransform.GlueTables"] = ...): ...
+    class MLUserDataEncryption:
+        def __init__(self, *, MLUserDataEncryptionMode: str, KmsKeyId: str = ...): ...
+    class TransformEncryption:
+        def __init__(
+            self,
+            *,
+            MLUserDataEncryption: "MLTransform.MLUserDataEncryption" = ...,
+            TaskRunSecurityConfigurationName: str = ...
+        ): ...
     class TransformParameters:
         def __init__(
             self,
@@ -377,6 +406,90 @@ class Partition:
             SortColumns: List["Partition.Order"] = ...,
             StoredAsSubDirectories: bool = ...
         ): ...
+
+class Registry:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-registry.html"""
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Name: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
+class Schema:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-schema.html"""
+
+    Arn: Final[str]
+
+    InitialSchemaVersionId: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Compatibility: str,
+        DataFormat: str,
+        Name: str,
+        SchemaDefinition: str,
+        CheckpointVersion: "Schema.SchemaVersion" = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        Registry: "Schema.Registry" = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Registry:
+        def __init__(self, *, Arn: str = ..., Name: str = ...): ...
+    class SchemaVersion:
+        def __init__(self, *, IsLatest: bool = ..., VersionNumber: int = ...): ...
+
+class SchemaVersion:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-schemaversion.html"""
+
+    VersionId: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Schema: "SchemaVersion.Schema",
+        SchemaDefinition: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Schema:
+        def __init__(
+            self,
+            *,
+            RegistryName: str = ...,
+            SchemaArn: str = ...,
+            SchemaName: str = ...
+        ): ...
+
+class SchemaVersionMetadata:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-schemaversionmetadata.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Key: str,
+        SchemaVersionId: str,
+        Value: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
 
 class SecurityConfiguration:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-securityconfiguration.html"""
@@ -463,6 +576,10 @@ class Table:
             SortColumns: List["Table.Order"] = ...,
             StoredAsSubDirectories: bool = ...
         ): ...
+    class TableIdentifier:
+        def __init__(
+            self, *, CatalogId: str = ..., DatabaseName: str = ..., Name: str = ...
+        ): ...
     class TableInput:
         def __init__(
             self,
@@ -475,6 +592,7 @@ class Table:
             Retention: int = ...,
             StorageDescriptor: "Table.StorageDescriptor" = ...,
             TableType: str = ...,
+            TargetTable: "Table.TableIdentifier" = ...,
             ViewExpandedText: str = ...,
             ViewOriginalText: str = ...
         ): ...

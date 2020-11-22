@@ -358,3 +358,23 @@ class TopicRule:
             Description: str = ...,
             ErrorAction: "TopicRule.Action" = ...
         ): ...
+
+class TopicRuleDestination:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-topicruledestination.html"""
+
+    Arn: Final[str]
+
+    StatusReason: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        HttpUrlProperties: "TopicRuleDestination.HttpUrlDestinationSummary" = ...,
+        Status: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class HttpUrlDestinationSummary:
+        def __init__(self, *, ConfirmationUrl: str = ...): ...

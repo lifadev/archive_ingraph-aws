@@ -374,3 +374,88 @@ class BucketPolicy:
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+
+class StorageLens:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-storagelens.html"""
+
+    StorageLensArn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        StorageLensConfiguration: "StorageLens.StorageLensConfiguration",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AccountLevel:
+        def __init__(
+            self,
+            *,
+            BucketLevel: "StorageLens.BucketLevel",
+            ActivityMetrics: "StorageLens.ActivityMetrics" = ...
+        ): ...
+    class ActivityMetrics:
+        def __init__(self, *, IsEnabled: bool = ...): ...
+    class AwsOrg:
+        def __init__(self, *, Arn: str): ...
+    class BucketLevel:
+        def __init__(
+            self,
+            *,
+            ActivityMetrics: "StorageLens.ActivityMetrics" = ...,
+            PrefixLevel: "StorageLens.PrefixLevel" = ...
+        ): ...
+    class BucketsAndRegions:
+        def __init__(self, *, Buckets: List[str] = ..., Regions: List[str] = ...): ...
+    class DataExport:
+        def __init__(
+            self, *, S3BucketDestination: "StorageLens.S3BucketDestination"
+        ): ...
+    class Encryption:
+        def __init__(self) -> None: ...
+    class PrefixLevel:
+        def __init__(
+            self, *, StorageMetrics: "StorageLens.PrefixLevelStorageMetrics"
+        ): ...
+    class PrefixLevelStorageMetrics:
+        def __init__(
+            self,
+            *,
+            IsEnabled: bool = ...,
+            SelectionCriteria: "StorageLens.SelectionCriteria" = ...
+        ): ...
+    class S3BucketDestination:
+        def __init__(
+            self,
+            *,
+            AccountId: str,
+            Arn: str,
+            Format: str,
+            OutputSchemaVersion: str,
+            Encryption: "StorageLens.Encryption" = ...,
+            Prefix: str = ...
+        ): ...
+    class SelectionCriteria:
+        def __init__(
+            self,
+            *,
+            Delimiter: str = ...,
+            MaxDepth: int = ...,
+            MinStorageBytesPercentage: float = ...
+        ): ...
+    class StorageLensConfiguration:
+        def __init__(
+            self,
+            *,
+            AccountLevel: "StorageLens.AccountLevel",
+            Id: str,
+            IsEnabled: bool,
+            AwsOrg: "StorageLens.AwsOrg" = ...,
+            DataExport: "StorageLens.DataExport" = ...,
+            Exclude: "StorageLens.BucketsAndRegions" = ...,
+            Include: "StorageLens.BucketsAndRegions" = ...,
+            StorageLensArn: str = ...
+        ): ...

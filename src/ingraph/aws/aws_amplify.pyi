@@ -38,6 +38,7 @@ class App:
         AutoBranchCreationConfig: "App.AutoBranchCreationConfig" = ...,
         BasicAuthConfig: "App.BasicAuthConfig" = ...,
         BuildSpec: str = ...,
+        CustomHeaders: str = ...,
         CustomRules: List["App.CustomRule"] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,

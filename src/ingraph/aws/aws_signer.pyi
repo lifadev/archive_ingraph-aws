@@ -16,42 +16,46 @@ from typing import Any, Dict, Final, List
 
 from . import Tag
 
-_NAMESPACE = "AWS::KMS"
+_NAMESPACE = "AWS::Signer"
 
-class Alias:
-    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-alias.html"""
+class ProfilePermission:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-signer-profilepermission.html"""
 
     Ref: Final[str]
     def __init__(
         self,
         *,
-        AliasName: str,
-        TargetKeyId: str,
+        Action: str,
+        Principal: str,
+        ProfileName: str,
+        StatementId: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        ProfileVersion: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 
-class Key:
-    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html"""
+class SigningProfile:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-signer-signingprofile.html"""
+
+    ProfileName: Final[str]
+
+    ProfileVersion: Final[str]
 
     Arn: Final[str]
 
-    KeyId: Final[str]
+    ProfileVersionArn: Final[str]
 
     Ref: Final[str]
     def __init__(
         self,
         *,
-        KeyPolicy: Any,
+        PlatformId: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Description: str = ...,
-        EnableKeyRotation: bool = ...,
-        Enabled: bool = ...,
-        KeySpec: str = ...,
-        KeyUsage: str = ...,
-        PendingWindowInDays: int = ...,
+        SignatureValidityPeriod: "SigningProfile.SignatureValidityPeriod" = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class SignatureValidityPeriod:
+        def __init__(self, *, Type: str = ..., Value: int = ...): ...

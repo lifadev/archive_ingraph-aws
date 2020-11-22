@@ -101,6 +101,7 @@ class Nodegroup:
         NodeRole: str,
         Subnets: List[str],
         AmiType: str = ...,
+        CapacityType: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         DiskSize: float = ...,

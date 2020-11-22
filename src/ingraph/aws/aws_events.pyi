@@ -65,13 +65,14 @@ class EventBusPolicy:
     def __init__(
         self,
         *,
-        Action: str,
-        Principal: str,
         StatementId: str,
+        Action: str = ...,
         Condition: "EventBusPolicy.Condition" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EventBusName: str = ...,
+        Principal: str = ...,
+        Statement: Any = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class Condition:

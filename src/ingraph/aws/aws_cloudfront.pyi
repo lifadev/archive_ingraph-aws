@@ -118,6 +118,7 @@ class Distribution:
             OriginRequestPolicyId: str = ...,
             RealtimeLogConfigArn: str = ...,
             SmoothStreaming: bool = ...,
+            TrustedKeyGroups: List[str] = ...,
             TrustedSigners: List[str] = ...
         ): ...
     class Cookies:
@@ -163,6 +164,7 @@ class Distribution:
             OriginRequestPolicyId: str = ...,
             RealtimeLogConfigArn: str = ...,
             SmoothStreaming: bool = ...,
+            TrustedKeyGroups: List[str] = ...,
             TrustedSigners: List[str] = ...
         ): ...
     class DistributionConfig:
@@ -264,6 +266,25 @@ class Distribution:
             SslSupportMethod: str = ...
         ): ...
 
+class KeyGroup:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-keygroup.html"""
+
+    Id: Final[str]
+
+    LastModifiedTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        KeyGroupConfig: "KeyGroup.KeyGroupConfig",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class KeyGroupConfig:
+        def __init__(self, *, Items: List[str], Name: str, Comment: str = ...): ...
+
 class OriginRequestPolicy:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-originrequestpolicy.html"""
 
@@ -297,6 +318,32 @@ class OriginRequestPolicy:
     class QueryStringsConfig:
         def __init__(
             self, *, QueryStringBehavior: str, QueryStrings: List[str] = ...
+        ): ...
+
+class PublicKey:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-publickey.html"""
+
+    CreatedTime: Final[str]
+
+    Id: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        PublicKeyConfig: "PublicKey.PublicKeyConfig",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class PublicKeyConfig:
+        def __init__(
+            self,
+            *,
+            CallerReference: str,
+            EncodedKey: str,
+            Name: str,
+            Comment: str = ...
         ): ...
 
 class RealtimeLogConfig:

@@ -156,6 +156,7 @@ class Function:
         Handler: str,
         Role: str,
         Runtime: str,
+        CodeSigningConfigArn: str = ...,
         DeadLetterConfig: "Function.DeadLetterConfig" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,

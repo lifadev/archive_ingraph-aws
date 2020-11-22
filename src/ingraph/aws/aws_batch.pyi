@@ -39,23 +39,26 @@ class ComputeEnvironment:
         def __init__(
             self,
             *,
-            InstanceRole: str,
-            InstanceTypes: List[str],
             MaxvCpus: int,
-            MinvCpus: int,
             Subnets: List[str],
             Type: str,
             AllocationStrategy: str = ...,
             BidPercentage: int = ...,
             DesiredvCpus: int = ...,
+            Ec2Configuration: List["ComputeEnvironment.Ec2ConfigurationObject"] = ...,
             Ec2KeyPair: str = ...,
             ImageId: str = ...,
+            InstanceRole: str = ...,
+            InstanceTypes: List[str] = ...,
             LaunchTemplate: "ComputeEnvironment.LaunchTemplateSpecification" = ...,
+            MinvCpus: int = ...,
             PlacementGroup: str = ...,
             SecurityGroupIds: List[str] = ...,
             SpotIamFleetRole: str = ...,
             Tags: Any = ...
         ): ...
+    class Ec2ConfigurationObject:
+        def __init__(self, *, ImageType: str, ImageIdOverride: str = ...): ...
     class LaunchTemplateSpecification:
         def __init__(
             self,
@@ -79,6 +82,7 @@ class JobDefinition:
         JobDefinitionName: str = ...,
         NodeProperties: "JobDefinition.NodeProperties" = ...,
         Parameters: Any = ...,
+        PlatformCapabilities: List[str] = ...,
         RetryStrategy: "JobDefinition.RetryStrategy" = ...,
         Tags: Any = ...,
         Timeout: "JobDefinition.Timeout" = ...,
@@ -92,12 +96,14 @@ class JobDefinition:
             Command: List[str] = ...,
             Environment: List["JobDefinition.Environment"] = ...,
             ExecutionRoleArn: str = ...,
+            FargatePlatformConfiguration: "JobDefinition.FargatePlatformConfiguration" = ...,
             InstanceType: str = ...,
             JobRoleArn: str = ...,
             LinuxParameters: "JobDefinition.LinuxParameters" = ...,
             LogConfiguration: "JobDefinition.LogConfiguration" = ...,
             Memory: int = ...,
             MountPoints: List["JobDefinition.MountPoints"] = ...,
+            NetworkConfiguration: "JobDefinition.NetworkConfiguration" = ...,
             Privileged: bool = ...,
             ReadonlyRootFilesystem: bool = ...,
             ResourceRequirements: List["JobDefinition.ResourceRequirement"] = ...,
@@ -126,6 +132,8 @@ class JobDefinition:
             OnReason: str = ...,
             OnStatusReason: str = ...
         ): ...
+    class FargatePlatformConfiguration:
+        def __init__(self, *, PlatformVersion: str = ...): ...
     class LinuxParameters:
         def __init__(
             self,
@@ -153,6 +161,8 @@ class JobDefinition:
             ReadOnly: bool = ...,
             SourceVolume: str = ...
         ): ...
+    class NetworkConfiguration:
+        def __init__(self, *, AssignPublicIp: str = ...): ...
     class NodeProperties:
         def __init__(
             self,

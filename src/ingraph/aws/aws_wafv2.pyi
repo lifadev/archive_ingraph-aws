@@ -75,6 +75,7 @@ class RuleGroup:
         Capacity: int,
         Scope: str,
         VisibilityConfig: "RuleGroup.VisibilityConfig",
+        CustomResponseBodies: "RuleGroup.CustomResponseBodies" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
@@ -97,6 +98,8 @@ class RuleGroup:
             SearchString: str = ...,
             SearchStringBase64: str = ...
         ): ...
+    class CustomResponseBodies:
+        def __init__(self) -> None: ...
     class FieldToMatch:
         def __init__(
             self,
@@ -269,6 +272,7 @@ class WebACL:
         DefaultAction: "WebACL.DefaultAction",
         Scope: str,
         VisibilityConfig: "WebACL.VisibilityConfig",
+        CustomResponseBodies: "WebACL.CustomResponseBodies" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
@@ -277,10 +281,16 @@ class WebACL:
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class AllowAction:
+        def __init__(
+            self, *, CustomRequestHandling: "WebACL.CustomRequestHandling" = ...
+        ): ...
     class AndStatementOne:
         def __init__(self, *, Statements: List["WebACL.StatementTwo"]): ...
     class AndStatementTwo:
         def __init__(self, *, Statements: List["WebACL.StatementThree"]): ...
+    class BlockAction:
+        def __init__(self, *, CustomResponse: "WebACL.CustomResponse" = ...): ...
     class ByteMatchStatement:
         def __init__(
             self,
@@ -291,6 +301,24 @@ class WebACL:
             SearchString: str = ...,
             SearchStringBase64: str = ...
         ): ...
+    class CountAction:
+        def __init__(
+            self, *, CustomRequestHandling: "WebACL.CustomRequestHandling" = ...
+        ): ...
+    class CustomHTTPHeader:
+        def __init__(self, *, Name: str, Value: str): ...
+    class CustomRequestHandling:
+        def __init__(self, *, InsertHeaders: List["WebACL.CustomHTTPHeader"]): ...
+    class CustomResponse:
+        def __init__(
+            self,
+            *,
+            ResponseCode: int,
+            CustomResponseBodyKey: str = ...,
+            ResponseHeaders: List["WebACL.CustomHTTPHeader"] = ...
+        ): ...
+    class CustomResponseBodies:
+        def __init__(self) -> None: ...
     class DefaultAction:
         def __init__(self, *, Allow: Any = ..., Block: Any = ...): ...
     class ExcludedRule:

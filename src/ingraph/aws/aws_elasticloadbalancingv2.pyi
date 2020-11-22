@@ -21,9 +21,9 @@ _NAMESPACE = "AWS::ElasticLoadBalancingV2"
 class Listener:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listener.html"""
 
-    Ref: Final[str]
-
     ListenerArn: Final[str]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,
