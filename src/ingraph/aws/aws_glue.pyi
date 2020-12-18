@@ -191,27 +191,17 @@ class Database:
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
-    class DataLakePrincipal:
-        def __init__(self, *, DataLakePrincipalIdentifier: str = ...): ...
     class DatabaseIdentifier:
         def __init__(self, *, CatalogId: str = ..., DatabaseName: str = ...): ...
     class DatabaseInput:
         def __init__(
             self,
             *,
-            CreateTableDefaultPermissions: List["Database.PrincipalPrivileges"] = ...,
             Description: str = ...,
             LocationUri: str = ...,
             Name: str = ...,
             Parameters: Any = ...,
             TargetDatabase: "Database.DatabaseIdentifier" = ...
-        ): ...
-    class PrincipalPrivileges:
-        def __init__(
-            self,
-            *,
-            Permissions: List[str] = ...,
-            Principal: "Database.DataLakePrincipal" = ...
         ): ...
 
 class DevEndpoint:
@@ -373,6 +363,22 @@ class Partition:
             Parameters: Any = ...,
             StorageDescriptor: "Partition.StorageDescriptor" = ...
         ): ...
+    class SchemaId:
+        def __init__(
+            self,
+            *,
+            RegistryName: str = ...,
+            SchemaArn: str = ...,
+            SchemaName: str = ...
+        ): ...
+    class SchemaReference:
+        def __init__(
+            self,
+            *,
+            SchameVersionId: str = ...,
+            SchemaId: "Partition.SchemaId" = ...,
+            SchemaVersionNumber: int = ...
+        ): ...
     class SerdeInfo:
         def __init__(
             self,
@@ -401,6 +407,7 @@ class Partition:
             NumberOfBuckets: int = ...,
             OutputFormat: str = ...,
             Parameters: Any = ...,
+            SchemaReference: "Partition.SchemaReference" = ...,
             SerdeInfo: "Partition.SerdeInfo" = ...,
             SkewedInfo: "Partition.SkewedInfo" = ...,
             SortColumns: List["Partition.Order"] = ...,
@@ -543,6 +550,22 @@ class Table:
         def __init__(self, *, Name: str, Comment: str = ..., Type: str = ...): ...
     class Order:
         def __init__(self, *, Column: str, SortOrder: int): ...
+    class SchemaId:
+        def __init__(
+            self,
+            *,
+            RegistryName: str = ...,
+            SchemaArn: str = ...,
+            SchemaName: str = ...
+        ): ...
+    class SchemaReference:
+        def __init__(
+            self,
+            *,
+            SchameVersionId: str = ...,
+            SchemaId: "Table.SchemaId" = ...,
+            SchemaVersionNumber: int = ...
+        ): ...
     class SerdeInfo:
         def __init__(
             self,
@@ -571,6 +594,7 @@ class Table:
             NumberOfBuckets: int = ...,
             OutputFormat: str = ...,
             Parameters: Any = ...,
+            SchemaReference: "Table.SchemaReference" = ...,
             SerdeInfo: "Table.SerdeInfo" = ...,
             SkewedInfo: "Table.SkewedInfo" = ...,
             SortColumns: List["Table.Order"] = ...,

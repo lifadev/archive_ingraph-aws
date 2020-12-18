@@ -16,45 +16,46 @@ from typing import Any, Dict, Final, List
 
 from . import Tag
 
-_NAMESPACE = "AWS::ECR"
+_NAMESPACE = "AWS::DevOpsGuru"
 
-class PublicRepository:
-    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-publicrepository.html"""
+class NotificationChannel:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsguru-notificationchannel.html"""
 
-    Arn: Final[str]
-
-    Ref: Final[str]
-    def __init__(
-        self,
-        *,
-        DeletionPolicy: str = ...,
-        DependsOn: List[Any] = ...,
-        RepositoryCatalogData: Any = ...,
-        RepositoryName: str = ...,
-        RepositoryPolicyText: Any = ...,
-        UpdateReplacePolicy: str = ...
-    ): ...
-
-class Repository:
-    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecr-repository.html"""
-
-    Arn: Final[str]
+    Id: Final[str]
 
     Ref: Final[str]
     def __init__(
         self,
         *,
+        Config: "NotificationChannel.NotificationChannelConfig",
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        ImageScanningConfiguration: Any = ...,
-        ImageTagMutability: str = ...,
-        LifecyclePolicy: "Repository.LifecyclePolicy" = ...,
-        RepositoryName: str = ...,
-        RepositoryPolicyText: Any = ...,
-        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
-    class LifecyclePolicy:
+    class NotificationChannelConfig:
+        def __init__(self, *, Sns: "NotificationChannel.SnsChannelConfig" = ...): ...
+    class SnsChannelConfig:
+        def __init__(self, *, TopicArn: str = ...): ...
+
+class ResourceCollection:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-devopsguru-resourcecollection.html"""
+
+    ResourceCollectionType: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ResourceCollectionFilter: "ResourceCollection.ResourceCollectionFilter",
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class CloudFormationCollectionFilter:
+        def __init__(self, *, StackNames: List[str] = ...): ...
+    class ResourceCollectionFilter:
         def __init__(
-            self, *, LifecyclePolicyText: str = ..., RegistryId: str = ...
+            self,
+            *,
+            CloudFormation: "ResourceCollection.CloudFormationCollectionFilter" = ...
         ): ...

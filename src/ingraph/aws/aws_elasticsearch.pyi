@@ -70,7 +70,13 @@ class Domain:
         ): ...
     class DomainEndpointOptions:
         def __init__(
-            self, *, EnforceHTTPS: bool = ..., TLSSecurityPolicy: str = ...
+            self,
+            *,
+            CustomEndpoint: str = ...,
+            CustomEndpointCertificateArn: str = ...,
+            CustomEndpointEnabled: bool = ...,
+            EnforceHTTPS: bool = ...,
+            TLSSecurityPolicy: str = ...
         ): ...
     class EBSOptions:
         def __init__(

@@ -446,6 +446,7 @@ class Instance:
         ElasticInferenceAccelerators: List[
             "Instance.ElasticInferenceAccelerator"
         ] = ...,
+        EnclaveOptions: "Instance.EnclaveOptions" = ...,
         HibernationOptions: "Instance.HibernationOptions" = ...,
         HostId: str = ...,
         HostResourceGroupArn: str = ...,
@@ -508,6 +509,8 @@ class Instance:
         def __init__(self, *, Type: str): ...
     class ElasticInferenceAccelerator:
         def __init__(self, *, Type: str, Count: int = ...): ...
+    class EnclaveOptions:
+        def __init__(self, *, Enabled: bool = ...): ...
     class HibernationOptions:
         def __init__(self, *, Configured: bool = ...): ...
     class InstanceIpv6Address:
@@ -621,6 +624,7 @@ class LaunchTemplate:
             Iops: int = ...,
             KmsKeyId: str = ...,
             SnapshotId: str = ...,
+            Throughput: int = ...,
             VolumeSize: int = ...,
             VolumeType: str = ...
         ): ...
@@ -834,6 +838,197 @@ class NetworkAclEntry:
         def __init__(self, *, Code: int = ..., Type: int = ...): ...
     class PortRange:
         def __init__(self, *, From: int = ..., To: int = ...): ...
+
+class NetworkInsightsAnalysis:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightsanalysis.html"""
+
+    NetworkInsightsAnalysisId: Final[str]
+
+    NetworkInsightsAnalysisArn: Final[str]
+
+    StartDate: Final[str]
+
+    Status: Final[str]
+
+    NetworkPathFound: Final[bool]
+
+    ForwardPathComponents: Final[List]
+
+    ReturnPathComponents: Final[List]
+
+    Explanations: Final[List]
+
+    AlternatePathHints: Final[List]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        NetworkInsightsPathId: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        FilterInArns: List[str] = ...,
+        StatusMessage: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class AlternatePathHint:
+        def __init__(self, *, ComponentArn: str = ..., ComponentId: str = ...): ...
+    class AnalysisAclRule:
+        def __init__(
+            self,
+            *,
+            Cidr: str = ...,
+            Egress: bool = ...,
+            PortRange: "NetworkInsightsAnalysis.PortRange" = ...,
+            Protocol: str = ...,
+            RuleAction: str = ...,
+            RuleNumber: int = ...
+        ): ...
+    class AnalysisComponent:
+        def __init__(self, *, Arn: str = ..., Id: str = ...): ...
+    class AnalysisLoadBalancerListener:
+        def __init__(self, *, InstancePort: int = ..., LoadBalancerPort: int = ...): ...
+    class AnalysisLoadBalancerTarget:
+        def __init__(
+            self,
+            *,
+            Address: str = ...,
+            AvailabilityZone: str = ...,
+            Instance: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Port: int = ...
+        ): ...
+    class AnalysisPacketHeader:
+        def __init__(
+            self,
+            *,
+            DestinationAddresses: List[str] = ...,
+            DestinationPortRanges: List["NetworkInsightsAnalysis.PortRange"] = ...,
+            Protocol: str = ...,
+            SourceAddresses: List[str] = ...,
+            SourcePortRanges: List["NetworkInsightsAnalysis.PortRange"] = ...
+        ): ...
+    class AnalysisRouteTableRoute:
+        def __init__(
+            self,
+            *,
+            NatGatewayId: str = ...,
+            NetworkInterfaceId: str = ...,
+            Origin: str = ...,
+            TransitGatewayId: str = ...,
+            VpcPeeringConnectionId: str = ...,
+            destinationCidr: str = ...,
+            destinationPrefixListId: str = ...,
+            egressOnlyInternetGatewayId: str = ...,
+            gatewayId: str = ...,
+            instanceId: str = ...
+        ): ...
+    class AnalysisSecurityGroupRule:
+        def __init__(
+            self,
+            *,
+            Cidr: str = ...,
+            Direction: str = ...,
+            PortRange: "NetworkInsightsAnalysis.PortRange" = ...,
+            PrefixListId: str = ...,
+            Protocol: str = ...,
+            SecurityGroupId: str = ...
+        ): ...
+    class Explanation:
+        def __init__(
+            self,
+            *,
+            Acl: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            AclRule: "NetworkInsightsAnalysis.AnalysisAclRule" = ...,
+            Address: str = ...,
+            Addresses: List[str] = ...,
+            AttachedTo: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            AvailabilityZones: List[str] = ...,
+            Cidrs: List[str] = ...,
+            ClassicLoadBalancerListener: "NetworkInsightsAnalysis.AnalysisLoadBalancerListener" = ...,
+            Component: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            CustomerGateway: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Destination: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            DestinationVpc: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Direction: str = ...,
+            ElasticLoadBalancerListener: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            ExplanationCode: str = ...,
+            IngressRouteTable: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            InternetGateway: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            LoadBalancerArn: str = ...,
+            LoadBalancerListenerPort: int = ...,
+            LoadBalancerTarget: "NetworkInsightsAnalysis.AnalysisLoadBalancerTarget" = ...,
+            LoadBalancerTargetGroup: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            LoadBalancerTargetGroups: List[
+                "NetworkInsightsAnalysis.AnalysisComponent"
+            ] = ...,
+            LoadBalancerTargetPort: int = ...,
+            MissingComponent: str = ...,
+            NatGateway: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            NetworkInterface: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            PacketField: str = ...,
+            Port: int = ...,
+            PortRanges: List["NetworkInsightsAnalysis.PortRange"] = ...,
+            PrefixList: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Protocols: List[str] = ...,
+            RouteTable: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            RouteTableRoute: "NetworkInsightsAnalysis.AnalysisRouteTableRoute" = ...,
+            SecurityGroup: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            SecurityGroupRule: "NetworkInsightsAnalysis.AnalysisSecurityGroupRule" = ...,
+            SecurityGroups: List["NetworkInsightsAnalysis.AnalysisComponent"] = ...,
+            SourceVpc: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            State: str = ...,
+            Subnet: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            SubnetRouteTable: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Vpc: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            VpcPeeringConnection: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            VpnConnection: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            VpnGateway: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            vpcEndpoint: "NetworkInsightsAnalysis.AnalysisComponent" = ...
+        ): ...
+    class PathComponent:
+        def __init__(
+            self,
+            *,
+            AclRule: "NetworkInsightsAnalysis.AnalysisAclRule" = ...,
+            Component: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            DestinationVpc: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            InboundHeader: "NetworkInsightsAnalysis.AnalysisPacketHeader" = ...,
+            OutboundHeader: "NetworkInsightsAnalysis.AnalysisPacketHeader" = ...,
+            RouteTableRoute: "NetworkInsightsAnalysis.AnalysisRouteTableRoute" = ...,
+            SecurityGroupRule: "NetworkInsightsAnalysis.AnalysisSecurityGroupRule" = ...,
+            SequenceNumber: int = ...,
+            SourceVpc: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Subnet: "NetworkInsightsAnalysis.AnalysisComponent" = ...,
+            Vpc: "NetworkInsightsAnalysis.AnalysisComponent" = ...
+        ): ...
+    class PortRange:
+        def __init__(self, *, From: int = ..., To: int = ...): ...
+
+class NetworkInsightsPath:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinsightspath.html"""
+
+    NetworkInsightsPathId: Final[str]
+
+    NetworkInsightsPathArn: Final[str]
+
+    CreatedDate: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Destination: str,
+        Protocol: str,
+        Source: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        DestinationIp: str = ...,
+        DestinationPort: int = ...,
+        SourceIp: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
 
 class NetworkInterface:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-interface.html"""
@@ -1154,6 +1349,7 @@ class SpotFleet:
             *,
             AvailabilityZone: str = ...,
             InstanceType: str = ...,
+            Priority: float = ...,
             SpotPrice: str = ...,
             SubnetId: str = ...,
             WeightedCapacity: float = ...
@@ -1167,6 +1363,8 @@ class SpotFleet:
         ): ...
     class PrivateIpAddressSpecification:
         def __init__(self, *, PrivateIpAddress: str, Primary: bool = ...): ...
+    class SpotCapacityRebalance:
+        def __init__(self, *, ReplacementStrategy: str = ...): ...
     class SpotFleetLaunchSpecification:
         def __init__(
             self,
@@ -1202,10 +1400,16 @@ class SpotFleet:
             AllocationStrategy: str = ...,
             ExcessCapacityTerminationPolicy: str = ...,
             InstanceInterruptionBehavior: str = ...,
+            InstancePoolsToUseCount: int = ...,
             LaunchSpecifications: List["SpotFleet.SpotFleetLaunchSpecification"] = ...,
             LaunchTemplateConfigs: List["SpotFleet.LaunchTemplateConfig"] = ...,
             LoadBalancersConfig: "SpotFleet.LoadBalancersConfig" = ...,
+            OnDemandAllocationStrategy: str = ...,
+            OnDemandMaxTotalPrice: str = ...,
+            OnDemandTargetCapacity: int = ...,
             ReplaceUnhealthyInstances: bool = ...,
+            SpotMaintenanceStrategies: "SpotFleet.SpotMaintenanceStrategies" = ...,
+            SpotMaxTotalPrice: str = ...,
             SpotPrice: str = ...,
             TerminateInstancesWithExpiration: bool = ...,
             Type: str = ...,
@@ -1214,6 +1418,10 @@ class SpotFleet:
         ): ...
     class SpotFleetTagSpecification:
         def __init__(self, *, ResourceType: str = ..., Tags: List["Tag"] = ...): ...
+    class SpotMaintenanceStrategies:
+        def __init__(
+            self, *, CapacityRebalance: "SpotFleet.SpotCapacityRebalance" = ...
+        ): ...
     class SpotPlacement:
         def __init__(
             self,
@@ -1717,6 +1925,7 @@ class Volume:
         Size: int = ...,
         SnapshotId: str = ...,
         Tags: List["Tag"] = ...,
+        Throughput: int = ...,
         UpdateReplacePolicy: str = ...,
         VolumeType: str = ...
     ): ...

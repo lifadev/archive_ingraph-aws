@@ -83,6 +83,7 @@ class JobDefinition:
         NodeProperties: "JobDefinition.NodeProperties" = ...,
         Parameters: Any = ...,
         PlatformCapabilities: List[str] = ...,
+        PropagateTags: bool = ...,
         RetryStrategy: "JobDefinition.RetryStrategy" = ...,
         Tags: Any = ...,
         Timeout: "JobDefinition.Timeout" = ...,

@@ -72,11 +72,16 @@ class Application:
             *,
             AlarmMetrics: List["Application.AlarmMetric"] = ...,
             Alarms: List["Application.Alarm"] = ...,
+            JMXPrometheusExporter: "Application.JMXPrometheusExporter" = ...,
             Logs: List["Application.Log"] = ...,
             WindowsEvents: List["Application.WindowsEvent"] = ...
         ): ...
     class CustomComponent:
         def __init__(self, *, ComponentName: str, ResourceList: List[str]): ...
+    class JMXPrometheusExporter:
+        def __init__(
+            self, *, HostPort: str = ..., JMXURL: str = ..., PrometheusPort: str = ...
+        ): ...
     class Log:
         def __init__(
             self,

@@ -33,6 +33,7 @@ class LifecyclePolicy:
         ExecutionRoleArn: str = ...,
         PolicyDetails: "LifecyclePolicy.PolicyDetails" = ...,
         State: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class Action:

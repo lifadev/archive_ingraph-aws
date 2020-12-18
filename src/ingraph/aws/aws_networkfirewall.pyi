@@ -41,13 +41,11 @@ class Firewall:
         Description: str = ...,
         FirewallPolicyChangeProtection: bool = ...,
         SubnetChangeProtection: bool = ...,
-        Tags: "Firewall.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class SubnetMapping:
         def __init__(self, *, SubnetId: str): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
 
 class FirewallPolicy:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewallpolicy.html"""
@@ -65,7 +63,7 @@ class FirewallPolicy:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
-        Tags: "FirewallPolicy.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class ActionDefinition:
@@ -121,23 +119,19 @@ class FirewallPolicy:
                 "FirewallPolicy.StatelessRuleGroupReference"
             ] = ...
         ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
 
 class LoggingConfiguration:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-loggingconfiguration.html"""
-
-    FirewallName: Final[str]
-
-    FirewallArn: Final[str]
 
     Ref: Final[str]
     def __init__(
         self,
         *,
+        FirewallArn: str,
         LoggingConfiguration: "LoggingConfiguration.LoggingConfiguration_",
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        FirewallName: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class LogDestinationConfig:
@@ -166,6 +160,8 @@ class RuleGroup:
 
     RuleGroupArn: Final[str]
 
+    RuleGroupId: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
@@ -177,8 +173,7 @@ class RuleGroup:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         RuleGroup: "RuleGroup.RuleGroup_" = ...,
-        RuleGroupId: str = ...,
-        Tags: "RuleGroup.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class ActionDefinition:
@@ -305,8 +300,6 @@ class RuleGroup:
         ): ...
     class TCPFlags:
         def __init__(self, *, TCPFlags: List["RuleGroup.TCPFlagField"] = ...): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
     class TargetTypes:
         def __init__(self, *, TargetTypes: List[str] = ...): ...
     class VariableDefinitionList:

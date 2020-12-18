@@ -47,7 +47,7 @@ class Server:
             self,
             *,
             AddressAllocationIds: List[str] = ...,
-            SecurityGroupIds: List["Server.SecurityGroupId"] = ...,
+            SecurityGroupIds: List[str] = ...,
             SubnetIds: List[str] = ...,
             VpcEndpointId: str = ...,
             VpcId: str = ...
@@ -55,8 +55,6 @@ class Server:
     class IdentityProviderDetails:
         def __init__(self, *, InvocationRole: str, Url: str): ...
     class Protocol:
-        def __init__(self) -> None: ...
-    class SecurityGroupId:
         def __init__(self) -> None: ...
 
 class User:

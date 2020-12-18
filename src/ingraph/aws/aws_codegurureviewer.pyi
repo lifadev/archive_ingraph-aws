@@ -33,5 +33,6 @@ class RepositoryAssociation:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Owner: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...

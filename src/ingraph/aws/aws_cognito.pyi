@@ -142,6 +142,10 @@ class UserPool:
             InviteMessageTemplate: "UserPool.InviteMessageTemplate" = ...,
             UnusedAccountValidityDays: int = ...
         ): ...
+    class CustomEmailSender:
+        def __init__(self, *, LambdaArn: str = ..., LambdaVersion: str = ...): ...
+    class CustomSMSSender:
+        def __init__(self, *, LambdaArn: str = ..., LambdaVersion: str = ...): ...
     class DeviceConfiguration:
         def __init__(
             self,
@@ -172,8 +176,11 @@ class UserPool:
             self,
             *,
             CreateAuthChallenge: str = ...,
+            CustomEmailSender: "UserPool.CustomEmailSender" = ...,
             CustomMessage: str = ...,
+            CustomSMSSender: "UserPool.CustomSMSSender" = ...,
             DefineAuthChallenge: str = ...,
+            KMSKeyID: str = ...,
             PostAuthentication: str = ...,
             PostConfirmation: str = ...,
             PreAuthentication: str = ...,

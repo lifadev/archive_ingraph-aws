@@ -136,7 +136,8 @@ class ReplicationGroup:
         Tags: List["Tag"] = ...,
         TransitEncryptionEnabled: bool = ...,
         UpdatePolicy: "ReplicationGroup.UpdatePolicy" = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        UserGroupIds: List[str] = ...
     ): ...
     class NodeGroupConfiguration:
         def __init__(
@@ -193,3 +194,58 @@ class SubnetGroup:
         DependsOn: List[Any] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+
+class User:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-user.html"""
+
+    Status: Final[str]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Engine: str,
+        UserId: str,
+        UserName: str,
+        AccessString: str = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        NoPasswordRequired: bool = ...,
+        Passwords: "User.PasswordList" = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Authentication:
+        def __init__(self, *, PasswordCount: int = ..., Type: str = ...): ...
+    class PasswordList:
+        def __init__(self, *, PasswordList: List[str] = ...): ...
+    class UserGroupIdList:
+        def __init__(self, *, UserGroupIdList: List[str] = ...): ...
+
+class UserGroup:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-usergroup.html"""
+
+    Status: Final[str]
+
+    Arn: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Engine: str,
+        UserGroupId: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...,
+        UserIds: "UserGroup.UserIdList" = ...
+    ): ...
+    class ReplicationGroupIdList:
+        def __init__(self, *, ReplicationGroupIdList: List[str] = ...): ...
+    class UserGroupPendingChanges:
+        def __init__(
+            self, *, UserIdsToAdd: List[str] = ..., UserIdsToRemove: List[str] = ...
+        ): ...
+    class UserIdList:
+        def __init__(self, *, UserIdList: List[str] = ...): ...

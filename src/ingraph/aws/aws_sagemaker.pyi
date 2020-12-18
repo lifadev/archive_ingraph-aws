@@ -38,6 +38,146 @@ class CodeRepository:
             self, *, RepositoryUrl: str, Branch: str = ..., SecretArn: str = ...
         ): ...
 
+class DataQualityJobDefinition:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-dataqualityjobdefinition.html"""
+
+    JobDefinitionArn: Final[str]
+
+    CreationTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DataQualityAppSpecification: "DataQualityJobDefinition.DataQualityAppSpecification",
+        DataQualityJobInput: "DataQualityJobDefinition.DataQualityJobInput",
+        DataQualityJobOutputConfig: "DataQualityJobDefinition.MonitoringOutputConfig",
+        JobResources: "DataQualityJobDefinition.MonitoringResources",
+        RoleArn: str,
+        DataQualityBaselineConfig: "DataQualityJobDefinition.DataQualityBaselineConfig" = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        JobDefinitionName: str = ...,
+        NetworkConfig: "DataQualityJobDefinition.NetworkConfig" = ...,
+        StoppingCondition: "DataQualityJobDefinition.StoppingCondition" = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ClusterConfig:
+        def __init__(
+            self,
+            *,
+            InstanceCount: int,
+            InstanceType: str,
+            VolumeSizeInGB: int,
+            VolumeKmsKeyId: str = ...
+        ): ...
+    class ConstraintsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class DataQualityAppSpecification:
+        def __init__(
+            self,
+            *,
+            ImageUri: str,
+            ContainerArguments: List[str] = ...,
+            ContainerEntrypoint: List[str] = ...,
+            Environment: "DataQualityJobDefinition.Environment" = ...,
+            PostAnalyticsProcessorSourceUri: str = ...,
+            RecordPreprocessorSourceUri: str = ...
+        ): ...
+    class DataQualityBaselineConfig:
+        def __init__(
+            self,
+            *,
+            BaseliningJobName: str = ...,
+            ConstraintsResource: "DataQualityJobDefinition.ConstraintsResource" = ...,
+            StatisticsResource: "DataQualityJobDefinition.StatisticsResource" = ...
+        ): ...
+    class DataQualityJobInput:
+        def __init__(
+            self, *, EndpointInput: "DataQualityJobDefinition.EndpointInput"
+        ): ...
+    class EndpointInput:
+        def __init__(
+            self,
+            *,
+            EndpointName: str,
+            LocalPath: str,
+            S3DataDistributionType: str = ...,
+            S3InputMode: str = ...
+        ): ...
+    class Environment:
+        def __init__(self) -> None: ...
+    class MonitoringOutput:
+        def __init__(self, *, S3Output: "DataQualityJobDefinition.S3Output"): ...
+    class MonitoringOutputConfig:
+        def __init__(
+            self,
+            *,
+            MonitoringOutputs: List["DataQualityJobDefinition.MonitoringOutput"],
+            KmsKeyId: str = ...
+        ): ...
+    class MonitoringResources:
+        def __init__(
+            self, *, ClusterConfig: "DataQualityJobDefinition.ClusterConfig"
+        ): ...
+    class NetworkConfig:
+        def __init__(
+            self,
+            *,
+            EnableInterContainerTrafficEncryption: bool = ...,
+            EnableNetworkIsolation: bool = ...,
+            VpcConfig: "DataQualityJobDefinition.VpcConfig" = ...
+        ): ...
+    class S3Output:
+        def __init__(self, *, LocalPath: str, S3Uri: str, S3UploadMode: str = ...): ...
+    class StatisticsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class StoppingCondition:
+        def __init__(self, *, MaxRuntimeInSeconds: int): ...
+    class VpcConfig:
+        def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
+
+class Device:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-device.html"""
+
+    DeviceFleetName: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Device: "Device.Device_" = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class Device_:
+        def __init__(
+            self, *, DeviceName: str, Description: str = ..., IotThingName: str = ...
+        ): ...
+
+class DeviceFleet:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-devicefleet.html"""
+
+    DeviceFleetName: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        OutputConfig: "DeviceFleet.EdgeOutputConfig",
+        RoleArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class EdgeOutputConfig:
+        def __init__(self, *, S3OutputLocation: str, KmsKeyId: str = ...): ...
+
 class Endpoint:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-endpoint.html"""
 
@@ -50,12 +190,42 @@ class Endpoint:
         EndpointConfigName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        DeploymentConfig: "Endpoint.DeploymentConfig" = ...,
         EndpointName: str = ...,
         ExcludeRetainedVariantProperties: List["Endpoint.VariantProperty"] = ...,
         RetainAllVariantProperties: bool = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class Alarm:
+        def __init__(self, *, AlarmName: str): ...
+    class AutoRollbackConfig:
+        def __init__(self, *, Alarms: List["Endpoint.Alarm"]): ...
+    class BlueGreenUpdatePolicy:
+        def __init__(
+            self,
+            *,
+            TrafficRoutingConfiguration: "Endpoint.TrafficRoutingConfig",
+            MaximumExecutionTimeoutInSeconds: int = ...,
+            TerminationWaitInSeconds: int = ...
+        ): ...
+    class CapacitySize:
+        def __init__(self, *, Type: str, Value: int): ...
+    class DeploymentConfig:
+        def __init__(
+            self,
+            *,
+            BlueGreenUpdatePolicy: "Endpoint.BlueGreenUpdatePolicy",
+            AutoRollbackConfiguration: "Endpoint.AutoRollbackConfig" = ...
+        ): ...
+    class TrafficRoutingConfig:
+        def __init__(
+            self,
+            *,
+            Type: str,
+            CanarySize: "Endpoint.CapacitySize" = ...,
+            WaitIntervalInSeconds: int = ...
+        ): ...
     class VariantProperty:
         def __init__(self, *, VariantPropertyType: str = ...): ...
 
@@ -146,27 +316,362 @@ class Model:
     class VpcConfig:
         def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
 
+class ModelBiasJobDefinition:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-modelbiasjobdefinition.html"""
+
+    JobDefinitionArn: Final[str]
+
+    CreationTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        JobResources: "ModelBiasJobDefinition.MonitoringResources",
+        ModelBiasAppSpecification: "ModelBiasJobDefinition.ModelBiasAppSpecification",
+        ModelBiasJobInput: "ModelBiasJobDefinition.ModelBiasJobInput",
+        ModelBiasJobOutputConfig: "ModelBiasJobDefinition.MonitoringOutputConfig",
+        RoleArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        JobDefinitionName: str = ...,
+        ModelBiasBaselineConfig: "ModelBiasJobDefinition.ModelBiasBaselineConfig" = ...,
+        NetworkConfig: "ModelBiasJobDefinition.NetworkConfig" = ...,
+        StoppingCondition: "ModelBiasJobDefinition.StoppingCondition" = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ClusterConfig:
+        def __init__(
+            self,
+            *,
+            InstanceCount: int,
+            InstanceType: str,
+            VolumeSizeInGB: int,
+            VolumeKmsKeyId: str = ...
+        ): ...
+    class ConstraintsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class EndpointInput:
+        def __init__(
+            self,
+            *,
+            EndpointName: str,
+            LocalPath: str,
+            EndTimeOffset: str = ...,
+            FeaturesAttribute: str = ...,
+            InferenceAttribute: str = ...,
+            ProbabilityAttribute: str = ...,
+            ProbabilityThresholdAttribute: float = ...,
+            S3DataDistributionType: str = ...,
+            S3InputMode: str = ...,
+            StartTimeOffset: str = ...
+        ): ...
+    class Environment:
+        def __init__(self) -> None: ...
+    class ModelBiasAppSpecification:
+        def __init__(
+            self,
+            *,
+            ConfigUri: str,
+            ImageUri: str,
+            Environment: "ModelBiasJobDefinition.Environment" = ...
+        ): ...
+    class ModelBiasBaselineConfig:
+        def __init__(
+            self,
+            *,
+            BaseliningJobName: str = ...,
+            ConstraintsResource: "ModelBiasJobDefinition.ConstraintsResource" = ...
+        ): ...
+    class ModelBiasJobInput:
+        def __init__(
+            self,
+            *,
+            EndpointInput: "ModelBiasJobDefinition.EndpointInput",
+            GroundTruthS3Input: "ModelBiasJobDefinition.MonitoringGroundTruthS3Input"
+        ): ...
+    class MonitoringGroundTruthS3Input:
+        def __init__(self, *, S3Uri: str): ...
+    class MonitoringOutput:
+        def __init__(self, *, S3Output: "ModelBiasJobDefinition.S3Output"): ...
+    class MonitoringOutputConfig:
+        def __init__(
+            self,
+            *,
+            MonitoringOutputs: List["ModelBiasJobDefinition.MonitoringOutput"],
+            KmsKeyId: str = ...
+        ): ...
+    class MonitoringResources:
+        def __init__(
+            self, *, ClusterConfig: "ModelBiasJobDefinition.ClusterConfig"
+        ): ...
+    class NetworkConfig:
+        def __init__(
+            self,
+            *,
+            EnableInterContainerTrafficEncryption: bool = ...,
+            EnableNetworkIsolation: bool = ...,
+            VpcConfig: "ModelBiasJobDefinition.VpcConfig" = ...
+        ): ...
+    class S3Output:
+        def __init__(self, *, LocalPath: str, S3Uri: str, S3UploadMode: str = ...): ...
+    class StoppingCondition:
+        def __init__(self, *, MaxRuntimeInSeconds: int): ...
+    class VpcConfig:
+        def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
+
+class ModelExplainabilityJobDefinition:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-modelexplainabilityjobdefinition.html"""
+
+    JobDefinitionArn: Final[str]
+
+    CreationTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        JobResources: "ModelExplainabilityJobDefinition.MonitoringResources",
+        ModelExplainabilityAppSpecification: "ModelExplainabilityJobDefinition.ModelExplainabilityAppSpecification",
+        ModelExplainabilityJobInput: "ModelExplainabilityJobDefinition.ModelExplainabilityJobInput",
+        ModelExplainabilityJobOutputConfig: "ModelExplainabilityJobDefinition.MonitoringOutputConfig",
+        RoleArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        JobDefinitionName: str = ...,
+        ModelExplainabilityBaselineConfig: "ModelExplainabilityJobDefinition.ModelExplainabilityBaselineConfig" = ...,
+        NetworkConfig: "ModelExplainabilityJobDefinition.NetworkConfig" = ...,
+        StoppingCondition: "ModelExplainabilityJobDefinition.StoppingCondition" = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ClusterConfig:
+        def __init__(
+            self,
+            *,
+            InstanceCount: int,
+            InstanceType: str,
+            VolumeSizeInGB: int,
+            VolumeKmsKeyId: str = ...
+        ): ...
+    class ConstraintsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class EndpointInput:
+        def __init__(
+            self,
+            *,
+            EndpointName: str,
+            LocalPath: str,
+            FeaturesAttribute: str = ...,
+            InferenceAttribute: str = ...,
+            ProbabilityAttribute: str = ...,
+            S3DataDistributionType: str = ...,
+            S3InputMode: str = ...
+        ): ...
+    class Environment:
+        def __init__(self) -> None: ...
+    class ModelExplainabilityAppSpecification:
+        def __init__(
+            self,
+            *,
+            ConfigUri: str,
+            ImageUri: str,
+            Environment: "ModelExplainabilityJobDefinition.Environment" = ...
+        ): ...
+    class ModelExplainabilityBaselineConfig:
+        def __init__(
+            self,
+            *,
+            BaseliningJobName: str = ...,
+            ConstraintsResource: "ModelExplainabilityJobDefinition.ConstraintsResource" = ...
+        ): ...
+    class ModelExplainabilityJobInput:
+        def __init__(
+            self, *, EndpointInput: "ModelExplainabilityJobDefinition.EndpointInput"
+        ): ...
+    class MonitoringOutput:
+        def __init__(
+            self, *, S3Output: "ModelExplainabilityJobDefinition.S3Output"
+        ): ...
+    class MonitoringOutputConfig:
+        def __init__(
+            self,
+            *,
+            MonitoringOutputs: List[
+                "ModelExplainabilityJobDefinition.MonitoringOutput"
+            ],
+            KmsKeyId: str = ...
+        ): ...
+    class MonitoringResources:
+        def __init__(
+            self, *, ClusterConfig: "ModelExplainabilityJobDefinition.ClusterConfig"
+        ): ...
+    class NetworkConfig:
+        def __init__(
+            self,
+            *,
+            EnableInterContainerTrafficEncryption: bool = ...,
+            EnableNetworkIsolation: bool = ...,
+            VpcConfig: "ModelExplainabilityJobDefinition.VpcConfig" = ...
+        ): ...
+    class S3Output:
+        def __init__(self, *, LocalPath: str, S3Uri: str, S3UploadMode: str = ...): ...
+    class StoppingCondition:
+        def __init__(self, *, MaxRuntimeInSeconds: int): ...
+    class VpcConfig:
+        def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
+
+class ModelPackageGroup:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-modelpackagegroup.html"""
+
+    ModelPackageGroupArn: Final[str]
+
+    CreationTime: Final[str]
+
+    ModelPackageGroupStatus: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ModelPackageGroupName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ModelPackageGroupDescription: str = ...,
+        ModelPackageGroupPolicy: Any = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
+class ModelQualityJobDefinition:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-modelqualityjobdefinition.html"""
+
+    JobDefinitionArn: Final[str]
+
+    CreationTime: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        JobResources: "ModelQualityJobDefinition.MonitoringResources",
+        ModelQualityAppSpecification: "ModelQualityJobDefinition.ModelQualityAppSpecification",
+        ModelQualityJobInput: "ModelQualityJobDefinition.ModelQualityJobInput",
+        ModelQualityJobOutputConfig: "ModelQualityJobDefinition.MonitoringOutputConfig",
+        RoleArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        JobDefinitionName: str = ...,
+        ModelQualityBaselineConfig: "ModelQualityJobDefinition.ModelQualityBaselineConfig" = ...,
+        NetworkConfig: "ModelQualityJobDefinition.NetworkConfig" = ...,
+        StoppingCondition: "ModelQualityJobDefinition.StoppingCondition" = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class ClusterConfig:
+        def __init__(
+            self,
+            *,
+            InstanceCount: int,
+            InstanceType: str,
+            VolumeSizeInGB: int,
+            VolumeKmsKeyId: str = ...
+        ): ...
+    class ConstraintsResource:
+        def __init__(self, *, S3Uri: str = ...): ...
+    class EndpointInput:
+        def __init__(
+            self,
+            *,
+            EndpointName: str,
+            LocalPath: str,
+            EndTimeOffset: str = ...,
+            InferenceAttribute: str = ...,
+            ProbabilityAttribute: str = ...,
+            ProbabilityThresholdAttribute: float = ...,
+            S3DataDistributionType: str = ...,
+            S3InputMode: str = ...,
+            StartTimeOffset: str = ...
+        ): ...
+    class Environment:
+        def __init__(self) -> None: ...
+    class ModelQualityAppSpecification:
+        def __init__(
+            self,
+            *,
+            ImageUri: str,
+            ProblemType: str,
+            ContainerArguments: List[str] = ...,
+            ContainerEntrypoint: List[str] = ...,
+            Environment: "ModelQualityJobDefinition.Environment" = ...,
+            PostAnalyticsProcessorSourceUri: str = ...,
+            RecordPreprocessorSourceUri: str = ...
+        ): ...
+    class ModelQualityBaselineConfig:
+        def __init__(
+            self,
+            *,
+            BaseliningJobName: str = ...,
+            ConstraintsResource: "ModelQualityJobDefinition.ConstraintsResource" = ...
+        ): ...
+    class ModelQualityJobInput:
+        def __init__(
+            self,
+            *,
+            EndpointInput: "ModelQualityJobDefinition.EndpointInput",
+            GroundTruthS3Input: "ModelQualityJobDefinition.MonitoringGroundTruthS3Input"
+        ): ...
+    class MonitoringGroundTruthS3Input:
+        def __init__(self, *, S3Uri: str): ...
+    class MonitoringOutput:
+        def __init__(self, *, S3Output: "ModelQualityJobDefinition.S3Output"): ...
+    class MonitoringOutputConfig:
+        def __init__(
+            self,
+            *,
+            MonitoringOutputs: List["ModelQualityJobDefinition.MonitoringOutput"],
+            KmsKeyId: str = ...
+        ): ...
+    class MonitoringResources:
+        def __init__(
+            self, *, ClusterConfig: "ModelQualityJobDefinition.ClusterConfig"
+        ): ...
+    class NetworkConfig:
+        def __init__(
+            self,
+            *,
+            EnableInterContainerTrafficEncryption: bool = ...,
+            EnableNetworkIsolation: bool = ...,
+            VpcConfig: "ModelQualityJobDefinition.VpcConfig" = ...
+        ): ...
+    class S3Output:
+        def __init__(self, *, LocalPath: str, S3Uri: str, S3UploadMode: str = ...): ...
+    class StoppingCondition:
+        def __init__(self, *, MaxRuntimeInSeconds: int): ...
+    class VpcConfig:
+        def __init__(self, *, SecurityGroupIds: List[str], Subnets: List[str]): ...
+
 class MonitoringSchedule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-monitoringschedule.html"""
 
-    Ref: Final[str]
+    MonitoringScheduleArn: Final[str]
 
     CreationTime: Final[str]
 
     LastModifiedTime: Final[str]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,
         MonitoringScheduleConfig: "MonitoringSchedule.MonitoringScheduleConfig",
         MonitoringScheduleName: str,
-        CreationTime: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EndpointName: str = ...,
         FailureReason: str = ...,
-        LastModifiedTime: str = ...,
         LastMonitoringExecutionSummary: "MonitoringSchedule.MonitoringExecutionSummary" = ...,
-        MonitoringScheduleArn: str = ...,
         MonitoringScheduleStatus: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
@@ -258,7 +763,9 @@ class MonitoringSchedule:
         def __init__(
             self,
             *,
-            MonitoringJobDefinition: "MonitoringSchedule.MonitoringJobDefinition",
+            MonitoringJobDefinition: "MonitoringSchedule.MonitoringJobDefinition" = ...,
+            MonitoringJobDefinitionName: str = ...,
+            MonitoringType: str = ...,
             ScheduleConfig: "MonitoringSchedule.ScheduleConfig" = ...
         ): ...
     class NetworkConfig:
@@ -330,6 +837,50 @@ class NotebookInstanceLifecycleConfig:
     ): ...
     class NotebookInstanceLifecycleHook:
         def __init__(self, *, Content: str = ...): ...
+
+class Pipeline:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-pipeline.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        PipelineDefinition: Any,
+        PipelineName: str,
+        RoleArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        PipelineDescription: str = ...,
+        PipelineDisplayName: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
+class Project:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-project.html"""
+
+    ProjectArn: Final[str]
+
+    ProjectId: Final[str]
+
+    CreationTime: Final[str]
+
+    ServiceCatalogProvisionedProductDetails: Final[str]
+
+    ProjectStatus: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ProjectName: str,
+        ServiceCatalogProvisioningDetails: Any,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ProjectDescription: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
 
 class Workteam:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-workteam.html"""

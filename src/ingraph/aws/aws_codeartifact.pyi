@@ -36,6 +36,7 @@ class Domain:
         DomainName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        EncryptionKey: str = ...,
         PermissionsPolicyDocument: Any = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
@@ -56,10 +57,12 @@ class Repository:
     def __init__(
         self,
         *,
+        DomainName: str,
         RepositoryName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
+        DomainOwner: str = ...,
         ExternalConnections: List[str] = ...,
         PermissionsPolicyDocument: Any = ...,
         Tags: List["Tag"] = ...,

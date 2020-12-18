@@ -35,6 +35,8 @@ class ApiKey:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html"""
 
     Ref: Final[str]
+
+    APIKeyId: Final[str]
     def __init__(
         self,
         *,

@@ -186,7 +186,7 @@ class LaunchConfiguration:
         KernelId: str = ...,
         KeyName: str = ...,
         LaunchConfigurationName: str = ...,
-        MetadataOptions: "LaunchConfiguration.MetadataOption" = ...,
+        MetadataOptions: "LaunchConfiguration.MetadataOptions" = ...,
         PlacementTenancy: str = ...,
         RamDiskId: str = ...,
         SecurityGroups: List[str] = ...,
@@ -214,7 +214,7 @@ class LaunchConfiguration:
             NoDevice: bool = ...,
             VirtualName: str = ...
         ): ...
-    class MetadataOption:
+    class MetadataOptions:
         def __init__(
             self,
             *,

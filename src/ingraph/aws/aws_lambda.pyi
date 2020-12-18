@@ -114,7 +114,6 @@ class EventSourceMapping:
     def __init__(
         self,
         *,
-        EventSourceArn: str,
         FunctionName: str,
         BatchSize: int = ...,
         BisectBatchOnFunctionError: bool = ...,
@@ -122,12 +121,15 @@ class EventSourceMapping:
         DependsOn: List[Any] = ...,
         DestinationConfig: "EventSourceMapping.DestinationConfig" = ...,
         Enabled: bool = ...,
+        EventSourceArn: str = ...,
+        FunctionResponseTypes: List[str] = ...,
         MaximumBatchingWindowInSeconds: int = ...,
         MaximumRecordAgeInSeconds: int = ...,
         MaximumRetryAttempts: int = ...,
         ParallelizationFactor: int = ...,
         PartialBatchResponse: bool = ...,
         Queues: List[str] = ...,
+        SelfManagedEventSource: "EventSourceMapping.SelfManagedEventSource" = ...,
         SourceAccessConfigurations: List[
             "EventSourceMapping.SourceAccessConfiguration"
         ] = ...,
@@ -138,8 +140,12 @@ class EventSourceMapping:
     ): ...
     class DestinationConfig:
         def __init__(self, *, OnFailure: "EventSourceMapping.OnFailure" = ...): ...
+    class Endpoints:
+        def __init__(self, *, KafkaBootstrapServers: List[str] = ...): ...
     class OnFailure:
         def __init__(self, *, Destination: str = ...): ...
+    class SelfManagedEventSource:
+        def __init__(self, *, Endpoints: "EventSourceMapping.Endpoints" = ...): ...
     class SourceAccessConfiguration:
         def __init__(self, *, Type: str = ..., URI: str = ...): ...
 
@@ -153,9 +159,7 @@ class Function:
         self,
         *,
         Code: "Function.Code",
-        Handler: str,
         Role: str,
-        Runtime: str,
         CodeSigningConfigArn: str = ...,
         DeadLetterConfig: "Function.DeadLetterConfig" = ...,
         DeletionPolicy: str = ...,
@@ -164,10 +168,14 @@ class Function:
         Environment: "Function.Environment" = ...,
         FileSystemConfigs: List["Function.FileSystemConfig"] = ...,
         FunctionName: str = ...,
+        Handler: str = ...,
+        ImageConfig: "Function.ImageConfig" = ...,
         KmsKeyArn: str = ...,
         Layers: List[str] = ...,
         MemorySize: int = ...,
+        PackageType: str = ...,
         ReservedConcurrentExecutions: int = ...,
+        Runtime: str = ...,
         Tags: List["Tag"] = ...,
         Timeout: int = ...,
         TracingConfig: "Function.TracingConfig" = ...,
@@ -178,6 +186,7 @@ class Function:
         def __init__(
             self,
             *,
+            ImageUri: str = ...,
             S3Bucket: str = ...,
             S3Key: str = ...,
             S3ObjectVersion: str = ...,
@@ -189,6 +198,14 @@ class Function:
         def __init__(self, *, Variables: Dict[str, str] = ...): ...
     class FileSystemConfig:
         def __init__(self, *, Arn: str, LocalMountPath: str): ...
+    class ImageConfig:
+        def __init__(
+            self,
+            *,
+            Command: List[str] = ...,
+            EntryPoint: List[str] = ...,
+            WorkingDirectory: str = ...
+        ): ...
     class TracingConfig:
         def __init__(self, *, Mode: str = ...): ...
     class VpcConfig:

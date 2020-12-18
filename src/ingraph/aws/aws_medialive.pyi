@@ -29,6 +29,7 @@ class Channel:
     def __init__(
         self,
         *,
+        CdiInputSpecification: "Channel.CdiInputSpecification" = ...,
         ChannelClass: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
@@ -68,8 +69,15 @@ class Channel:
             LfeFilter: str = ...,
             MetadataControl: str = ...
         ): ...
+    class AncillarySourceSettings:
+        def __init__(self, *, SourceAncillaryChannelNumber: int = ...): ...
     class ArchiveContainerSettings:
-        def __init__(self, *, M2tsSettings: "Channel.M2tsSettings" = ...): ...
+        def __init__(
+            self,
+            *,
+            M2tsSettings: "Channel.M2tsSettings" = ...,
+            RawSettings: "Channel.RawSettings" = ...
+        ): ...
     class ArchiveGroupSettings:
         def __init__(
             self,
@@ -104,7 +112,8 @@ class Channel:
             Ac3Settings: "Channel.Ac3Settings" = ...,
             Eac3Settings: "Channel.Eac3Settings" = ...,
             Mp2Settings: "Channel.Mp2Settings" = ...,
-            PassThroughSettings: "Channel.PassThroughSettings" = ...
+            PassThroughSettings: "Channel.PassThroughSettings" = ...,
+            WavSettings: "Channel.WavSettings" = ...
         ): ...
     class AudioDescription:
         def __init__(
@@ -159,13 +168,22 @@ class Channel:
             AudioPidSelection: "Channel.AudioPidSelection" = ...,
             AudioTrackSelection: "Channel.AudioTrackSelection" = ...
         ): ...
+    class AudioSilenceFailoverSettings:
+        def __init__(
+            self, *, AudioSelectorName: str = ..., AudioSilenceThresholdMsec: int = ...
+        ): ...
     class AudioTrack:
         def __init__(self, *, Track: int = ...): ...
     class AudioTrackSelection:
         def __init__(self, *, Tracks: List["Channel.AudioTrack"] = ...): ...
     class AutomaticInputFailoverSettings:
         def __init__(
-            self, *, InputPreference: str = ..., SecondaryInputId: str = ...
+            self,
+            *,
+            ErrorClearTimeMsec: int = ...,
+            FailoverConditions: List["Channel.FailoverCondition"] = ...,
+            InputPreference: str = ...,
+            SecondaryInputId: str = ...
         ): ...
     class AvailBlanking:
         def __init__(
@@ -260,6 +278,7 @@ class Channel:
         def __init__(
             self,
             *,
+            AncillarySourceSettings: "Channel.AncillarySourceSettings" = ...,
             AribSourceSettings: "Channel.AribSourceSettings" = ...,
             DvbSubSourceSettings: "Channel.DvbSubSourceSettings" = ...,
             EmbeddedSourceSettings: "Channel.EmbeddedSourceSettings" = ...,
@@ -267,6 +286,8 @@ class Channel:
             Scte27SourceSettings: "Channel.Scte27SourceSettings" = ...,
             TeletextSourceSettings: "Channel.TeletextSourceSettings" = ...
         ): ...
+    class CdiInputSpecification:
+        def __init__(self, *, Resolution: str = ...): ...
     class ColorSpacePassthroughSettings:
         def __init__(self) -> None: ...
     class DvbNitSettings:
@@ -373,6 +394,20 @@ class Channel:
             OutputGroups: List["Channel.OutputGroup"] = ...,
             TimecodeConfig: "Channel.TimecodeConfig" = ...,
             VideoDescriptions: List["Channel.VideoDescription"] = ...
+        ): ...
+    class FailoverCondition:
+        def __init__(
+            self,
+            *,
+            FailoverConditionSettings: "Channel.FailoverConditionSettings" = ...
+        ): ...
+    class FailoverConditionSettings:
+        def __init__(
+            self,
+            *,
+            AudioSilenceSettings: "Channel.AudioSilenceFailoverSettings" = ...,
+            InputLossSettings: "Channel.InputLossFailoverSettings" = ...,
+            VideoBlackSettings: "Channel.VideoBlackFailoverSettings" = ...
         ): ...
     class FeatureActivations:
         def __init__(self, *, InputPrepareScheduleActions: str = ...): ...
@@ -560,10 +595,12 @@ class Channel:
             ConstantIv: str = ...,
             Destination: "Channel.OutputLocationRef" = ...,
             DirectoryStructure: str = ...,
+            DiscontinuityTags: str = ...,
             EncryptionType: str = ...,
             HlsCdnSettings: "Channel.HlsCdnSettings" = ...,
             HlsId3SegmentTagging: str = ...,
             IFrameOnlyPlaylists: str = ...,
+            IncompleteSegmentBehavior: str = ...,
             IndexNSegments: int = ...,
             InputLossAction: str = ...,
             IvInManifest: str = ...,
@@ -660,6 +697,8 @@ class Channel:
             InputLossImageType: str = ...,
             RepeatFrameMsec: int = ...
         ): ...
+    class InputLossFailoverSettings:
+        def __init__(self, *, InputLossThresholdMsec: int = ...): ...
     class InputSettings:
         def __init__(
             self,
@@ -768,6 +807,31 @@ class Channel:
             Bitrate: float = ...,
             CodingMode: str = ...,
             SampleRate: float = ...
+        ): ...
+    class Mpeg2FilterSettings:
+        def __init__(
+            self, *, TemporalFilterSettings: "Channel.TemporalFilterSettings" = ...
+        ): ...
+    class Mpeg2Settings:
+        def __init__(
+            self,
+            *,
+            AdaptiveQuantization: str = ...,
+            AfdSignaling: str = ...,
+            ColorMetadata: str = ...,
+            ColorSpace: str = ...,
+            DisplayAspectRatio: str = ...,
+            FilterSettings: "Channel.Mpeg2FilterSettings" = ...,
+            FixedAfd: str = ...,
+            FramerateDenominator: int = ...,
+            FramerateNumerator: int = ...,
+            GopClosedCadence: int = ...,
+            GopNumBFrames: int = ...,
+            GopSize: float = ...,
+            GopSizeUnits: str = ...,
+            ScanType: str = ...,
+            SubgopLength: str = ...,
+            TimecodeInsertion: str = ...
         ): ...
     class MsSmoothGroupSettings:
         def __init__(
@@ -882,6 +946,8 @@ class Channel:
         ): ...
     class PassThroughSettings:
         def __init__(self) -> None: ...
+    class RawSettings:
+        def __init__(self) -> None: ...
     class Rec601Settings:
         def __init__(self) -> None: ...
     class Rec709Settings:
@@ -900,6 +966,7 @@ class Channel:
         def __init__(
             self,
             *,
+            AdMarkers: List[str] = ...,
             AuthenticationScheme: str = ...,
             CacheFullBehavior: str = ...,
             CacheLength: int = ...,
@@ -987,13 +1054,21 @@ class Channel:
             Destination: "Channel.OutputLocationRef" = ...,
             FecOutputSettings: "Channel.FecOutputSettings" = ...
         ): ...
+    class VideoBlackFailoverSettings:
+        def __init__(
+            self,
+            *,
+            BlackDetectThreshold: float = ...,
+            VideoBlackThresholdMsec: int = ...
+        ): ...
     class VideoCodecSettings:
         def __init__(
             self,
             *,
             FrameCaptureSettings: "Channel.FrameCaptureSettings" = ...,
             H264Settings: "Channel.H264Settings" = ...,
-            H265Settings: "Channel.H265Settings" = ...
+            H265Settings: "Channel.H265Settings" = ...,
+            Mpeg2Settings: "Channel.Mpeg2Settings" = ...
         ): ...
     class VideoDescription:
         def __init__(
@@ -1025,6 +1100,14 @@ class Channel:
             *,
             VideoSelectorPid: "Channel.VideoSelectorPid" = ...,
             VideoSelectorProgramId: "Channel.VideoSelectorProgramId" = ...
+        ): ...
+    class WavSettings:
+        def __init__(
+            self,
+            *,
+            BitDepth: float = ...,
+            CodingMode: str = ...,
+            SampleRate: float = ...
         ): ...
     class WebvttDestinationSettings:
         def __init__(self) -> None: ...

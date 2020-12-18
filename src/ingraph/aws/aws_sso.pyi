@@ -36,6 +36,20 @@ class Assignment:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class InstanceAccessControlAttributeConfiguration:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sso-instanceaccesscontrolattributeconfiguration.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        InstanceAccessControlAttributeConfiguration: Any,
+        InstanceArn: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class PermissionSet:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sso-permissionset.html"""
 

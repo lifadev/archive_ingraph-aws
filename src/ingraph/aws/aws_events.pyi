@@ -30,6 +30,7 @@ class Archive:
         self,
         *,
         SourceArn: str,
+        ArchiveName: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,

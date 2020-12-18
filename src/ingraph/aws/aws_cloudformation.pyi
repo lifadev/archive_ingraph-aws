@@ -49,6 +49,51 @@ class Macro:
         UpdateReplacePolicy: str = ...
     ): ...
 
+class ModuleDefaultVersion:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-moduledefaultversion.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        Arn: str = ...,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ModuleName: str = ...,
+        UpdateReplacePolicy: str = ...,
+        VersionId: str = ...
+    ): ...
+
+class ModuleVersion:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-moduleversion.html"""
+
+    Arn: Final[str]
+
+    Description: Final[str]
+
+    DocumentationUrl: Final[str]
+
+    IsDefaultVersion: Final[bool]
+
+    Schema: Final[str]
+
+    TimeCreated: Final[str]
+
+    VersionId: Final[str]
+
+    Visibility: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        ModuleName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ModulePackage: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class Stack:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html"""
 
@@ -75,6 +120,8 @@ class StackSet:
     def __init__(
         self,
         *,
+        PermissionModel: str,
+        StackSetName: str,
         AdministrationRoleARN: str = ...,
         AutoDeployment: "StackSet.AutoDeployment" = ...,
         Capabilities: List[str] = ...,
@@ -84,9 +131,7 @@ class StackSet:
         ExecutionRoleName: str = ...,
         OperationPreferences: "StackSet.OperationPreferences" = ...,
         Parameters: List["StackSet.Parameter"] = ...,
-        PermissionModel: str = ...,
         StackInstancesGroup: List["StackSet.StackInstances"] = ...,
-        StackSetName: str = ...,
         Tags: List["Tag"] = ...,
         TemplateBody: str = ...,
         TemplateURL: str = ...,
