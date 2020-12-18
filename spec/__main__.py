@@ -185,6 +185,47 @@ def _nomalize_attrs(data: Any) -> None:
                 del value[_ASKEY]["HlsIngest"]
             else:
                 raise NotImplementedError("patch outdated")
+        # patch 22.0.0
+        if name == "AWS::AuditManager::Assessment":
+            bad = value[_ASKEY].get("delegations")
+            if bad.get("Type") == "Delegations":
+                del value[_ASKEY]["delegations"]
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::ElastiCache::User":
+            bad = value[_ASKEY].get("UserGroupIds")
+            if bad.get("Type") == "UserGroupIdList":
+                del value[_ASKEY]["UserGroupIds"]
+            else:
+                raise NotImplementedError("patch outdated")
+            bad = value[_ASKEY].get("Authentication")
+            if bad.get("Type") == "Authentication":
+                del value[_ASKEY]["Authentication"]
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::ElastiCache::UserGroup":
+            bad = value[_ASKEY].get("ReplicationGroupIds")
+            if bad.get("Type") == "ReplicationGroupIdList":
+                del value[_ASKEY]["ReplicationGroupIds"]
+            else:
+                raise NotImplementedError("patch outdated")
+            bad = value[_ASKEY].get("PendingChanges")
+            if bad.get("Type") == "UserGroupPendingChanges":
+                del value[_ASKEY]["PendingChanges"]
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::IoTSiteWise::Portal":
+            bad = value[_ASKEY].get("PortalStatus")
+            if bad.get("Type") == "PortalStatus":
+                del value[_ASKEY]["PortalStatus"]
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::MWAA::Environment":
+            bad = value[_ASKEY].get("LastUpdate")
+            if bad.get("Type") == "LastUpdate":
+                del value[_ASKEY]["LastUpdate"]
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_props(data: Any) -> None:
@@ -211,6 +252,38 @@ def _normalize_props(data: Any) -> None:
         # patch 18.3.0
         if name == "AWS::ECR::Repository":
             bad = value[_PSKEY].get("RepositoryPolicyText")
+            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
+                bad["PrimitiveType"] = "Json"
+            else:
+                raise NotImplementedError("patch outdated")
+        # patch 22.0.0
+        if name == "AWS::ECR::PublicRepository":
+            bad = value[_PSKEY].get("RepositoryPolicyText")
+            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
+                bad["PrimitiveType"] = "Json"
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::SageMaker::Device":
+            bad = value[_PSKEY].get("Device")
+            if bad.get("Type") == "Device" and bad.get("PrimitiveType") == "Json":
+                del bad["PrimitiveType"]
+            else:
+                raise NotImplementedError("patch outdated")
+            bad = value[_PSKEY].get("Tags")
+            if bad.get("Type") == "Tag" and bad.get("ItemType") == "Json":
+                bad["Type"] = "List"
+                bad["ItemType"] = "Tag"
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::SageMaker::DeviceFleet":
+            bad = value[_PSKEY].get("Tags")
+            if bad.get("Type") == "Tag" and bad.get("ItemType") == "Json":
+                bad["Type"] = "List"
+                bad["ItemType"] = "Tag"
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::SageMaker::ModelPackageGroup":
+            bad = value[_PSKEY].get("ModelPackageGroupPolicy")
             if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
                 bad["PrimitiveType"] = "Json"
             else:
@@ -365,7 +438,9 @@ def _getproptype(data: Any, spec: Any, parent: str) -> str:
     return f'"{parent}.{typ}"' if typ != "Tag" else f'"{typ}"'
 
 
-_ATYPES = dict(Boolean="bool", Integer="int", Json="str", List="List", String="str")
+_ATYPES = dict(
+    Boolean="bool", Double="float", Integer="int", Json="str", List="List", String="str"
+)
 
 
 def _getattrtype(spec: Any) -> str:
