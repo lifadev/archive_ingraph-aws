@@ -186,34 +186,6 @@ def _nomalize_attrs(data: Any) -> None:
             else:
                 raise NotImplementedError("patch outdated")
         # patch 22.0.0
-        if name == "AWS::AuditManager::Assessment":
-            bad = value[_ASKEY].get("delegations")
-            if bad.get("Type") == "Delegations":
-                del value[_ASKEY]["delegations"]
-            else:
-                raise NotImplementedError("patch outdated")
-        if name == "AWS::ElastiCache::User":
-            bad = value[_ASKEY].get("UserGroupIds")
-            if bad.get("Type") == "UserGroupIdList":
-                del value[_ASKEY]["UserGroupIds"]
-            else:
-                raise NotImplementedError("patch outdated")
-            bad = value[_ASKEY].get("Authentication")
-            if bad.get("Type") == "Authentication":
-                del value[_ASKEY]["Authentication"]
-            else:
-                raise NotImplementedError("patch outdated")
-        if name == "AWS::ElastiCache::UserGroup":
-            bad = value[_ASKEY].get("ReplicationGroupIds")
-            if bad.get("Type") == "ReplicationGroupIdList":
-                del value[_ASKEY]["ReplicationGroupIds"]
-            else:
-                raise NotImplementedError("patch outdated")
-            bad = value[_ASKEY].get("PendingChanges")
-            if bad.get("Type") == "UserGroupPendingChanges":
-                del value[_ASKEY]["PendingChanges"]
-            else:
-                raise NotImplementedError("patch outdated")
         if name == "AWS::IoTSiteWise::Portal":
             bad = value[_ASKEY].get("PortalStatus")
             if bad.get("Type") == "PortalStatus":
@@ -242,27 +214,7 @@ def _normalize_props(data: Any) -> None:
                 del bad["PrimitiveType"]
             else:
                 raise NotImplementedError("patch outdated")
-        # patch 18.0.0
-        if name == "AWS::KMS::Key":
-            bad = value[_PSKEY].get("KeyPolicy")
-            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
-                bad["PrimitiveType"] = "Json"
-            else:
-                raise NotImplementedError("patch outdated")
-        # patch 18.3.0
-        if name == "AWS::ECR::Repository":
-            bad = value[_PSKEY].get("RepositoryPolicyText")
-            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
-                bad["PrimitiveType"] = "Json"
-            else:
-                raise NotImplementedError("patch outdated")
         # patch 22.0.0
-        if name == "AWS::ECR::PublicRepository":
-            bad = value[_PSKEY].get("RepositoryPolicyText")
-            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
-                bad["PrimitiveType"] = "Json"
-            else:
-                raise NotImplementedError("patch outdated")
         if name == "AWS::SageMaker::Device":
             bad = value[_PSKEY].get("Device")
             if bad.get("Type") == "Device" and bad.get("PrimitiveType") == "Json":
@@ -280,12 +232,6 @@ def _normalize_props(data: Any) -> None:
             if bad.get("Type") == "Tag" and bad.get("ItemType") == "Json":
                 bad["Type"] = "List"
                 bad["ItemType"] = "Tag"
-            else:
-                raise NotImplementedError("patch outdated")
-        if name == "AWS::SageMaker::ModelPackageGroup":
-            bad = value[_PSKEY].get("ModelPackageGroupPolicy")
-            if not [k for k in bad.keys() if k in {"PrimitiveType", "Type"}]:
-                bad["PrimitiveType"] = "Json"
             else:
                 raise NotImplementedError("patch outdated")
 
