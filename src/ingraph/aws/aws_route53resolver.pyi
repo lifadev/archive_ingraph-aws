@@ -18,6 +18,25 @@ from . import Tag
 
 _NAMESPACE = "AWS::Route53Resolver"
 
+class ResolverDNSSECConfig:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverdnssecconfig.html"""
+
+    Id: Final[str]
+
+    OwnerId: Final[str]
+
+    ValidationStatus: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        ResourceId: str = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class ResolverEndpoint:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53resolver-resolverendpoint.html"""
 

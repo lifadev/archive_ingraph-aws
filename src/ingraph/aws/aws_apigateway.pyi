@@ -96,6 +96,8 @@ class BasePathMapping:
 class ClientCertificate:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-clientcertificate.html"""
 
+    ClientCertificateId: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,

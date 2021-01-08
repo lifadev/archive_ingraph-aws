@@ -289,3 +289,23 @@ class RemediationConfiguration:
         ): ...
     class StaticValue:
         def __init__(self, *, Values: List[str] = ...): ...
+
+class StoredQuery:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-storedquery.html"""
+
+    QueryArn: Final[str]
+
+    QueryId: Final[str]
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        QueryExpression: str,
+        QueryName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        QueryDescription: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...

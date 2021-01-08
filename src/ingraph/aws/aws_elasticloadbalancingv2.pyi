@@ -129,6 +129,10 @@ class ListenerRule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html"""
 
     Ref: Final[str]
+
+    RuleArn: Final[str]
+
+    IsDefault: Final[bool]
     def __init__(
         self,
         *,
@@ -180,7 +184,8 @@ class ListenerRule:
             OnUnauthenticatedRequest: str = ...,
             Scope: str = ...,
             SessionCookieName: str = ...,
-            SessionTimeout: int = ...
+            SessionTimeout: int = ...,
+            UseExistingClientSecret: bool = ...
         ): ...
     class FixedResponseConfig:
         def __init__(

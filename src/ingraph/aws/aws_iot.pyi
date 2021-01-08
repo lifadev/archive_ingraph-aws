@@ -33,15 +33,11 @@ class Authorizer:
         DependsOn: List[Any] = ...,
         SigningDisabled: bool = ...,
         Status: str = ...,
-        Tags: "Authorizer.Tags" = ...,
+        Tags: List["Tag"] = ...,
         TokenKeyName: str = ...,
-        TokenSigningPublicKeys: "Authorizer.TokenSigningPublicKeys" = ...,
+        TokenSigningPublicKeys: Dict[str, str] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
-    class Tags:
-        def __init__(self, *, Tags: List[Any] = ...): ...
-    class TokenSigningPublicKeys:
-        def __init__(self) -> None: ...
 
 class Certificate:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-certificate.html"""
@@ -85,7 +81,7 @@ class DomainConfiguration:
         DomainName: str = ...,
         ServerCertificateArns: List[str] = ...,
         ServiceType: str = ...,
-        Tags: "DomainConfiguration.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         ValidationCertificateArn: str = ...
     ): ...
@@ -104,8 +100,6 @@ class DomainConfiguration:
             ServerCertificateStatus: str = ...,
             ServerCertificateStatusDetail: str = ...
         ): ...
-    class Tags:
-        def __init__(self, *, Tags: List[Any] = ...): ...
 
 class Policy:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-policy.html"""
@@ -153,14 +147,12 @@ class ProvisioningTemplate:
         Description: str = ...,
         Enabled: bool = ...,
         PreProvisioningHook: "ProvisioningTemplate.ProvisioningHook" = ...,
-        Tags: "ProvisioningTemplate.Tags" = ...,
+        Tags: List["Tag"] = ...,
         TemplateName: str = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class ProvisioningHook:
         def __init__(self, *, PayloadVersion: str = ..., TargetArn: str = ...): ...
-    class Tags:
-        def __init__(self, *, Tags: List[Any] = ...): ...
 
 class Thing:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html"""

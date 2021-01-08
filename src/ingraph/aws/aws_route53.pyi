@@ -18,6 +18,19 @@ from . import Tag
 
 _NAMESPACE = "AWS::Route53"
 
+class DNSSEC:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-dnssec.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        HostedZoneId: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+
 class HealthCheck:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-healthcheck.html"""
 
@@ -87,6 +100,22 @@ class HostedZone:
         def __init__(self, *, CloudWatchLogsLogGroupArn: str): ...
     class VPC:
         def __init__(self, *, VPCId: str, VPCRegion: str): ...
+
+class KeySigningKey:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-keysigningkey.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        HostedZoneId: str,
+        KeyManagementServiceArn: str,
+        Name: str,
+        Status: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
 
 class RecordSet:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html"""

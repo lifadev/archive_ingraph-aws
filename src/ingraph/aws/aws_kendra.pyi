@@ -38,7 +38,7 @@ class DataSource:
         Description: str = ...,
         RoleArn: str = ...,
         Schedule: str = ...,
-        Tags: "DataSource.TagList" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class AccessControlListConfiguration:
@@ -394,8 +394,6 @@ class DataSource:
         ): ...
     class SqlConfiguration:
         def __init__(self, *, QueryIdentifiersEnclosingOption: str = ...): ...
-    class TagList:
-        def __init__(self, *, TagList: List["Tag"] = ...): ...
 
 class Faq:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kendra-faq.html"""
@@ -416,13 +414,11 @@ class Faq:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         FileFormat: str = ...,
-        Tags: "Faq.TagList" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class S3Path:
         def __init__(self, *, Bucket: str, Key: str): ...
-    class TagList:
-        def __init__(self, *, TagList: List["Tag"] = ...): ...
 
 class Index:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kendra-index.html"""
@@ -442,12 +438,14 @@ class Index:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
-        DocumentMetadataConfigurations: "Index.DocumentMetadataConfigurationList" = ...,
+        DocumentMetadataConfigurations: List[
+            "Index.DocumentMetadataConfiguration"
+        ] = ...,
         ServerSideEncryptionConfiguration: "Index.ServerSideEncryptionConfiguration" = ...,
-        Tags: "Index.TagList" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         UserContextPolicy: str = ...,
-        UserTokenConfigurations: "Index.UserTokenConfigurationList" = ...
+        UserTokenConfigurations: List["Index.UserTokenConfiguration"] = ...
     ): ...
     class CapacityUnitsConfiguration:
         def __init__(self, *, QueryCapacityUnits: int, StorageCapacityUnits: int): ...
@@ -459,14 +457,6 @@ class Index:
             Type: str,
             Relevance: "Index.Relevance" = ...,
             Search: "Index.Search" = ...
-        ): ...
-    class DocumentMetadataConfigurationList:
-        def __init__(
-            self,
-            *,
-            DocumentMetadataConfigurationList: List[
-                "Index.DocumentMetadataConfiguration"
-            ] = ...
         ): ...
     class JsonTokenTypeConfiguration:
         def __init__(
@@ -505,20 +495,12 @@ class Index:
         ): ...
     class ServerSideEncryptionConfiguration:
         def __init__(self, *, KmsKeyId: str = ...): ...
-    class TagList:
-        def __init__(self, *, TagList: List["Tag"] = ...): ...
     class UserTokenConfiguration:
         def __init__(
             self,
             *,
             JsonTokenTypeConfiguration: "Index.JsonTokenTypeConfiguration" = ...,
             JwtTokenTypeConfiguration: "Index.JwtTokenTypeConfiguration" = ...
-        ): ...
-    class UserTokenConfigurationList:
-        def __init__(
-            self,
-            *,
-            UserTokenConfigurationList: List["Index.UserTokenConfiguration"] = ...
         ): ...
     class ValueImportanceItem:
         def __init__(self, *, Key: str = ..., Value: int = ...): ...

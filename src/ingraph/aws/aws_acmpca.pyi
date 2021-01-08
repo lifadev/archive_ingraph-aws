@@ -54,14 +54,26 @@ class CertificateAuthority:
         *,
         KeyAlgorithm: str,
         SigningAlgorithm: str,
-        Subject: Any,
+        Subject: "CertificateAuthority.Subject",
         Type: str,
+        CsrExtensions: "CertificateAuthority.CsrExtensions" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        RevocationConfiguration: Any = ...,
+        RevocationConfiguration: "CertificateAuthority.RevocationConfiguration" = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class AccessDescription:
+        def __init__(
+            self,
+            *,
+            AccessLocation: "CertificateAuthority.GeneralName",
+            AccessMethod: "CertificateAuthority.AccessMethod"
+        ): ...
+    class AccessMethod:
+        def __init__(
+            self, *, AccessMethodType: str = ..., CustomObjectIdentifier: str = ...
+        ): ...
     class CrlConfiguration:
         def __init__(
             self,
@@ -71,6 +83,44 @@ class CertificateAuthority:
             ExpirationInDays: int = ...,
             S3BucketName: str = ...
         ): ...
+    class CsrExtensions:
+        def __init__(
+            self,
+            *,
+            KeyUsage: "CertificateAuthority.KeyUsage" = ...,
+            SubjectInformationAccess: "CertificateAuthority.SubjectInformationAccess" = ...
+        ): ...
+    class EdiPartyName:
+        def __init__(self, *, NameAssigner: str, PartyName: str): ...
+    class GeneralName:
+        def __init__(
+            self,
+            *,
+            DirectoryName: "CertificateAuthority.Subject" = ...,
+            DnsName: str = ...,
+            EdiPartyName: "CertificateAuthority.EdiPartyName" = ...,
+            IpAddress: str = ...,
+            OtherName: "CertificateAuthority.OtherName" = ...,
+            RegisteredId: str = ...,
+            Rfc822Name: str = ...,
+            UniformResourceIdentifier: str = ...
+        ): ...
+    class KeyUsage:
+        def __init__(
+            self,
+            *,
+            CRLSign: bool = ...,
+            DataEncipherment: bool = ...,
+            DecipherOnly: bool = ...,
+            DigitalSignature: bool = ...,
+            EncipherOnly: bool = ...,
+            KeyAgreement: bool = ...,
+            KeyCertSign: bool = ...,
+            KeyEncipherment: bool = ...,
+            NonRepudiation: bool = ...
+        ): ...
+    class OtherName:
+        def __init__(self, *, TypeId: str, Value: str): ...
     class RevocationConfiguration:
         def __init__(
             self, *, CrlConfiguration: "CertificateAuthority.CrlConfiguration" = ...
@@ -93,6 +143,14 @@ class CertificateAuthority:
             State: str = ...,
             Surname: str = ...,
             Title: str = ...
+        ): ...
+    class SubjectInformationAccess:
+        def __init__(
+            self,
+            *,
+            SubjectInformationAccess: List[
+                "CertificateAuthority.AccessDescription"
+            ] = ...
         ): ...
 
 class CertificateAuthorityActivation:

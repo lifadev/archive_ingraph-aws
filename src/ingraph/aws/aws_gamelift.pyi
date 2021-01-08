@@ -127,7 +127,7 @@ class GameServerGroup:
         self,
         *,
         GameServerGroupName: str,
-        InstanceDefinitions: "GameServerGroup.InstanceDefinitions",
+        InstanceDefinitions: List["GameServerGroup.InstanceDefinition"],
         LaunchTemplate: "GameServerGroup.LaunchTemplate",
         RoleArn: str,
         AutoScalingPolicy: "GameServerGroup.AutoScalingPolicy" = ...,
@@ -138,9 +138,9 @@ class GameServerGroup:
         GameServerProtectionPolicy: str = ...,
         MaxSize: float = ...,
         MinSize: float = ...,
-        Tags: "GameServerGroup.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
-        VpcSubnets: "GameServerGroup.VpcSubnets" = ...
+        VpcSubnets: List[str] = ...
     ): ...
     class AutoScalingPolicy:
         def __init__(
@@ -151,12 +151,6 @@ class GameServerGroup:
         ): ...
     class InstanceDefinition:
         def __init__(self, *, InstanceType: str, WeightedCapacity: str = ...): ...
-    class InstanceDefinitions:
-        def __init__(
-            self,
-            *,
-            InstanceDefinitions: List["GameServerGroup.InstanceDefinition"] = ...
-        ): ...
     class LaunchTemplate:
         def __init__(
             self,
@@ -165,12 +159,8 @@ class GameServerGroup:
             LaunchTemplateName: str = ...,
             Version: str = ...
         ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
     class TargetTrackingConfiguration:
         def __init__(self, *, TargetValue: float): ...
-    class VpcSubnets:
-        def __init__(self, *, VpcSubnets: List[str] = ...): ...
 
 class GameSessionQueue:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-gamelift-gamesessionqueue.html"""

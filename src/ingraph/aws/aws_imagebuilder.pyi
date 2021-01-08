@@ -69,6 +69,7 @@ class DistributionConfiguration:
             *,
             Region: str,
             AmiDistributionConfiguration: Any = ...,
+            ContainerDistributionConfiguration: Any = ...,
             LicenseConfigurationArns: List[str] = ...
         ): ...
 

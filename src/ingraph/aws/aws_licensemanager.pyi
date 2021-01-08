@@ -23,80 +23,74 @@ class Grant:
 
     GrantArn: Final[str]
 
+    Version: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
         *,
-        AllowedOperations: "Grant.AllowedOperationList" = ...,
+        AllowedOperations: List[str] = ...,
         ClientToken: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Filters: "Grant.FilterList" = ...,
-        GrantArns: "Grant.ArnList" = ...,
+        Filters: List["Grant.Filter"] = ...,
+        GrantArns: List[str] = ...,
         GrantName: str = ...,
         GrantStatus: str = ...,
-        GrantedOperations: "Grant.AllowedOperationList" = ...,
+        GrantedOperations: List[str] = ...,
         GranteePrincipalArn: str = ...,
         HomeRegion: str = ...,
         LicenseArn: str = ...,
         MaxResults: int = ...,
         NextToken: str = ...,
         ParentArn: str = ...,
-        Principals: "Grant.ArnList" = ...,
+        Principals: List[str] = ...,
         SourceVersion: str = ...,
         Status: str = ...,
         StatusReason: str = ...,
-        Tags: "Grant.TagList" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         Version: str = ...
     ): ...
-    class AllowedOperationList:
-        def __init__(self, *, AllowedOperationList: List[str] = ...): ...
-    class ArnList:
-        def __init__(self, *, ArnList: List[str] = ...): ...
     class Filter:
         def __init__(self, *, Name: str, Values: "Grant.StringList"): ...
-    class FilterList:
-        def __init__(self, *, FilterList: List["Grant.Filter"] = ...): ...
     class StringList:
         def __init__(self, *, StringList: List[str] = ...): ...
-    class TagList:
-        def __init__(self, *, TagList: List["Tag"] = ...): ...
 
 class License:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-licensemanager-license.html"""
 
     LicenseArn: Final[str]
 
+    Version: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,
         *,
         ConsumptionConfiguration: "License.ConsumptionConfiguration",
-        Entitlements: "License.EntitlementList",
+        Entitlements: List["License.Entitlement"],
         HomeRegion: str,
         Issuer: "License.IssuerData",
+        LicenseName: str,
+        ProductName: str,
         Validity: "License.ValidityDateFormat",
         Beneficiary: str = ...,
         ClientToken: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Filters: "License.FilterList" = ...,
-        LicenseArns: "License.ArnList" = ...,
-        LicenseMetadata: "License.MetadataList" = ...,
-        LicenseName: str = ...,
+        Filters: List["License.Filter"] = ...,
+        LicenseArns: List[str] = ...,
+        LicenseMetadata: List["License.Metadata"] = ...,
         MaxResults: int = ...,
         NextToken: str = ...,
-        ProductName: str = ...,
         ProductSKU: str = ...,
         SourceVersion: str = ...,
         Status: str = ...,
-        Tags: "License.TagList" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         Version: str = ...
     ): ...
-    class ArnList:
-        def __init__(self, *, ArnList: List[str] = ...): ...
     class BorrowConfiguration:
         def __init__(self, *, AllowEarlyCheckIn: bool, MaxTimeToLiveInMinutes: int): ...
     class ConsumptionConfiguration:
@@ -119,18 +113,12 @@ class License:
             Overage: bool = ...,
             Value: str = ...
         ): ...
-    class EntitlementList:
-        def __init__(self, *, EntitlementList: List["License.Entitlement"] = ...): ...
     class Filter:
         def __init__(self, *, Name: str, Values: "License.StringList"): ...
-    class FilterList:
-        def __init__(self, *, FilterList: List["License.Filter"] = ...): ...
     class IssuerData:
         def __init__(self, *, Name: str, SignKey: str = ...): ...
     class Metadata:
         def __init__(self, *, Name: str, Value: str): ...
-    class MetadataList:
-        def __init__(self, *, MetadataList: List["License.Metadata"] = ...): ...
     class ProvisionalConfiguration:
         def __init__(self, *, MaxTimeToLiveInMinutes: int): ...
     class Rule:
@@ -139,7 +127,5 @@ class License:
         def __init__(self, *, RuleList: List["License.Rule"] = ...): ...
     class StringList:
         def __init__(self, *, StringList: List[str] = ...): ...
-    class TagList:
-        def __init__(self, *, TagList: List["Tag"] = ...): ...
     class ValidityDateFormat:
         def __init__(self, *, Begin: str, End: str): ...

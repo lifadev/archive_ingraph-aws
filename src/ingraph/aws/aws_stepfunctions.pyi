@@ -50,7 +50,7 @@ class StateMachine:
         RoleArn: str,
         DefinitionS3Location: "StateMachine.S3Location" = ...,
         DefinitionString: str = ...,
-        DefinitionSubstitutions: "StateMachine.DefinitionSubstitutions" = ...,
+        DefinitionSubstitutions: Dict[str, str] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         LoggingConfiguration: "StateMachine.LoggingConfiguration" = ...,
@@ -62,8 +62,6 @@ class StateMachine:
     ): ...
     class CloudWatchLogsLogGroup:
         def __init__(self, *, LogGroupArn: str = ...): ...
-    class DefinitionSubstitutions:
-        def __init__(self) -> None: ...
     class LogDestination:
         def __init__(
             self, *, CloudWatchLogsLogGroup: "StateMachine.CloudWatchLogsLogGroup" = ...

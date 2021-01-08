@@ -32,6 +32,7 @@ class Server:
         Certificate: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        Domain: str = ...,
         EndpointDetails: "Server.EndpointDetails" = ...,
         EndpointType: str = ...,
         IdentityProviderDetails: "Server.IdentityProviderDetails" = ...,
@@ -79,11 +80,16 @@ class User:
         HomeDirectoryMappings: List["User.HomeDirectoryMapEntry"] = ...,
         HomeDirectoryType: str = ...,
         Policy: str = ...,
+        PosixProfile: "User.PosixProfile" = ...,
         SshPublicKeys: List["User.SshPublicKey"] = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
     class HomeDirectoryMapEntry:
         def __init__(self, *, Entry: str, Target: str): ...
+    class PosixProfile:
+        def __init__(
+            self, *, Gid: float, Uid: float, SecondaryGids: List[float] = ...
+        ): ...
     class SshPublicKey:
         def __init__(self) -> None: ...

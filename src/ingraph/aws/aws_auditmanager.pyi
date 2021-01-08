@@ -27,41 +27,87 @@ class Assessment:
 
     arn: Final[str]
 
+    delegations: Final[List]
+
     creationTime: Final[float]
 
     Ref: Final[str]
+
+    FrameworkId: Final[str]
+
+    AssessmentId: Final[str]
+
+    Arn: Final[str]
+
+    Delegations: Final[List]
+
+    CreationTime: Final[float]
     def __init__(
         self,
         *,
+        AssessmentReportsDestination: "Assessment.AssessmentReportsDestination" = ...,
+        AwsAccount: "Assessment.AWSAccount" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        Description: str = ...,
+        FrameworkId: str = ...,
+        Name: str = ...,
+        Roles: List["Assessment.Role"] = ...,
+        Scope: "Assessment.Scope" = ...,
+        Status: str = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         assessmentReportsDestination: "Assessment.AssessmentReportsDestination" = ...,
         awsAccount: "Assessment.AWSAccount" = ...,
         description: str = ...,
         frameworkId: str = ...,
         name: str = ...,
-        roles: "Assessment.Roles" = ...,
+        roles: List["Assessment.Role"] = ...,
         scope: "Assessment.Scope" = ...,
         status: str = ...,
-        tags: "Assessment.Tags" = ...
+        tags: List["Tag"] = ...
     ): ...
     class AWSAccount:
         def __init__(
-            self, *, emailAddress: str = ..., id: str = ..., name: str = ...
+            self,
+            *,
+            EmailAddress: str = ...,
+            Id: str = ...,
+            Name: str = ...,
+            emailAddress: str = ...,
+            id: str = ...,
+            name: str = ...
         ): ...
     class AWSAccounts:
         def __init__(self, *, AWSAccounts: List["Assessment.AWSAccount"] = ...): ...
     class AWSService:
-        def __init__(self, *, serviceName: str = ...): ...
+        def __init__(self, *, ServiceName: str = ..., serviceName: str = ...): ...
     class AWSServices:
         def __init__(self, *, AWSServices: List["Assessment.AWSService"] = ...): ...
     class AssessmentReportsDestination:
-        def __init__(self, *, destination: str = ..., destinationType: str = ...): ...
+        def __init__(
+            self,
+            *,
+            Destination: str = ...,
+            DestinationType: str = ...,
+            destination: str = ...,
+            destinationType: str = ...
+        ): ...
     class Delegation:
         def __init__(
             self,
             *,
+            AssessmentId: str = ...,
+            AssessmentName: str = ...,
+            Comment: str = ...,
+            ControlSetId: str = ...,
+            CreatedBy: str = ...,
+            CreationTime: float = ...,
+            Id: str = ...,
+            LastUpdated: float = ...,
+            RoleArn: str = ...,
+            RoleType: str = ...,
+            Status: str = ...,
             assessmentId: str = ...,
             assessmentName: str = ...,
             comment: str = ...,
@@ -74,18 +120,21 @@ class Assessment:
             roleType: str = ...,
             status: str = ...
         ): ...
-    class Delegations:
-        def __init__(self, *, Delegations: List["Assessment.Delegation"] = ...): ...
     class Role:
-        def __init__(self, *, roleArn: str = ..., roleType: str = ...): ...
-    class Roles:
-        def __init__(self, *, Roles: List["Assessment.Role"] = ...): ...
+        def __init__(
+            self,
+            *,
+            RoleArn: str = ...,
+            RoleType: str = ...,
+            roleArn: str = ...,
+            roleType: str = ...
+        ): ...
     class Scope:
         def __init__(
             self,
             *,
+            AwsAccounts: List["Assessment.AWSAccount"] = ...,
+            AwsServices: List["Assessment.AWSService"] = ...,
             awsAccounts: "Assessment.AWSAccounts" = ...,
             awsServices: "Assessment.AWSServices" = ...
         ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...

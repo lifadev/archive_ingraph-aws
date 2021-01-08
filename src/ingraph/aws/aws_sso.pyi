@@ -43,12 +43,32 @@ class InstanceAccessControlAttributeConfiguration:
     def __init__(
         self,
         *,
-        InstanceAccessControlAttributeConfiguration: Any,
         InstanceArn: str,
+        AccessControlAttributes: List[
+            "InstanceAccessControlAttributeConfiguration.AccessControlAttribute"
+        ] = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        InstanceAccessControlAttributeConfiguration: Any = ...,
         UpdateReplacePolicy: str = ...
     ): ...
+    class AccessControlAttribute:
+        def __init__(
+            self,
+            *,
+            Key: str,
+            Value: "InstanceAccessControlAttributeConfiguration.AccessControlAttributeValue"
+        ): ...
+    class AccessControlAttributeValue:
+        def __init__(
+            self,
+            *,
+            Source: "InstanceAccessControlAttributeConfiguration.AccessControlAttributeValueSourceList"
+        ): ...
+    class AccessControlAttributeValueSourceList:
+        def __init__(
+            self, *, AccessControlAttributeValueSourceList: List[str] = ...
+        ): ...
 
 class PermissionSet:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sso-permissionset.html"""
@@ -64,7 +84,7 @@ class PermissionSet:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,
-        InlinePolicy: str = ...,
+        InlinePolicy: Any = ...,
         ManagedPolicies: List[str] = ...,
         RelayStateType: str = ...,
         SessionDuration: str = ...,

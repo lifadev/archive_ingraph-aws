@@ -141,12 +141,11 @@ class DataQualityJobDefinition:
 class Device:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-device.html"""
 
-    DeviceFleetName: Final[str]
-
     Ref: Final[str]
     def __init__(
         self,
         *,
+        DeviceFleetName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Device: "Device.Device_" = ...,
@@ -161,12 +160,11 @@ class Device:
 class DeviceFleet:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-devicefleet.html"""
 
-    DeviceFleetName: Final[str]
-
     Ref: Final[str]
     def __init__(
         self,
         *,
+        DeviceFleetName: str,
         OutputConfig: "DeviceFleet.EdgeOutputConfig",
         RoleArn: str,
         DeletionPolicy: str = ...,

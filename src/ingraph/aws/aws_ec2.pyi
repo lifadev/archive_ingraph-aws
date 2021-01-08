@@ -69,11 +69,9 @@ class CarrierGateway:
         VpcId: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Tags: "CarrierGateway.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
 
 class ClientVpnAuthorizationRule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-clientvpnauthorizationrule.html"""
@@ -779,11 +777,9 @@ class LocalGatewayRouteTableVPCAssociation:
         VpcId: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Tags: "LocalGatewayRouteTableVPCAssociation.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
 
 class NatGateway:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html"""
@@ -850,6 +846,8 @@ class NetworkInsightsAnalysis:
 
     Status: Final[str]
 
+    StatusMessage: Final[str]
+
     NetworkPathFound: Final[bool]
 
     ForwardPathComponents: Final[List]
@@ -868,7 +866,6 @@ class NetworkInsightsAnalysis:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         FilterInArns: List[str] = ...,
-        StatusMessage: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...

@@ -31,11 +31,9 @@ class DataCatalog:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         Parameters: Dict[str, str] = ...,
-        Tags: "DataCatalog.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
 
 class NamedQuery:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html"""
@@ -71,7 +69,7 @@ class WorkGroup:
         Description: str = ...,
         RecursiveDeleteOption: bool = ...,
         State: str = ...,
-        Tags: "WorkGroup.Tags" = ...,
+        Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...,
         WorkGroupConfiguration: "WorkGroup.WorkGroupConfiguration" = ...,
         WorkGroupConfigurationUpdates: "WorkGroup.WorkGroupConfigurationUpdates" = ...
@@ -94,8 +92,6 @@ class WorkGroup:
             RemoveEncryptionConfiguration: bool = ...,
             RemoveOutputLocation: bool = ...
         ): ...
-    class Tags:
-        def __init__(self, *, Tags: List["Tag"] = ...): ...
     class WorkGroupConfiguration:
         def __init__(
             self,
