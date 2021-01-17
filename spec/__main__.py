@@ -198,6 +198,25 @@ def _nomalize_attrs(data: Any) -> None:
                 del value[_ASKEY]["LastUpdate"]
             else:
                 raise NotImplementedError("patch outdated")
+        # patch 24.0.0
+        if name == "AWS::QuickSight::Dashboard":
+            bad = value[_ASKEY].get("Version")
+            if bad.get("Type") == "DashboardVersion":
+                del value[_ASKEY]["Version"]
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::QuickSight::Template":
+            bad = value[_ASKEY].get("Version")
+            if bad.get("Type") == "TemplateVersion":
+                del value[_ASKEY]["Version"]
+            else:
+                raise NotImplementedError("patch outdated")
+        if name == "AWS::QuickSight::Theme":
+            bad = value[_ASKEY].get("Version")
+            if bad.get("Type") == "ThemeVersion":
+                del value[_ASKEY]["Version"]
+            else:
+                raise NotImplementedError("patch outdated")
 
 
 def _normalize_props(data: Any) -> None:
