@@ -30,32 +30,15 @@ class Grant:
         self,
         *,
         AllowedOperations: List[str] = ...,
-        ClientToken: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Filters: List["Grant.Filter"] = ...,
-        GrantArns: List[str] = ...,
         GrantName: str = ...,
-        GrantStatus: str = ...,
-        GrantedOperations: List[str] = ...,
-        GranteePrincipalArn: str = ...,
         HomeRegion: str = ...,
         LicenseArn: str = ...,
-        MaxResults: int = ...,
-        NextToken: str = ...,
-        ParentArn: str = ...,
         Principals: List[str] = ...,
-        SourceVersion: str = ...,
         Status: str = ...,
-        StatusReason: str = ...,
-        Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...,
-        Version: str = ...
+        UpdateReplacePolicy: str = ...
     ): ...
-    class Filter:
-        def __init__(self, *, Name: str, Values: "Grant.StringList"): ...
-    class StringList:
-        def __init__(self, *, StringList: List[str] = ...): ...
 
 class License:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-licensemanager-license.html"""
@@ -76,20 +59,12 @@ class License:
         ProductName: str,
         Validity: "License.ValidityDateFormat",
         Beneficiary: str = ...,
-        ClientToken: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        Filters: List["License.Filter"] = ...,
-        LicenseArns: List[str] = ...,
         LicenseMetadata: List["License.Metadata"] = ...,
-        MaxResults: int = ...,
-        NextToken: str = ...,
         ProductSKU: str = ...,
-        SourceVersion: str = ...,
         Status: str = ...,
-        Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...,
-        Version: str = ...
+        UpdateReplacePolicy: str = ...
     ): ...
     class BorrowConfiguration:
         def __init__(self, *, AllowEarlyCheckIn: bool, MaxTimeToLiveInMinutes: int): ...
@@ -108,24 +83,15 @@ class License:
             Name: str,
             Unit: str,
             AllowCheckIn: bool = ...,
-            CheckoutRules: "License.RuleList" = ...,
             MaxCount: int = ...,
             Overage: bool = ...,
             Value: str = ...
         ): ...
-    class Filter:
-        def __init__(self, *, Name: str, Values: "License.StringList"): ...
     class IssuerData:
         def __init__(self, *, Name: str, SignKey: str = ...): ...
     class Metadata:
         def __init__(self, *, Name: str, Value: str): ...
     class ProvisionalConfiguration:
         def __init__(self, *, MaxTimeToLiveInMinutes: int): ...
-    class Rule:
-        def __init__(self, *, Name: str, Unit: str, Value: str): ...
-    class RuleList:
-        def __init__(self, *, RuleList: List["License.Rule"] = ...): ...
-    class StringList:
-        def __init__(self, *, StringList: List[str] = ...): ...
     class ValidityDateFormat:
         def __init__(self, *, Begin: str, End: str): ...

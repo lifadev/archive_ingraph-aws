@@ -199,6 +199,8 @@ class FlowVpcInterface:
     def __init__(
         self,
         *,
+        FlowArn: str,
+        Name: str,
         RoleArn: str,
         SecurityGroupIds: List[str],
         SubnetId: str,

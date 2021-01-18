@@ -128,11 +128,11 @@ class ListenerCertificate:
 class ListenerRule:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html"""
 
-    Ref: Final[str]
-
     RuleArn: Final[str]
 
     IsDefault: Final[bool]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,

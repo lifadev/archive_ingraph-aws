@@ -183,6 +183,7 @@ class DataSource:
             *,
             ConfluenceConfiguration: "DataSource.ConfluenceConfiguration" = ...,
             DatabaseConfiguration: "DataSource.DatabaseConfiguration" = ...,
+            GoogleDriveConfiguration: "DataSource.GoogleDriveConfiguration" = ...,
             OneDriveConfiguration: "DataSource.OneDriveConfiguration" = ...,
             S3Configuration: "DataSource.S3DataSourceConfiguration" = ...,
             SalesforceConfiguration: "DataSource.SalesforceConfiguration" = ...,
@@ -224,6 +225,24 @@ class DataSource:
         ): ...
     class DocumentsMetadataConfiguration:
         def __init__(self, *, S3Prefix: str = ...): ...
+    class ExcludeMimeTypesList:
+        def __init__(self, *, ExcludeMimeTypesList: List[str] = ...): ...
+    class ExcludeSharedDrivesList:
+        def __init__(self, *, ExcludeSharedDrivesList: List[str] = ...): ...
+    class ExcludeUserAccountsList:
+        def __init__(self, *, ExcludeUserAccountsList: List[str] = ...): ...
+    class GoogleDriveConfiguration:
+        def __init__(
+            self,
+            *,
+            SecretArn: str,
+            ExcludeMimeTypes: "DataSource.ExcludeMimeTypesList" = ...,
+            ExcludeSharedDrives: "DataSource.ExcludeSharedDrivesList" = ...,
+            ExcludeUserAccounts: "DataSource.ExcludeUserAccountsList" = ...,
+            ExclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...,
+            FieldMappings: "DataSource.DataSourceToIndexFieldMappingList" = ...,
+            InclusionPatterns: "DataSource.DataSourceInclusionsExclusionsStrings" = ...
+        ): ...
     class OneDriveConfiguration:
         def __init__(
             self,

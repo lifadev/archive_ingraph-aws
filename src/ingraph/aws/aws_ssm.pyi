@@ -127,10 +127,7 @@ class MaintenanceWindowTask:
     def __init__(
         self,
         *,
-        MaxConcurrency: str,
-        MaxErrors: str,
         Priority: int,
-        Targets: List["MaintenanceWindowTask.Target"],
         TaskArn: str,
         TaskType: str,
         WindowId: str,
@@ -138,8 +135,11 @@ class MaintenanceWindowTask:
         DependsOn: List[Any] = ...,
         Description: str = ...,
         LoggingInfo: "MaintenanceWindowTask.LoggingInfo" = ...,
+        MaxConcurrency: str = ...,
+        MaxErrors: str = ...,
         Name: str = ...,
         ServiceRoleArn: str = ...,
+        Targets: List["MaintenanceWindowTask.Target"] = ...,
         TaskInvocationParameters: "MaintenanceWindowTask.TaskInvocationParameters" = ...,
         TaskParameters: Any = ...,
         UpdateReplacePolicy: str = ...

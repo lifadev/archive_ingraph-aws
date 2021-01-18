@@ -210,16 +210,12 @@ class User:
         UserId: str,
         UserName: str,
         AccessString: str = ...,
-        Authentication: "User.Authentication" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         NoPasswordRequired: bool = ...,
         Passwords: List[str] = ...,
-        UpdateReplacePolicy: str = ...,
-        UserGroupIds: List[str] = ...
+        UpdateReplacePolicy: str = ...
     ): ...
-    class Authentication:
-        def __init__(self, *, PasswordCount: int = ..., Type: str = ...): ...
 
 class UserGroup:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticache-usergroup.html"""
@@ -236,12 +232,6 @@ class UserGroup:
         UserGroupId: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
-        PendingChanges: "UserGroup.UserGroupPendingChanges" = ...,
-        ReplicationGroupIds: List[str] = ...,
         UpdateReplacePolicy: str = ...,
         UserIds: List[str] = ...
     ): ...
-    class UserGroupPendingChanges:
-        def __init__(
-            self, *, UserIdsToAdd: List[str] = ..., UserIdsToRemove: List[str] = ...
-        ): ...

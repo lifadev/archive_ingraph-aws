@@ -233,6 +233,7 @@ class PortfolioShare:
         AcceptLanguage: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        ShareTagOptions: bool = ...,
         UpdateReplacePolicy: str = ...
     ): ...
 

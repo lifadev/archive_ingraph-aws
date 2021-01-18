@@ -50,6 +50,7 @@ class LifecyclePolicy:
             CronExpression: str = ...,
             Interval: int = ...,
             IntervalUnit: str = ...,
+            Location: str = ...,
             Times: List[str] = ...
         ): ...
     class CrossRegionCopyAction:
@@ -70,7 +71,8 @@ class LifecyclePolicy:
             TargetRegion: str,
             CmkArn: str = ...,
             CopyTags: bool = ...,
-            RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...
+            RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...,
+            Target: str = ...
         ): ...
     class EncryptionConfiguration:
         def __init__(self, *, Encrypted: bool, CmkArn: str = ...): ...
@@ -105,6 +107,7 @@ class LifecyclePolicy:
             EventSource: "LifecyclePolicy.EventSource" = ...,
             Parameters: "LifecyclePolicy.Parameters" = ...,
             PolicyType: str = ...,
+            ResourceLocations: List[str] = ...,
             ResourceTypes: List[str] = ...,
             Schedules: List["LifecyclePolicy.Schedule"] = ...,
             TargetTags: List["Tag"] = ...

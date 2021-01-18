@@ -32,7 +32,7 @@ class Certificate:
         CertificateAuthorityArn: str,
         CertificateSigningRequest: str,
         SigningAlgorithm: str,
-        Validity: Any,
+        Validity: "Certificate.Validity",
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         TemplateArn: str = ...,
