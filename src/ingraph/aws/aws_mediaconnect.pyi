@@ -189,10 +189,6 @@ class FlowSource:
 class FlowVpcInterface:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-mediaconnect-flowvpcinterface.html"""
 
-    FlowArn: Final[str]
-
-    Name: Final[str]
-
     NetworkInterfaceIds: Final[List[str]]
 
     Ref: Final[str]

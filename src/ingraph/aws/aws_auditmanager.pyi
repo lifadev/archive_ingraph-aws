@@ -21,18 +21,6 @@ _NAMESPACE = "AWS::AuditManager"
 class Assessment:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-auditmanager-assessment.html"""
 
-    frameworkId: Final[str]
-
-    assessmentId: Final[str]
-
-    arn: Final[str]
-
-    delegations: Final[List]
-
-    creationTime: Final[float]
-
-    Ref: Final[str]
-
     FrameworkId: Final[str]
 
     AssessmentId: Final[str]
@@ -42,6 +30,8 @@ class Assessment:
     Delegations: Final[List]
 
     CreationTime: Final[float]
+
+    Ref: Final[str]
     def __init__(
         self,
         *,
@@ -56,43 +46,16 @@ class Assessment:
         Scope: "Assessment.Scope" = ...,
         Status: str = ...,
         Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...,
-        assessmentReportsDestination: "Assessment.AssessmentReportsDestination" = ...,
-        awsAccount: "Assessment.AWSAccount" = ...,
-        description: str = ...,
-        frameworkId: str = ...,
-        name: str = ...,
-        roles: List["Assessment.Role"] = ...,
-        scope: "Assessment.Scope" = ...,
-        status: str = ...,
-        tags: List["Tag"] = ...
+        UpdateReplacePolicy: str = ...
     ): ...
     class AWSAccount:
         def __init__(
-            self,
-            *,
-            EmailAddress: str = ...,
-            Id: str = ...,
-            Name: str = ...,
-            emailAddress: str = ...,
-            id: str = ...,
-            name: str = ...
+            self, *, EmailAddress: str = ..., Id: str = ..., Name: str = ...
         ): ...
-    class AWSAccounts:
-        def __init__(self, *, AWSAccounts: List["Assessment.AWSAccount"] = ...): ...
     class AWSService:
-        def __init__(self, *, ServiceName: str = ..., serviceName: str = ...): ...
-    class AWSServices:
-        def __init__(self, *, AWSServices: List["Assessment.AWSService"] = ...): ...
+        def __init__(self, *, ServiceName: str = ...): ...
     class AssessmentReportsDestination:
-        def __init__(
-            self,
-            *,
-            Destination: str = ...,
-            DestinationType: str = ...,
-            destination: str = ...,
-            destinationType: str = ...
-        ): ...
+        def __init__(self, *, Destination: str = ..., DestinationType: str = ...): ...
     class Delegation:
         def __init__(
             self,
@@ -107,34 +70,14 @@ class Assessment:
             LastUpdated: float = ...,
             RoleArn: str = ...,
             RoleType: str = ...,
-            Status: str = ...,
-            assessmentId: str = ...,
-            assessmentName: str = ...,
-            comment: str = ...,
-            controlSetId: str = ...,
-            createdBy: str = ...,
-            creationTime: float = ...,
-            id: str = ...,
-            lastUpdated: float = ...,
-            roleArn: str = ...,
-            roleType: str = ...,
-            status: str = ...
+            Status: str = ...
         ): ...
     class Role:
-        def __init__(
-            self,
-            *,
-            RoleArn: str = ...,
-            RoleType: str = ...,
-            roleArn: str = ...,
-            roleType: str = ...
-        ): ...
+        def __init__(self, *, RoleArn: str = ..., RoleType: str = ...): ...
     class Scope:
         def __init__(
             self,
             *,
             AwsAccounts: List["Assessment.AWSAccount"] = ...,
-            AwsServices: List["Assessment.AWSService"] = ...,
-            awsAccounts: "Assessment.AWSAccounts" = ...,
-            awsServices: "Assessment.AWSServices" = ...
+            AwsServices: List["Assessment.AWSService"] = ...
         ): ...

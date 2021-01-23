@@ -68,11 +68,11 @@ class LifecyclePolicy:
             self,
             *,
             Encrypted: bool,
-            TargetRegion: str,
             CmkArn: str = ...,
             CopyTags: bool = ...,
             RetainRule: "LifecyclePolicy.CrossRegionCopyRetainRule" = ...,
-            Target: str = ...
+            Target: str = ...,
+            TargetRegion: str = ...
         ): ...
     class EncryptionConfiguration:
         def __init__(self, *, Encrypted: bool, CmkArn: str = ...): ...

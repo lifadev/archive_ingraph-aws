@@ -62,6 +62,7 @@ class Cluster:
         CapacityProviders: List[str] = ...,
         ClusterName: str = ...,
         ClusterSettings: List["Cluster.ClusterSettings"] = ...,
+        Configuration: "Cluster.ClusterConfiguration" = ...,
         DefaultCapacityProviderStrategy: List[
             "Cluster.CapacityProviderStrategyItem"
         ] = ...,
@@ -74,10 +75,34 @@ class Cluster:
         def __init__(
             self, *, Base: int = ..., CapacityProvider: str = ..., Weight: int = ...
         ): ...
+    class ClusterConfiguration:
+        def __init__(
+            self,
+            *,
+            ExecuteCommandConfiguration: "Cluster.ExecuteCommandConfiguration" = ...
+        ): ...
     class ClusterSetting:
         def __init__(self, *, Name: str, Value: str): ...
     class ClusterSettings:
         def __init__(self, *, Name: str = ..., Value: str = ...): ...
+    class ExecuteCommandConfiguration:
+        def __init__(
+            self,
+            *,
+            KmsKeyId: str = ...,
+            LogConfiguration: "Cluster.ExecuteCommandLogConfiguration" = ...,
+            Logging: str = ...
+        ): ...
+    class ExecuteCommandLogConfiguration:
+        def __init__(
+            self,
+            *,
+            CloudWatchEncryptionEnabled: bool = ...,
+            CloudWatchLogGroupName: str = ...,
+            S3BucketName: str = ...,
+            S3EncryptionEnabled: bool = ...,
+            S3KeyPrefix: str = ...
+        ): ...
 
 class PrimaryTaskSet:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-primarytaskset.html"""

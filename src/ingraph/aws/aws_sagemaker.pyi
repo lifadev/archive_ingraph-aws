@@ -274,6 +274,29 @@ class EndpointConfig:
             AcceleratorType: str = ...
         ): ...
 
+class FeatureGroup:
+    """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-featuregroup.html"""
+
+    Ref: Final[str]
+    def __init__(
+        self,
+        *,
+        EventTimeFeatureName: str,
+        FeatureDefinitions: List["FeatureGroup.FeatureDefinition"],
+        FeatureGroupName: str,
+        RecordIdentifierFeatureName: str,
+        DeletionPolicy: str = ...,
+        DependsOn: List[Any] = ...,
+        Description: str = ...,
+        OfflineStoreConfig: Any = ...,
+        OnlineStoreConfig: Any = ...,
+        RoleArn: str = ...,
+        Tags: List["Tag"] = ...,
+        UpdateReplacePolicy: str = ...
+    ): ...
+    class FeatureDefinition:
+        def __init__(self, *, FeatureName: str, FeatureType: str): ...
+
 class Model:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sagemaker-model.html"""
 

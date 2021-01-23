@@ -33,11 +33,117 @@ class Certificate:
         CertificateSigningRequest: str,
         SigningAlgorithm: str,
         Validity: "Certificate.Validity",
+        ApiPassthrough: "Certificate.ApiPassthrough" = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         TemplateArn: str = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        ValidityNotBefore: "Certificate.Validity" = ...
     ): ...
+    class ApiPassthrough:
+        def __init__(
+            self,
+            *,
+            Extensions: "Certificate.Extensions" = ...,
+            Subject: "Certificate.Subject" = ...
+        ): ...
+    class CertificatePolicyList:
+        def __init__(
+            self, *, CertificatePolicyList: List["Certificate.PolicyInformation"] = ...
+        ): ...
+    class EdiPartyName:
+        def __init__(self, *, NameAssigner: str, PartyName: str): ...
+    class ExtendedKeyUsage:
+        def __init__(
+            self,
+            *,
+            ExtendedKeyUsageObjectIdentifier: str = ...,
+            ExtendedKeyUsageType: str = ...
+        ): ...
+    class ExtendedKeyUsageList:
+        def __init__(
+            self, *, ExtendedKeyUsageList: List["Certificate.ExtendedKeyUsage"] = ...
+        ): ...
+    class Extensions:
+        def __init__(
+            self,
+            *,
+            CertificatePolicies: "Certificate.CertificatePolicyList" = ...,
+            ExtendedKeyUsage: "Certificate.ExtendedKeyUsageList" = ...,
+            KeyUsage: "Certificate.KeyUsage" = ...,
+            SubjectAlternativeNames: "Certificate.GeneralNameList" = ...
+        ): ...
+    class GeneralName:
+        def __init__(
+            self,
+            *,
+            DirectoryName: "Certificate.Subject" = ...,
+            DnsName: str = ...,
+            EdiPartyName: "Certificate.EdiPartyName" = ...,
+            IpAddress: str = ...,
+            OtherName: "Certificate.OtherName" = ...,
+            RegisteredId: str = ...,
+            Rfc822Name: str = ...,
+            UniformResourceIdentifier: str = ...
+        ): ...
+    class GeneralNameList:
+        def __init__(
+            self, *, GeneralNameList: List["Certificate.GeneralName"] = ...
+        ): ...
+    class KeyUsage:
+        def __init__(
+            self,
+            *,
+            CRLSign: bool = ...,
+            DataEncipherment: bool = ...,
+            DecipherOnly: bool = ...,
+            DigitalSignature: bool = ...,
+            EncipherOnly: bool = ...,
+            KeyAgreement: bool = ...,
+            KeyCertSign: bool = ...,
+            KeyEncipherment: bool = ...,
+            NonRepudiation: bool = ...
+        ): ...
+    class OtherName:
+        def __init__(self, *, TypeId: str, Value: str): ...
+    class PolicyInformation:
+        def __init__(
+            self,
+            *,
+            CertPolicyId: str,
+            PolicyQualifiers: "Certificate.PolicyQualifierInfoList" = ...
+        ): ...
+    class PolicyQualifierInfo:
+        def __init__(
+            self, *, PolicyQualifierId: str, Qualifier: "Certificate.Qualifier"
+        ): ...
+    class PolicyQualifierInfoList:
+        def __init__(
+            self,
+            *,
+            PolicyQualifierInfoList: List["Certificate.PolicyQualifierInfo"] = ...
+        ): ...
+    class Qualifier:
+        def __init__(self, *, CpsUri: str): ...
+    class Subject:
+        def __init__(
+            self,
+            *,
+            CommonName: str = ...,
+            Country: str = ...,
+            DistinguishedNameQualifier: str = ...,
+            GenerationQualifier: str = ...,
+            GivenName: str = ...,
+            Initials: str = ...,
+            Locality: str = ...,
+            Organization: str = ...,
+            OrganizationalUnit: str = ...,
+            Pseudonym: str = ...,
+            SerialNumber: str = ...,
+            State: str = ...,
+            Surname: str = ...,
+            Title: str = ...
+        ): ...
     class Validity:
         def __init__(self, *, Type: str, Value: int): ...
 
