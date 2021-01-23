@@ -240,19 +240,6 @@ def _normalize_props(data: Any) -> None:
                 del bad["PrimitiveType"]
             else:
                 raise NotImplementedError("patch outdated")
-            bad = value[_PSKEY].get("Tags")
-            if bad.get("Type") == "Tag" and bad.get("ItemType") == "Json":
-                bad["Type"] = "List"
-                bad["ItemType"] = "Tag"
-            else:
-                raise NotImplementedError("patch outdated")
-        if name == "AWS::SageMaker::DeviceFleet":
-            bad = value[_PSKEY].get("Tags")
-            if bad.get("Type") == "Tag" and bad.get("ItemType") == "Json":
-                bad["Type"] = "List"
-                bad["ItemType"] = "Tag"
-            else:
-                raise NotImplementedError("patch outdated")
 
 
 def _normalize_proptypes(data: Any) -> None:
