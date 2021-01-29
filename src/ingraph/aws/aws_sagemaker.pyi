@@ -311,6 +311,7 @@ class Model:
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         EnableNetworkIsolation: bool = ...,
+        InferenceExecutionConfig: "Model.InferenceExecutionConfig" = ...,
         ModelName: str = ...,
         PrimaryContainer: "Model.ContainerDefinition" = ...,
         Tags: List["Tag"] = ...,
@@ -332,6 +333,8 @@ class Model:
         ): ...
     class ImageConfig:
         def __init__(self, *, RepositoryAccessMode: str): ...
+    class InferenceExecutionConfig:
+        def __init__(self, *, Mode: str): ...
     class MultiModelConfig:
         def __init__(self, *, ModelCacheSetting: str = ...): ...
     class VpcConfig:

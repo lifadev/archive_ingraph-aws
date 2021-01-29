@@ -136,6 +136,7 @@ class Service:
         DeploymentController: "Service.DeploymentController" = ...,
         DesiredCount: int = ...,
         EnableECSManagedTags: bool = ...,
+        EnableExecuteCommand: bool = ...,
         HealthCheckGracePeriodSeconds: int = ...,
         LaunchType: str = ...,
         LoadBalancers: List["Service.LoadBalancer"] = ...,

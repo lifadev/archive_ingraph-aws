@@ -21,6 +21,10 @@ _NAMESPACE = "AWS::S3"
 class AccessPoint:
     """Documentation: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-accesspoint.html"""
 
+    PolicyStatus: Final[str]
+
+    NetworkOrigin: Final[str]
+
     Ref: Final[str]
     def __init__(
         self,

@@ -39,12 +39,12 @@ class GatewayRoute:
     def __init__(
         self,
         *,
-        GatewayRouteName: str,
         MeshName: str,
         Spec: "GatewayRoute.GatewayRouteSpec",
         VirtualGatewayName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        GatewayRouteName: str = ...,
         MeshOwner: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
@@ -103,9 +103,9 @@ class Mesh:
     def __init__(
         self,
         *,
-        MeshName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
+        MeshName: str = ...,
         Spec: "Mesh.MeshSpec" = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
@@ -137,12 +137,12 @@ class Route:
         self,
         *,
         MeshName: str,
-        RouteName: str,
         Spec: "Route.RouteSpec",
         VirtualRouterName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         MeshOwner: str = ...,
+        RouteName: str = ...,
         Tags: List["Tag"] = ...,
         UpdateReplacePolicy: str = ...
     ): ...
@@ -294,12 +294,12 @@ class VirtualGateway:
         *,
         MeshName: str,
         Spec: "VirtualGateway.VirtualGatewaySpec",
-        VirtualGatewayName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         MeshOwner: str = ...,
         Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        VirtualGatewayName: str = ...
     ): ...
     class VirtualGatewayAccessLog:
         def __init__(
@@ -427,12 +427,12 @@ class VirtualNode:
         *,
         MeshName: str,
         Spec: "VirtualNode.VirtualNodeSpec",
-        VirtualNodeName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         MeshOwner: str = ...,
         Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        VirtualNodeName: str = ...
     ): ...
     class AccessLog:
         def __init__(self, *, File: "VirtualNode.FileAccessLog" = ...): ...
@@ -620,12 +620,12 @@ class VirtualRouter:
         *,
         MeshName: str,
         Spec: "VirtualRouter.VirtualRouterSpec",
-        VirtualRouterName: str,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         MeshOwner: str = ...,
         Tags: List["Tag"] = ...,
-        UpdateReplacePolicy: str = ...
+        UpdateReplacePolicy: str = ...,
+        VirtualRouterName: str = ...
     ): ...
     class PortMapping:
         def __init__(self, *, Port: int, Protocol: str): ...

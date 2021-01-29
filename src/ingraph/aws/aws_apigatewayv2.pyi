@@ -346,6 +346,7 @@ class Stage:
         ApiId: str,
         StageName: str,
         AccessLogSettings: "Stage.AccessLogSettings" = ...,
+        AccessPolicyId: str = ...,
         AutoDeploy: bool = ...,
         ClientCertificateId: str = ...,
         DefaultRouteSettings: "Stage.RouteSettings" = ...,

@@ -118,6 +118,7 @@ class Configuration:
         EngineType: str,
         EngineVersion: str,
         Name: str,
+        AuthenticationStrategy: str = ...,
         DeletionPolicy: str = ...,
         DependsOn: List[Any] = ...,
         Description: str = ...,

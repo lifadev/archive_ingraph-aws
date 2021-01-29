@@ -276,6 +276,7 @@ class UserPoolClient:
         def __init__(
             self,
             *,
+            ApplicationArn: str = ...,
             ApplicationId: str = ...,
             ExternalId: str = ...,
             RoleArn: str = ...,
